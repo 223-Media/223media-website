@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Marcus Williams | Growth Mindset Show</title>
+    <meta name="description" content="Apply to be a guest, book speaking engagements, or schedule strategic consultations with Marcus Williams. Multiple ways to connect and collaborate.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #2d4a22;
+            --accent-color: #84cc16;
+            --success-color: #22c55e;
+            --text-primary: #1a1a1a;
+            --text-secondary: #374151;
+            --bg-light: #f0fdf4;
+            --bg-white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1a1a1a 0%, #2d4a22 50%, #22c55e 100%);
+            --gradient-accent: linear-gradient(135deg, #22c55e 0%, #84cc16 100%);
+            --gradient-hero: linear-gradient(135deg, #000000 0%, #1a2e1a 25%, #2d4a22 50%, #22c55e 75%, #84cc16 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .back-to-portfolio {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-portfolio:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--bg-light);
+            padding: 100px 0 20px;
+            margin-top: 0;
+        }
+
+        .breadcrumb-nav {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(132, 204, 22, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Contact Options */
+        .contact-options {
+            padding: 80px 0;
+            background: var(--bg-white);
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .option-card {
+            background: var(--bg-light);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            border: 3px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .option-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+        }
+
+        .option-icon {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .option-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .option-description {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .option-details {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .option-details li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .option-button {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            width: 100%;
+        }
+
+        .option-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Form Modal */
+        .form-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            backdrop-filter: blur(10px);
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 600px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .modal-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        .close-button {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+
+        .form-input,
+        .form-select,
+        .form-textarea {
+            padding: 15px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus,
+        .form-select:focus,
+        .form-textarea:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .submit-button {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Quick Contact */
+        .quick-contact {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .quick-contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-method {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .contact-method:hover {
+            transform: translateY(-3px);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .contact-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .contact-link {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background: var(--bg-white);
+        }
+
+        .faq-grid {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e5e7eb;
+            margin-bottom: 2rem;
+        }
+
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            padding: 1.5rem 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-answer {
+            padding-bottom: 1.5rem;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            display: none;
+        }
+
+        .faq-answer.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .faq-icon {
+            transition: transform 0.3s ease;
+        }
+
+        .faq-question.active .faq-icon {
+            transform: rotate(45deg);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(132, 204, 22, 0.2) 50%, transparent 100%);
+            animation: wave 4s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: var(--accent-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                padding: 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Growth Mindset Show</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="episodes.html">Episodes</a></li>
+                <li><a href="host.html">Host</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <a href="../../../index.html#examples" class="back-to-portfolio">← 223 Media Portfolio</a>
+        </nav>
+    </header>
+
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="../../../index.html">223 Media</a> > 
+                <a href="../../../index.html#examples">Examples</a> > 
+                <a href="index.html">Growth Mindset Show</a> > 
+                Contact
+            </nav>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Let's Connect</h1>
+                <p class="hero-subtitle">Ready to be a guest, book Marcus for speaking, or explore collaboration opportunities? Choose the option that fits your needs.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Guest Interviews</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Speaking Events</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">Strategic Consultations</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">24hr</div>
+                        <div class="stat-label">Response Time</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-options">
+        <div class="container">
+            <h2 class="section-title">How Can We Collaborate?</h2>
+            <div class="options-grid">
+                <div class="option-card" data-form="guest">
+                    <div class="option-icon">🎙️</div>
+                    <h3 class="option-title">Be a Podcast Guest</h3>
+                    <p class="option-description">Share your entrepreneurial journey and insights with 50,000+ monthly listeners who are hungry for growth strategies.</p>
+                    <ul class="option-details">
+                        <li>✅ 45-60 minute interview format</li>
+                        <li>✅ Professional audio production</li>
+                        <li>✅ Social media promotion</li>
+                        <li>✅ Audience of growth-minded entrepreneurs</li>
+                        <li>✅ Full episode transcript provided</li>
+                    </ul>
+                    <button class="option-button">Apply to be a Guest</button>
+                </div>
+
+                <div class="option-card" data-form="speaking">
+                    <div class="option-icon">🎤</div>
+                    <h3 class="option-title">Book Marcus to Speak</h3>
+                    <p class="option-description">Bring transformational mindset strategies to your conference, corporate event, or team retreat with proven frameworks.</p>
+                    <ul class="option-details">
+                        <li>✅ Keynotes, workshops, and masterclasses</li>
+                        <li>✅ Customized content for your audience</li>
+                        <li>✅ Interactive engagement strategies</li>
+                        <li>✅ Follow-up resources included</li>
+                        <li>✅ Virtual and in-person options</li>
+                    </ul>
+                    <button class="option-button">Request Speaking Info</button>
+                </div>
+
+                <div class="option-card" data-form="consulting">
+                    <div class="option-icon">🧠</div>
+                    <h3 class="option-title">Strategic Consultation</h3>
+                    <p class="option-description">Get personalized guidance on scaling your business, building your team, or navigating major growth challenges.</p>
+                    <ul class="option-details">
+                        <li>✅ 90-minute deep-dive sessions</li>
+                        <li>✅ Customized growth strategies</li>
+                        <li>✅ Actionable implementation plans</li>
+                        <li>✅ Follow-up email summary</li>
+                        <li>✅ Limited availability - premium service</li>
+                    </ul>
+                    <button class="option-button">Book Strategy Session</button>
+                </div>
+
+                <div class="option-card" data-form="partnership">
+                    <div class="option-icon">🤝</div>
+                    <h3 class="option-title">Partnership Opportunities</h3>
+                    <p class="option-description">Explore collaboration opportunities including sponsorships, joint ventures, affiliate partnerships, and content collaborations.</p>
+                    <ul class="option-details">
+                        <li>✅ Podcast sponsorship opportunities</li>
+                        <li>✅ Joint venture discussions</li>
+                        <li>✅ Affiliate program inquiries</li>
+                        <li>✅ Content collaboration projects</li>
+                        <li>✅ Strategic alliance opportunities</li>
+                    </ul>
+                    <button class="option-button">Discuss Partnership</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="quick-contact">
+        <div class="container">
+            <h2 class="section-title">Quick Contact Methods</h2>
+            <div class="quick-contact-grid">
+                <div class="contact-method">
+                    <div class="contact-icon">📧</div>
+                    <h3 class="contact-title">Email</h3>
+                    <p class="contact-info">
+                        General inquiries:<br>
+                        <a href="mailto:hello@growthmindsetsshow.com" class="contact-link">hello@growthmindsetshow.com</a>
+                    </p>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon">📅</div>
+                    <h3 class="contact-title">Calendar</h3>
+                    <p class="contact-info">
+                        Book a strategy session:<br>
+                        <a href="#" class="contact-link">calendly.com/marcus-williams</a>
+                    </p>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon">💼</div>
+                    <h3 class="contact-title">LinkedIn</h3>
+                    <p class="contact-info">
+                        Professional networking:<br>
+                        <a href="#" class="contact-link">linkedin.com/in/marcuswilliams</a>
+                    </p>
+                </div>
+                <div class="contact-method">
+                    <div class="contact-icon">📱</div>
+                    <h3 class="contact-title">Social Media</h3>
+                    <p class="contact-info">
+                        Follow for daily insights:<br>
+                        <a href="#" class="contact-link">@MarcusWilliamsGrowth</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What makes a good podcast guest?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        We look for entrepreneurs who have built something meaningful, overcome significant challenges, and can share specific, actionable insights. Ideal guests have revenue of $500K+, interesting origin stories, and practical frameworks our audience can implement.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        How far in advance should I book Marcus for speaking?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        For keynotes and major events, we recommend booking 3-6 months in advance. For workshops and smaller events, 6-8 weeks is typically sufficient. However, we occasionally have last-minute availability for urgent requests.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What's included in a strategic consultation?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Our 90-minute sessions include: pre-session questionnaire, deep-dive analysis of your specific challenges, customized growth strategies, actionable implementation timeline, and a detailed follow-up email with resources and next steps.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        Do you offer podcast sponsorship opportunities?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        Yes! We work with companies that align with our audience of growth-minded entrepreneurs. Sponsorship packages include pre-roll, mid-roll, and post-roll options, newsletter mentions, and social media promotion. Minimum 3-month commitments.
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">
+                        What's your typical response time?
+                        <span class="faq-icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        We aim to respond to all inquiries within 24 hours during business days. For urgent speaking requests or time-sensitive opportunities, we often respond within a few hours. Complex consultation requests may take 48-72 hours for a detailed response.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Connect?</h2>
+                <p class="cta-subtitle">Choose your preferred way to get in touch and let's explore how we can work together to accelerate your growth.</p>
+                <div class="cta-buttons">
+                    <button class="cta-button" data-form="guest">Apply as Guest</button>
+                    <button class="cta-button" data-form="consulting">Book Consultation</button>
+                    <a href="newsletter.html" class="cta-button secondary">Join Newsletter First</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Form Modal -->
+    <div id="formModal" class="form-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle" class="modal-title">Contact Form</h2>
+                <button class="close-button">&times;</button>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <!-- Form content will be dynamically generated -->
+            </form>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Growth Mindset Show</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="episodes.html">All Episodes</a></li>
+                        <li><a href="host.html">About Marcus</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Work With Marcus</h4>
+                    <ul>
+                        <li><a href="contact.html">Be a Guest</a></li>
+                        <li><a href="contact.html">Book Speaking</a></li>
+                        <li><a href="contact.html">Strategic Consulting</a></li>
+                        <li><a href="contact.html">Partnerships</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Guest Guidelines</a></li>
+                        <li><a href="#">Speaking Topics</a></li>
+                        <li><a href="#">Media Kit</a></li>
+                        <li><a href="#">Brand Assets</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Legal & Support</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Technical Support</a></li>
+                        <li><a href="../../../index.html">223 Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Marcus Williams. All rights reserved. | Website by <a href="../../../index.html" style="color: var(--accent-color);">223 Media</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Form templates for different contact types
+        const formTemplates = {
+            guest: {
+                title: "Podcast Guest Application",
+                fields: [
+                    { type: 'text', name: 'name', label: 'Full Name', required: true },
+                    { type: 'email', name: 'email', label: 'Email Address', required: true },
+                    { type: 'text', name: 'company', label: 'Company/Organization', required: true },
+                    { type: 'text', name: 'title', label: 'Your Title/Role', required: true },
+                    { type: 'text', name: 'website', label: 'Website/LinkedIn URL', required: false },
+                    { type: 'select', name: 'revenue', label: 'Annual Revenue Range', required: true, options: [
+                        'Select range...',
+                        'Pre-revenue/Startup',
+                        '$1-100K',
+                        '$100K-500K',
+                        '$500K-1M',
+                        '$1M-5M',
+                        '$5M-10M',
+                        '$10M+'
+                    ]},
+                    { type: 'textarea', name: 'story', label: 'Your Entrepreneurial Story (2-3 key milestones)', required: true },
+                    { type: 'textarea', name: 'insights', label: 'What specific insights could you share with our audience?', required: true },
+                    { type: 'textarea', name: 'challenges', label: 'What major challenges have you overcome?', required: true },
+                    { type: 'select', name: 'timeline', label: 'Interview Timeline', required: true, options: [
+                        'Select timeline...',
+                        'ASAP - within 2 weeks',
+                        'Within 1 month',
+                        'Within 2-3 months',
+                        'Flexible - anytime'
+                    ]},
+                    { type: 'checkbox', name: 'promote', label: 'I agree to promote the episode to my network when it goes live' }
+                ]
+            },
+            speaking: {
+                title: "Speaking Engagement Inquiry",
+                fields: [
+                    { type: 'text', name: 'name', label: 'Full Name', required: true },
+                    { type: 'email', name: 'email', label: 'Email Address', required: true },
+                    { type: 'text', name: 'organization', label: 'Organization/Company', required: true },
+                    { type: 'text', name: 'title', label: 'Your Title/Role', required: true },
+                    { type: 'text', name: 'phone', label: 'Phone Number', required: true },
+                    { type: 'text', name: 'event', label: 'Event Name', required: true },
+                    { type: 'date', name: 'date', label: 'Event Date', required: true },
+                    { type: 'text', name: 'location', label: 'Event Location (City/State or Virtual)', required: true },
+                    { type: 'select', name: 'format', label: 'Speaking Format', required: true, options: [
+                        'Select format...',
+                        'Keynote (30-60 minutes)',
+                        'Workshop (2-4 hours)',
+                        'Panel Discussion',
+                        'Fireside Chat',
+                        'Virtual Presentation',
+                        'Custom Format'
+                    ]},
+                    { type: 'text', name: 'audience', label: 'Audience Size (estimated)', required: true },
+                    { type: 'textarea', name: 'attendees', label: 'Describe your audience (roles, industries, experience levels)', required: true },
+                    { type: 'textarea', name: 'objectives', label: 'What outcomes do you want from this presentation?', required: true },
+                    { type: 'select', name: 'budget', label: 'Speaking Fee Budget Range', required: true, options: [
+                        'Select budget range...',
+                        'Pro bono/Nonprofit',
+                        'Under $5K',
+                        '$5K-10K',
+                        '$10K-25K',
+                        '$25K+',
+                        'Prefer to discuss'
+                    ]},
+                    { type: 'textarea', name: 'details', label: 'Additional details or special requirements', required: false }
+                ]
+            },
+            consulting: {
+                title: "Strategic Consultation Request",
+                fields: [
+                    { type: 'text', name: 'name', label: 'Full Name', required: true },
+                    { type: 'email', name: 'email', label: 'Email Address', required: true },
+                    { type: 'text', name: 'company', label: 'Company Name', required: true },
+                    { type: 'text', name: 'title', label: 'Your Role', required: true },
+                    { type: 'text', name: 'phone', label: 'Phone Number', required: true },
+                    { type: 'select', name: 'stage', label: 'Business Stage', required: true, options: [
+                        'Select stage...',
+                        'Idea/Pre-launch',
+                        'Startup (0-$100K)',
+                        'Growth ($100K-1M)',
+                        'Scale ($1M-10M)',
+                        'Established ($10M+)'
+                    ]},
+                    { type: 'select', name: 'industry', label: 'Industry', required: true, options: [
+                        'Select industry...',
+                        'Technology/SaaS',
+                        'E-commerce',
+                        'Professional Services',
+                        'Healthcare',
+                        'Finance',
+                        'Education',
+                        'Manufacturing',
+                        'Other'
+                    ]},
+                    { type: 'textarea', name: 'challenge', label: 'What\'s your biggest growth challenge right now?', required: true },
+                    { type: 'textarea', name: 'goals', label: 'What specific outcomes are you hoping to achieve?', required: true },
+                    { type: 'textarea', name: 'tried', label: 'What have you already tried to solve this challenge?', required: true },
+                    { type: 'select', name: 'timeline', label: 'When would you like to schedule?', required: true, options: [
+                        'Select timeline...',
+                        'Within 1 week',
+                        'Within 2 weeks',
+                        'Within 1 month',
+                        'Flexible'
+                    ]},
+                    { type: 'select', name: 'investment', label: 'Investment Level', required: true, options: [
+                        'Select investment range...',
+                        '$500-1K (Single session)',
+                        '$1K-2K (Package)',
+                        '$2K-5K (Extended)',
+                        '$5K+ (Ongoing)',
+                        'Prefer to discuss'
+                    ]}
+                ]
+            },
+            partnership: {
+                title: "Partnership Opportunity",
+                fields: [
+                    { type: 'text', name: 'name', label: 'Full Name', required: true },
+                    { type: 'email', name: 'email', label: 'Email Address', required: true },
+                    { type: 'text', name: 'company', label: 'Company/Organization', required: true },
+                    { type: 'text', name: 'title', label: 'Your Title/Role', required: true },
+                    { type: 'text', name: 'website', label: 'Company Website', required: true },
+                    { type: 'select', name: 'type', label: 'Partnership Type', required: true, options: [
+                        'Select partnership type...',
+                        'Podcast Sponsorship',
+                        'Joint Venture',
+                        'Affiliate Partnership',
+                        'Content Collaboration',
+                        'Strategic Alliance',
+                        'Investment Opportunity',
+                        'Other'
+                    ]},
+                    { type: 'textarea', name: 'proposal', label: 'Describe your partnership proposal', required: true },
+                    { type: 'textarea', name: 'value', label: 'What value would this bring to our audience?', required: true },
+                    { type: 'textarea', name: 'experience', label: 'Previous partnership experience or relevant credentials', required: false },
+                    { type: 'select', name: 'timeline', label: 'Proposed Timeline', required: true, options: [
+                        'Select timeline...',
+                        'Immediate start',
+                        'Within 1 month',
+                        'Within 3 months',
+                        '6+ months',
+                        'Ongoing/Long-term'
+                    ]},
+                    { type: 'textarea', name: 'additional', label: 'Additional information or questions', required: false }
+                ]
+            }
+        };
+
+        // Modal functionality
+        const modal = document.getElementById('formModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const contactForm = document.getElementById('contactForm');
+        const closeButton = document.querySelector('.close-button');
+
+        // Open modal function
+        function openModal(formType) {
+            const template = formTemplates[formType];
+            modalTitle.textContent = template.title;
+            
+            // Generate form HTML
+            let formHTML = '';
+            template.fields.forEach(field => {
+                if (field.type === 'text' || field.type === 'email' || field.type === 'date') {
+                    formHTML += `
+                        <div class="form-group">
+                            <label class="form-label">${field.label}${field.required ? ' *' : ''}</label>
+                            <input type="${field.type}" name="${field.name}" class="form-input" ${field.required ? 'required' : ''}>
+                        </div>
+                    `;
+                } else if (field.type === 'select') {
+                    formHTML += `
+                        <div class="form-group">
+                            <label class="form-label">${field.label}${field.required ? ' *' : ''}</label>
+                            <select name="${field.name}" class="form-select" ${field.required ? 'required' : ''}>
+                                ${field.options.map(option => `<option value="${option}">${option}</option>`).join('')}
+                            </select>
+                        </div>
+                    `;
+                } else if (field.type === 'textarea') {
+                    formHTML += `
+                        <div class="form-group">
+                            <label class="form-label">${field.label}${field.required ? ' *' : ''}</label>
+                            <textarea name="${field.name}" class="form-textarea" ${field.required ? 'required' : ''}></textarea>
+                        </div>
+                    `;
+                } else if (field.type === 'checkbox') {
+                    formHTML += `
+                        <div class="form-checkbox">
+                            <input type="checkbox" name="${field.name}" id="${field.name}">
+                            <label for="${field.name}">${field.label}</label>
+                        </div>
+                    `;
+                }
+            });
+            
+            formHTML += `<button type="submit" class="submit-button">Submit ${template.title}</button>`;
+            contactForm.innerHTML = formHTML;
+            
+            modal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close modal function
+        function closeModal() {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Event listeners for opening modals
+        document.querySelectorAll('[data-form]').forEach(button => {
+            button.addEventListener('click', function() {
+                const formType = this.getAttribute('data-form');
+                openModal(formType);
+            });
+        });
+
+        // Close modal events
+        closeButton.addEventListener('click', closeModal);
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeModal();
+            }
+        });
+
+        // Form submission
+        document.addEventListener('submit', function(e) {
+            if (e.target.id === 'contactForm') {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(e.target);
+                const formType = modalTitle.textContent;
+                
+                // Simulate successful submission
+                alert(`🎉 Thank you for your ${formType.toLowerCase()}!\n\nWe've received your information and Marcus will personally review it within 24 hours.\n\nYou'll receive a confirmation email shortly with next steps.\n\nThis would integrate with your CRM/email system.`);
+                
+                closeModal();
+            }
+        });
+
+        // FAQ functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', function() {
+                const answer = this.nextElementSibling;
+                const icon = this.querySelector('.faq-icon');
+                
+                // Close all other answers
+                document.querySelectorAll('.faq-answer').forEach(a => {
+                    if (a !== answer) {
+                        a.classList.remove('active');
+                    }
+                });
+                document.querySelectorAll('.faq-question').forEach(q => {
+                    if (q !== this) {
+                        q.classList.remove('active');
+                    }
+                });
+                
+                // Toggle current answer
+                answer.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll for option cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe option cards for animation
+        document.querySelectorAll('.option-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
