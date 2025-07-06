@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meet Marcus Williams | Growth Mindset Show Host</title>
+    <meta name="description" content="Learn about Marcus Williams, serial entrepreneur, business strategist, and host of the Growth Mindset Show. From $0 to $50M exit - discover his journey.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #2d4a22;
+            --accent-color: #84cc16;
+            --success-color: #22c55e;
+            --text-primary: #1a1a1a;
+            --text-secondary: #374151;
+            --bg-light: #f0fdf4;
+            --bg-white: #ffffff;
+            --gradient-primary: linear-gradient(135deg, #1a1a1a 0%, #2d4a22 50%, #22c55e 100%);
+            --gradient-accent: linear-gradient(135deg, #22c55e 0%, #84cc16 100%);
+            --gradient-hero: linear-gradient(135deg, #000000 0%, #1a2e1a 25%, #2d4a22 50%, #22c55e 75%, #84cc16 100%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: var(--bg-white);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .back-to-portfolio {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-portfolio:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--bg-light);
+            padding: 100px 0 20px;
+            margin-top: 0;
+        }
+
+        .breadcrumb-nav {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(132, 204, 22, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .host-portrait {
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(34, 197, 94, 0.3);
+        }
+
+        .portrait-inner {
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        .host-portrait::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 4px solid rgba(132, 204, 22, 0.3);
+            border-radius: 50%;
+            z-index: 1;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .host-portrait::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            bottom: 40px;
+            border: 3px solid rgba(132, 204, 22, 0.5);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Story Section */
+        .story {
+            padding: 80px 0;
+            background: var(--bg-white);
+        }
+
+        .story-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        .story-text {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .story-highlight {
+            background: var(--bg-light);
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--accent-color);
+            margin: 2rem 0;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .timeline-container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .timeline-title {
+            text-align: center;
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+            align-items: center;
+        }
+
+        .timeline-year {
+            text-align: center;
+            background: var(--gradient-accent);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--accent-color);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Achievements */
+        .achievements {
+            padding: 80px 0;
+            background: var(--bg-white);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .achievement-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.15);
+        }
+
+        .achievement-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .achievement-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .achievement-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Media Appearances */
+        .media {
+            padding: 80px 0;
+            background: var(--bg-light);
+        }
+
+        .media-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .media-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .media-item:hover {
+            transform: translateY(-3px);
+        }
+
+        .media-logo {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .media-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .media-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: var(--bg-white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .testimonial {
+            background: var(--bg-light);
+            border-radius: 15px;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 4rem;
+            color: var(--accent-color);
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .author-info h4 {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .author-info p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(132, 204, 22, 0.2) 50%, transparent 100%);
+            animation: wave 4s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .cta-button {
+            background: var(--accent-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+        }
+
+        .cta-button.secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 40px 0 20px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            opacity: 0.7;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .host-portrait {
+                width: 300px;
+                height: 300px;
+            }
+
+            .portrait-inner {
+                width: 200px;
+                height: 200px;
+                font-size: 3rem;
+            }
+
+            .timeline-item {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .timeline-year {
+                width: 100px;
+                margin: 0 auto;
+            }
+
+            .achievements-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Growth Mindset Show</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="episodes.html">Episodes</a></li>
+                <li><a href="host.html" class="active">Host</a></li>
+                <li><a href="newsletter.html">Newsletter</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <a href="../../../index.html#examples" class="back-to-portfolio">← 223 Media Portfolio</a>
+        </nav>
+    </header>
+
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="../../../index.html">223 Media</a> > 
+                <a href="../../../index.html#examples">Examples</a> > 
+                <a href="index.html">Growth Mindset Show</a> > 
+                Host
+            </nav>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Marcus Williams</h1>
+                    <div class="subtitle">Serial Entrepreneur, Business Strategist & Mindset Coach</div>
+                    <div class="hero-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">3</div>
+                            <div class="stat-label">Companies Built</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">$50M</div>
+                            <div class="stat-label">Successful Exit</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Entrepreneurs Mentored</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">15</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="host-portrait">
+                        <div class="portrait-inner">MW</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story">
+        <div class="container">
+            <div class="story-content">
+                <h2 class="section-title">From Zero to $50 Million</h2>
+                <p class="story-text">
+                    Marcus Williams didn't start with privilege or connections. Raised in a working-class family in Detroit, he learned early that success required more than hard work—it demanded a complete transformation of mindset.
+                </p>
+                <div class="story-highlight">
+                    "The moment I realized that my thoughts were either my greatest asset or my biggest liability, everything changed. That's when I went from struggling entrepreneur to serial success story."
+                </div>
+                <p class="story-text">
+                    After failing with his first two startups and accumulating $80,000 in debt, Marcus discovered the power of growth mindset principles. He rebuilt his approach to business, leadership, and life—ultimately leading to three successful companies and a $50 million exit in 2019.
+                </p>
+                <p class="story-text">
+                    Today, Marcus is passionate about sharing the mindset frameworks and strategic insights that transformed his life with ambitious entrepreneurs and business leaders around the world.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline">
+        <div class="container">
+            <div class="timeline-container">
+                <h2 class="timeline-title">The Journey</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-year">2008</div>
+                    <div class="timeline-content">
+                        <h3>The Wake-Up Call</h3>
+                        <p>First startup fails after 18 months. $45,000 in debt and sleeping on a friend's couch. Discovers growth mindset research and begins personal transformation journey.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2011</div>
+                    <div class="timeline-content">
+                        <h3>Second Attempt, Better Results</h3>
+                        <p>Launches consulting firm applying mindset principles to business strategy. Reaches $500K revenue but sells to focus on bigger vision.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2014</div>
+                    <div class="timeline-content">
+                        <h3>TechFlow Systems Founded</h3>
+                        <p>Starts SaaS platform for workflow automation. Applies growth mindset to team building and product development. Scales to $2M ARR in first year.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2017</div>
+                    <div class="timeline-content">
+                        <h3>The Breakthrough</h3>
+                        <p>TechFlow Systems reaches $15M ARR. Featured in Forbes "30 Under 30" and begins speaking at major conferences about mindset and scaling.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2019</div>
+                    <div class="timeline-content">
+                        <h3>$50 Million Exit</h3>
+                        <p>Successfully exits TechFlow Systems to enterprise software giant. Transitions to full-time mentoring, speaking, and podcast hosting.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3>Growth Mindset Show Launch</h3>
+                        <p>Launches podcast to share mindset frameworks with wider audience. Reaches 50,000+ monthly listeners in first year.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="achievements">
+        <div class="container">
+            <h2 class="section-title">Recognition & Impact</h2>
+            <div class="achievements-grid">
+                <div class="achievement-card">
+                    <div class="achievement-icon">🏆</div>
+                    <h3 class="achievement-title">Forbes 30 Under 30</h3>
+                    <p class="achievement-description">Recognized for innovation in business automation and scaling methodologies in 2017.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">📚</div>
+                    <h3 class="achievement-title">Bestselling Author</h3>
+                    <p class="achievement-description">"The Growth Mindset Entrepreneur" reached #1 on Amazon Business category for 6 weeks.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🎤</div>
+                    <h3 class="achievement-title">TEDx Speaker</h3>
+                    <p class="achievement-description">Delivered "The Mindset That Built a $50M Company" to over 2.1 million views online.</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-icon">🌟</div>
+                    <h3 class="achievement-title">Mentor Impact</h3>
+                    <p class="achievement-description">Mentees have raised over $100M in funding and created 1,200+ jobs collectively.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="media">
+        <div class="container">
+            <h2 class="section-title">Featured In</h2>
+            <div class="media-grid">
+                <div class="media-item">
+                    <div class="media-logo">FB</div>
+                    <h3 class="media-title">Forbes</h3>
+                    <p class="media-description">30 Under 30 Feature & Contributing Writer</p>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo">EC</div>
+                    <h3 class="media-title">Entrepreneur</h3>
+                    <p class="media-description">Cover Story: "Mindset Secrets of Serial Entrepreneurs"</p>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo">HBR</div>
+                    <h3 class="media-title">Harvard Business Review</h3>
+                    <p class="media-description">Guest Article: "The Psychology of Scaling"</p>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo">INC</div>
+                    <h3 class="media-title">Inc. Magazine</h3>
+                    <p class="media-description">5000 Fastest Growing Companies List</p>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo">CNBC</div>
+                    <h3 class="media-title">CNBC</h3>
+                    <p class="media-description">Regular Contributor on Entrepreneurship</p>
+                </div>
+                <div class="media-item">
+                    <div class="media-logo">NPR</div>
+                    <h3 class="media-title">NPR</h3>
+                    <p class="media-description">How I Built This Guest</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <div class="container">
+            <h2 class="section-title">What People Say</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <p class="testimonial-text">Marcus's mindset frameworks literally saved my business. I was weeks away from shutting down when I implemented his growth strategies. Six months later, we hit our first $1M year.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">SJ</div>
+                        <div class="author-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>CEO, DataFlow Analytics</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">The Growth Mindset Show is required listening for my entire leadership team. Marcus distills complex psychological concepts into actionable business strategies better than anyone.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">DK</div>
+                        <div class="author-info">
+                            <h4>David Kim</h4>
+                            <p>Founder, RemoteWorks</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <p class="testimonial-text">I've worked with many business coaches, but Marcus is different. He doesn't just teach tactics—he transforms how you think about possibilities. That's what creates lasting success.</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">MR</div>
+                        <div class="author-info">
+                            <h4>Michael Rodriguez</h4>
+                            <p>Partner, Apex Ventures</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Ready to Transform Your Mindset?</h2>
+                <p class="cta-subtitle">Join thousands of entrepreneurs who are already applying growth mindset principles to scale their businesses and lives.</p>
+                <div class="cta-buttons">
+                    <a href="contact.html" class="cta-button">Book Strategy Session</a>
+                    <a href="newsletter.html" class="cta-button secondary">Join Newsletter</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Growth Mindset Show</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="episodes.html">All Episodes</a></li>
+                        <li><a href="host.html">About Marcus</a></li>
+                        <li><a href="newsletter.html">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect with Marcus</h4>
+                    <ul>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="contact.html">Speaking Inquiries</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">The Growth Mindset Entrepreneur (Book)</a></li>
+                        <li><a href="#">Free Mindset Assessment</a></li>
+                        <li><a href="#">Business Tools & Templates</a></li>
+                        <li><a href="#">Recommended Reading</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Business</h4>
+                    <ul>
+                        <li><a href="contact.html">Consulting Services</a></li>
+                        <li><a href="#">Corporate Training</a></li>
+                        <li><a href="#">Keynote Speaking</a></li>
+                        <li><a href="../../../index.html">223 Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Marcus Williams. All rights reserved. | Website by <a href="../../../index.html" style="color: var(--accent-color);">223 Media</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Timeline animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe timeline items
+        document.querySelectorAll('.timeline-item').forEach(item => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(item);
+        });
+
+        // CTA button interactions
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                if (this.textContent.includes('Strategy Session')) {
+                    e.preventDefault();
+                    alert('Redirecting to strategy session booking...\nThis would integrate with Marcus\'s calendar system.');
+                } else if (this.textContent.includes('Newsletter')) {
+                    e.preventDefault();
+                    alert('Redirecting to newsletter signup...\nThis would open the newsletter page.');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
