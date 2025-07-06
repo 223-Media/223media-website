@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+===============================================
+223 Media - XML Sitemap
+The Content Ecosystem Company
+===============================================
+This sitemap helps search engines discover and index
+all important pages and content on our website.
+===============================================
+-->
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+    <!-- =============================================== -->
+    <!-- PRIMARY PAGES - High Priority -->
+    <!-- =============================================== -->
+
+    <!-- Homepage - Main entry point -->
+    <url>
+        <loc>https://223-media.github.io/223media-website/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- Homepage with explicit index.html -->
+    <url>
+        <loc>https://223-media.github.io/223media-website/index.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- =============================================== -->
+    <!-- LEAD GENERATION - High Priority -->
+    <!-- =============================================== -->
+
+    <!-- Lead Magnet - Content Ecosystem Blueprint -->
+    <url>
+        <loc>https://223-media.github.io/223media-website/lead-magnet.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- =============================================== -->
+    <!-- PORTFOLIO & SOCIAL PROOF - High Priority -->
+    <!-- =============================================== -->
+
+    <!-- Portfolio/Examples Page -->
+    <url>
+        <loc>https://223-media.github.io/223media-website/examples.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- =============================================== -->
+    <!-- SINGLE PAGE APP SECTIONS -->
+    <!-- =============================================== -->
+    <!-- These represent the different sections of the SPA -->
+    <!-- that can be accessed via fragment identifiers -->
+
+    <!-- Services Section -->
+    <url>
+        <loc>https://223-media.github.io/223media-website/index.html#services</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- About Section -->
+    <url>
+        <loc>https://223-media.github.io/223media-website/index.html#about</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
+    <!-- Onboarding Section -->
+    <url>
+        <loc>https://223-media.github.io/223media-website/index.html#onboarding</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <!-- =============================================== -->
+    <!-- DOWNLOADABLE CONTENT -->
+    <!-- =============================================== -->
+
+    <!-- Content Ecosystem Blueprint PDF -->
+    <url>
+        <loc>https://223-media.github.io/223media-website/docs/blueprint.pdf</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+
+    <!-- =============================================== -->
+    <!-- FUTURE CONTENT SECTIONS -->
+    <!-- =============================================== -->
+    <!-- Uncomment these as you add new content -->
+
+    <!-- Blog Section (future) -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/blog/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    -->
+
+    <!-- Case Studies (future detailed pages) -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/case-studies/sarah-real-estate.html</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    -->
+
+    <!-- Podcast Samples (future) -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/podcast-samples/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.5</priority>
+    </url>
+    -->
+
+    <!-- Resources Section (future) -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/resources/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    -->
+
+    <!-- Client Portal (future) -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/client-portal/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>0.5</priority>
+    </url>
+    -->
+
+    <!-- =============================================== -->
+    <!-- LANDING PAGES (future campaigns) -->
+    <!-- =============================================== -->
+
+    <!-- Podcast Launch Landing Page -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/launch-your-podcast/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    -->
+
+    <!-- Website Development Landing Page -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/custom-websites/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    -->
+
+    <!-- =============================================== -->
+    <!-- INDUSTRY-SPECIFIC PAGES (future) -->
+    <!-- =============================================== -->
+
+    <!-- Real Estate Podcasts -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/industries/real-estate/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    -->
+
+    <!-- Business Consulting -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/industries/consulting/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    -->
+
+    <!-- E-commerce -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/industries/ecommerce/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    -->
+
+    <!-- SaaS Companies -->
+    <!--
+    <url>
+        <loc>https://223-media.github.io/223media-website/industries/saas/</loc>
+        <lastmod>2024-01-15</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.6</priority>
+    </url>
+    -->
+
+</urlset>
+
+<!--
+===============================================
+SITEMAP OPTIMIZATION NOTES
+===============================================
+
+Priority Guidelines:
+- 1.0: Homepage (most important)
+- 0.9: Lead magnets and conversion pages
+- 0.8: Services, portfolio, onboarding
+- 0.7: About, industry pages, landing pages
+- 0.6: Case studies, resources, downloads
+- 0.5: Blog posts, samples, client portal
+
+Change Frequency Guidelines:
+- daily: Dynamic content, client portal
+- weekly: Homepage, portfolio (active business)
+- monthly: Services, about, landing pages
+- yearly: Case studies, downloads, static content
+
+SEO Best Practices Implemented:
+1. All main pages included for maximum discoverability
+2. Logical priority structure based on business goals
+3. Realistic change frequencies for content types
+4. SPA sections included with fragment identifiers
+5. Future content structure planned for easy expansion
+
+Remember to:
+1. Update lastmod dates when content changes
+2. Submit sitemap to Google Search Console
+3. Submit sitemap to Bing Webmaster Tools
+4. Update sitemap URL in robots.txt when using custom domain
+5. Add new pages as you expand the website
+
+Custom Domain Update:
+When deploying to custom domain (e.g., 223media.com),
+update all URLs from:
+https://223-media.github.io/223media-website/
+to:
+https://223media.com/
+
+Validation:
+Test sitemap at: https://www.xml-sitemaps.com/validate-xml-sitemap.html
+===============================================
+-->
