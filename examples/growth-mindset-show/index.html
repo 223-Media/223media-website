@@ -13,16 +13,17 @@
         }
 
         :root {
-            --primary-color: #1a365d;
-            --secondary-color: #3182ce;
-            --accent-color: #f6ad55;
-            --success-color: #38a169;
-            --text-primary: #2d3748;
-            --text-secondary: #4a5568;
-            --bg-light: #f7fafc;
+            --primary-color: #1a1a1a;
+            --secondary-color: #2d4a22;
+            --accent-color: #84cc16;
+            --success-color: #22c55e;
+            --text-primary: #1a1a1a;
+            --text-secondary: #374151;
+            --bg-light: #f0fdf4;
             --bg-white: #ffffff;
-            --gradient-primary: linear-gradient(135deg, #1a365d 0%, #3182ce 100%);
-            --gradient-accent: linear-gradient(135deg, #f6ad55 0%, #ed8936 100%);
+            --gradient-primary: linear-gradient(135deg, #1a1a1a 0%, #2d4a22 50%, #22c55e 100%);
+            --gradient-accent: linear-gradient(135deg, #22c55e 0%, #84cc16 100%);
+            --gradient-hero: linear-gradient(135deg, #000000 0%, #1a2e1a 25%, #2d4a22 50%, #22c55e 75%, #84cc16 100%);
         }
 
         body {
@@ -94,10 +95,28 @@
 
         /* Hero Section */
         .hero {
-            background: var(--gradient-primary);
+            background: var(--gradient-hero);
             color: white;
             padding: 120px 0 80px;
             margin-top: 80px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, transparent 30%, rgba(132, 204, 22, 0.1) 50%, transparent 70%);
+            animation: shimmer 3s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
         }
 
         .hero-content {
@@ -164,11 +183,57 @@
             background: var(--gradient-accent);
             border-radius: 15px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
             color: white;
             margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(34, 197, 94, 0.3);
+            animation: pulse 2s ease-in-out infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .podcast-logo {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .podcast-subtitle {
+            font-size: 0.8rem;
+            opacity: 0.9;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .podcast-cover::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255,255,255,0.1) 10px,
+                rgba(255,255,255,0.1) 20px
+            );
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
         }
 
         .player-controls {
@@ -238,11 +303,14 @@
             border-radius: 15px;
             padding: 2rem;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
 
         .episode-card:hover {
             transform: translateY(-5px);
+            border-color: var(--accent-color);
+            box-shadow: 0 20px 40px rgba(34, 197, 94, 0.2);
         }
 
         .episode-number {
@@ -319,8 +387,47 @@
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 4rem;
             margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .host-avatar {
+            width: 200px;
+            height: 200px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+        }
+
+        .host-image::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            bottom: 20px;
+            border: 3px solid rgba(132, 204, 22, 0.3);
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .host-image::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 40px;
+            right: 40px;
+            bottom: 40px;
+            border: 2px solid rgba(132, 204, 22, 0.5);
+            border-radius: 50%;
+            z-index: 1;
         }
 
         .host-bio h3 {
@@ -351,9 +458,27 @@
 
         /* Newsletter */
         .newsletter {
-            background: var(--gradient-primary);
+            background: var(--gradient-hero);
             color: white;
             padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .newsletter::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent 0%, rgba(132, 204, 22, 0.2) 50%, transparent 100%);
+            animation: wave 4s ease-in-out infinite;
+        }
+
+        @keyframes wave {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(100%); }
         }
 
         .newsletter-content {
@@ -407,6 +532,17 @@
             background: var(--primary-color);
             color: white;
             padding: 60px 0 30px;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
         }
 
         .footer-content {
@@ -449,19 +585,27 @@
         .social-link {
             width: 40px;
             height: 40px;
-            background: var(--secondary-color);
+            background: var(--gradient-accent);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             text-decoration: none;
-            transition: transform 0.3s ease;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            font-size: 0.8rem;
         }
 
         .social-link:hover {
-            transform: translateY(-2px);
+            transform: translateY(-2px) scale(1.1);
+            box-shadow: 0 5px 15px rgba(132, 204, 22, 0.4);
         }
+
+        .social-link.twitter::before { content: 'TW'; }
+        .social-link.spotify::before { content: 'SP'; }
+        .social-link.linkedin::before { content: 'LI'; }
+        .social-link.youtube::before { content: 'YT'; }
 
         .footer-bottom {
             border-top: 1px solid rgba(255,255,255,0.1);
@@ -535,7 +679,10 @@
                 </div>
                 <div class="hero-image">
                     <div class="podcast-mockup">
-                        <div class="podcast-cover">🧠</div>
+                        <div class="podcast-cover">
+                            <div class="podcast-logo">GM</div>
+                            <div class="podcast-subtitle">Growth Mindset</div>
+                        </div>
                         <div class="progress-bar">
                             <div class="progress"></div>
                         </div>
@@ -592,7 +739,9 @@
     <section class="host" id="host">
         <div class="container">
             <div class="host-content">
-                <div class="host-image">👨‍💼</div>
+                <div class="host-image">
+                    <div class="host-avatar">MW</div>
+                </div>
                 <div class="host-bio">
                     <h3>Meet Your Host: Marcus Williams</h3>
                     <p>Marcus is a serial entrepreneur, business strategist, and mindset coach who has built and sold three companies, including a $50M exit in 2019. He's passionate about helping business leaders unlock their potential through mindset transformation.</p>
@@ -629,10 +778,10 @@
                     <h4>Growth Mindset Show</h4>
                     <p>Transforming business leaders through mindset mastery and practical growth strategies.</p>
                     <div class="social-links">
-                        <a href="#" class="social-link">📱</a>
-                        <a href="#" class="social-link">🎵</a>
-                        <a href="#" class="social-link">💼</a>
-                        <a href="#" class="social-link">📺</a>
+                        <a href="#" class="social-link twitter" title="Twitter"></a>
+                        <a href="#" class="social-link spotify" title="Spotify"></a>
+                        <a href="#" class="social-link linkedin" title="LinkedIn"></a>
+                        <a href="#" class="social-link youtube" title="YouTube"></a>
                     </div>
                 </div>
                 <div class="footer-section">
