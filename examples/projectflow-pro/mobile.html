@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProjectFlow Pro Mobile App - Manage Projects On The Go</title>
+    <meta name="description" content="Download the ProjectFlow Pro mobile app for iOS and Android. Manage projects, track tasks, and collaborate with your team from anywhere. Free download.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a1a1a;
+            --secondary-color: #2d4a22;
+            --accent-color: #4ade80;
+            --success-color: #22c55e;
+            --warning-color: #f59e0b;
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-light: #64748b;
+            --bg-light: #f0fdf4;
+            --bg-white: #ffffff;
+            --border-color: #dcfce7;
+            --gradient-primary: linear-gradient(135deg, #1a1a1a 0%, #2d4a22 50%, #4ade80 100%);
+            --gradient-accent: linear-gradient(135deg, #4ade80 0%, #22c55e 100%);
+            --gradient-success: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            --gradient-hero: linear-gradient(135deg, #1a1a1a 0%, #1e3a1e 25%, #2d4a22 50%, #4ade80 75%, #86efac 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background-color: var(--bg-white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 20px rgba(0,0,0,0.08);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-accent);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-color);
+        }
+
+        .nav-cta {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .btn-web {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .btn-web:hover {
+            color: var(--accent-color);
+        }
+
+        .back-to-portfolio {
+            background: var(--gradient-success);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-portfolio:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: var(--bg-light);
+            padding: 100px 0 20px;
+            margin-top: 0;
+        }
+
+        .breadcrumb-nav {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .breadcrumb-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="mobile-grid" width="15" height="15" patternUnits="userSpaceOnUse"><path d="M 15 0 L 0 0 0 15" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23mobile-grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(1deg); }
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .hero-features {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1rem;
+        }
+
+        .feature-icon {
+            width: 24px;
+            height: 24px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .download-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            padding: 15px 25px;
+            border: 2px solid rgba(255,255,255,0.3);
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            min-width: 180px;
+        }
+
+        .download-btn:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.5);
+            transform: translateY(-2px);
+        }
+
+        .btn-icon {
+            width: 40px;
+            height: 40px;
+            background: white;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .btn-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .btn-label {
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .btn-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .phone-mockup {
+            width: 300px;
+            height: 600px;
+            background: var(--primary-color);
+            border-radius: 40px;
+            padding: 20px;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            transform: rotate(-5deg);
+            animation: phoneBob 3s ease-in-out infinite;
+        }
+
+        @keyframes phoneBob {
+            0%, 100% { transform: rotate(-5deg) translateY(0px); }
+            50% { transform: rotate(-3deg) translateY(-10px); }
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 30px;
+            padding: 2rem 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .phone-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        .phone-avatar {
+            width: 32px;
+            height: 32px;
+            background: var(--gradient-accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 0.8rem;
+        }
+
+        .phone-content {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .task-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem;
+            background: var(--bg-light);
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .task-checkbox {
+            width: 16px;
+            height: 16px;
+            border: 2px solid var(--accent-color);
+            border-radius: 4px;
+            background: var(--accent-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.7rem;
+        }
+
+        .task-text {
+            flex: 1;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            backdrop-filter: blur(10px);
+            animation: floatAround 8s ease-in-out infinite;
+        }
+
+        .floating-1 {
+            width: 60px;
+            height: 60px;
+            top: 10%;
+            right: 10%;
+            animation-delay: 0s;
+        }
+
+        .floating-2 {
+            width: 40px;
+            height: 40px;
+            bottom: 20%;
+            left: 15%;
+            animation-delay: 2s;
+        }
+
+        .floating-3 {
+            width: 80px;
+            height: 80px;
+            top: 60%;
+            right: 5%;
+            animation-delay: 4s;
+        }
+
+        @keyframes floatAround {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-20px) translateX(10px); }
+            50% { transform: translateY(-10px) translateX(-15px); }
+            75% { transform: translateY(-30px) translateX(5px); }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--bg-white);
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 4rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .feature-card-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-accent);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .feature-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .feature-description {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Screenshots Section */
+        .screenshots {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .screenshots-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .screenshot-item {
+            background: white;
+            border-radius: 20px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .screenshot-phone {
+            width: 180px;
+            height: 320px;
+            background: var(--gradient-primary);
+            border-radius: 25px;
+            margin: 0 auto 1.5rem;
+            padding: 15px;
+            position: relative;
+        }
+
+        .screenshot-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 18px;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .screen-bar {
+            height: 12px;
+            background: var(--bg-light);
+            border-radius: 6px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .screen-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--gradient-accent);
+            border-radius: 6px;
+            animation: screenLoad 3s ease-in-out infinite;
+        }
+
+        .screen-bar:nth-child(1)::after { width: 80%; animation-delay: 0s; }
+        .screen-bar:nth-child(2)::after { width: 60%; animation-delay: 0.3s; }
+        .screen-bar:nth-child(3)::after { width: 90%; animation-delay: 0.6s; }
+        .screen-bar:nth-child(4)::after { width: 70%; animation-delay: 0.9s; }
+
+        @keyframes screenLoad {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .screenshot-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .screenshot-description {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 100px 0;
+            background: var(--bg-white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+        }
+
+        /* Download CTA */
+        .download-cta {
+            background: var(--gradient-hero);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots-mobile" width="25" height="25" patternUnits="userSpaceOnUse"><circle cx="12.5" cy="12.5" r="1.5" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23dots-mobile)"/></svg>');
+            animation: slide 20s linear infinite;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-25px); }
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+
+        .download-large {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255,255,255,0.95);
+            color: var(--primary-color);
+            padding: 20px 30px;
+            border-radius: 15px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            min-width: 200px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .download-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .download-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-accent);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .cta-note {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-color);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: rgba(255,255,255,0.8);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.7);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .phone-mockup {
+                width: 250px;
+                height: 500px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .download-buttons {
+                justify-content: center;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-icon">PF</div>
+                ProjectFlow Pro
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Web App</a></li>
+                <li><a href="mobile.html" class="active">Mobile App</a></li>
+                <li><a href="#features">Features</a></li>
+                <li><a href="#screenshots">Screenshots</a></li>
+            </ul>
+            <div class="nav-cta">
+                <a href="index.html" class="btn-web">Web Platform</a>
+                <a href="../../../index.html#examples" class="back-to-portfolio">← 223 Media Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="../../../index.html">223 Media</a> > 
+                <a href="../../../index.html#examples">Examples</a> > 
+                <a href="index.html">ProjectFlow Pro</a> > 
+                Mobile App
+            </nav>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Manage Projects On The Go</h1>
+                    <p class="hero-subtitle">Never miss a deadline again. The ProjectFlow Pro mobile app puts your entire project workspace in your pocket with full offline sync and real-time collaboration.</p>
+                    <div class="hero-features">
+                        <div class="hero-feature">
+                            <div class="feature-icon">✓</div>
+                            <span>Full offline functionality with smart sync</span>
+                        </div>
+                        <div class="hero-feature">
+                            <div class="feature-icon">✓</div>
+                            <span>Push notifications for urgent updates</span>
+                        </div>
+                        <div class="hero-feature">
+                            <div class="feature-icon">✓</div>
+                            <span>Native iOS and Android experience</span>
+                        </div>
+                        <div class="hero-feature">
+                            <div class="feature-icon">✓</div>
+                            <span>Biometric authentication & security</span>
+                        </div>
+                    </div>
+                    <div class="download-buttons">
+                        <a href="#download" class="download-btn">
+                            <div class="btn-icon">📱</div>
+                            <div class="btn-text">
+                                <div class="btn-label">Download on the</div>
+                                <div class="btn-title">App Store</div>
+                            </div>
+                        </a>
+                        <a href="#download" class="download-btn">
+                            <div class="btn-icon">🤖</div>
+                            <div class="btn-text">
+                                <div class="btn-label">Get it on</div>
+                                <div class="btn-title">Google Play</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="floating-element floating-1"></div>
+                    <div class="floating-element floating-2"></div>
+                    <div class="floating-element floating-3"></div>
+                    <div class="phone-mockup">
+                        <div class="phone-screen">
+                            <div class="phone-header">
+                                <div class="phone-title">My Projects</div>
+                                <div class="phone-avatar">JS</div>
+                            </div>
+                            <div class="phone-content">
+                                <div class="task-item">
+                                    <div class="task-checkbox">✓</div>
+                                    <div class="task-text">Review design mockups</div>
+                                </div>
+                                <div class="task-item">
+                                    <div class="task-checkbox">✓</div>
+                                    <div class="task-text">Update project timeline</div>
+                                </div>
+                                <div class="task-item">
+                                    <div class="task-checkbox">○</div>
+                                    <div class="task-text">Schedule team meeting</div>
+                                </div>
+                                <div class="task-item">
+                                    <div class="task-checkbox">○</div>
+                                    <div class="task-text">Send client proposal</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">500K+</div>
+                    <div class="stat-label">App Downloads</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4.8★</div>
+                    <div class="stat-label">App Store Rating</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Sync Reliability</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Offline Access</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Mobile-First Features</h2>
+            <p class="section-subtitle">Designed specifically for mobile productivity with features that work seamlessly on any device</p>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-card-icon">📱</div>
+                    <h3 class="feature-title">Native Mobile Experience</h3>
+                    <p class="feature-description">Built from the ground up for iOS and Android with platform-specific UI patterns and gestures you already know.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">🔄</div>
+                    <h3 class="feature-title">Instant Sync</h3>
+                    <p class="feature-description">Work offline and watch your changes sync instantly when you reconnect. Never lose work or miss updates again.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">🔔</div>
+                    <h3 class="feature-title">Smart Notifications</h3>
+                    <p class="feature-description">Get personalized alerts for what matters most. Intelligent filtering ensures you only see urgent updates.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">👆</div>
+                    <h3 class="feature-title">Touch-Optimized Interface</h3>
+                    <p class="feature-description">Swipe to complete tasks, pinch to zoom timelines, and use gestures that feel natural on mobile devices.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">🔒</div>
+                    <h3 class="feature-title">Biometric Security</h3>
+                    <p class="feature-description">Face ID, Touch ID, and fingerprint authentication keep your projects secure while maintaining quick access.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-card-icon">📊</div>
+                    <h3 class="feature-title">Mobile Analytics</h3>
+                    <p class="feature-description">Quick insights and progress reports optimized for mobile viewing. Get the data you need without the desktop clutter.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="screenshots" id="screenshots">
+        <div class="container">
+            <h2 class="section-title">See It In Action</h2>
+            <p class="section-subtitle">Explore the intuitive interface designed for mobile project management</p>
+            <div class="screenshots-grid">
+                <div class="screenshot-item">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-screen">
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                        </div>
+                    </div>
+                    <h3 class="screenshot-title">Project Dashboard</h3>
+                    <p class="screenshot-description">Get a bird's eye view of all your projects with progress indicators and status updates</p>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-screen">
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                        </div>
+                    </div>
+                    <h3 class="screenshot-title">Task Management</h3>
+                    <p class="screenshot-description">Create, assign, and track tasks with intuitive swipe gestures and quick actions</p>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-screen">
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                        </div>
+                    </div>
+                    <h3 class="screenshot-title">Team Collaboration</h3>
+                    <p class="screenshot-description">Chat with team members, share files, and get real-time updates on project progress</p>
+                </div>
+                <div class="screenshot-item">
+                    <div class="screenshot-phone">
+                        <div class="screenshot-screen">
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                            <div class="screen-bar"></div>
+                        </div>
+                    </div>
+                    <h3 class="screenshot-title">Timeline View</h3>
+                    <p class="screenshot-description">Visualize project schedules and deadlines with an interactive timeline interface</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="download-cta" id="download">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Download ProjectFlow Pro</h2>
+                <p class="cta-subtitle">Join 500,000+ professionals who manage their projects on the go</p>
+                <div class="cta-buttons">
+                    <a href="#" class="download-large">
+                        <div class="download-icon">📱</div>
+                        <div class="btn-text">
+                            <div class="btn-label">Download on the</div>
+                            <div class="btn-title">App Store</div>
+                        </div>
+                    </a>
+                    <a href="#" class="download-large">
+                        <div class="download-icon">🤖</div>
+                        <div class="btn-text">
+                            <div class="btn-label">Get it on</div>
+                            <div class="btn-title">Google Play</div>
+                        </div>
+                    </a>
+                </div>
+                <p class="cta-note">Free download • Sync with your existing ProjectFlow Pro account</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>Mobile App</h4>
+                    <ul>
+                        <li><a href="#">iOS App</a></li>
+                        <li><a href="#">Android App</a></li>
+                        <li><a href="#">Mobile Features</a></li>
+                        <li><a href="#">Offline Mode</a></li>
+                        <li><a href="#">App Support</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Platform</h4>
+                    <ul>
+                        <li><a href="index.html">Web Platform</a></li>
+                        <li><a href="#">Desktop Apps</a></li>
+                        <li><a href="#">Integrations</a></li>
+                        <li><a href="#">API Access</a></li>
+                        <li><a href="#">Enterprise</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">App Tutorials</a></li>
+                        <li><a href="#">System Status</a></li>
+                        <li><a href="#">Contact Support</a></li>
+                        <li><a href="#">Bug Reports</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About ProjectFlow</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Security</a></li>
+                        <li><a href="../../../index.html">223 Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ProjectFlow Pro. All rights reserved. | Website by <a href="../../../index.html" style="color: var(--accent-color);">223 Media</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Download button interactions
+        document.querySelectorAll('.download-btn, .download-large').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const isApple = this.textContent.includes('App Store');
+                const platform = isApple ? 'iOS App Store' : 'Google Play Store';
+                
+                alert(`📱 Redirecting to ${platform}!\n\nYou would be redirected to:\n• ${platform} listing\n• App installation page\n• User reviews and ratings\n\nThis would integrate with actual app store links.`);
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Animation on scroll for feature cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.feature-card, .screenshot-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Phone mockup interaction
+        const phoneScreen = document.querySelector('.phone-screen');
+        if (phoneScreen) {
+            phoneScreen.addEventListener('click', function() {
+                alert('📱 Interactive Demo\n\nThis would open an interactive app demo showing:\n• Touch gestures\n• Screen transitions\n• Feature demonstrations\n\nThis could integrate with a prototype tool like Figma or InVision.');
+            });
+        }
+    </script>
+</body>
+</html>
