@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Download: Content Ecosystem Blueprint | 223 Media</title>
+    <meta name="description" content="Get our free Content Ecosystem Blueprint and learn how to turn your podcast into a complete digital growth engine. Download now!">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #200c2a 0%, #f17000 100%);
+            color: white;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 24px;
+            font-weight: bold;
+            color: #f17000;
+        }
+        
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(45deg, #200c2a, #786c7e);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            border: 2px solid #f17000;
+        }
+        
+        .back-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link:hover {
+            border-color: #f17000;
+            color: #f17000;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 120px 0 50px 0;
+            min-height: 100vh;
+        }
+        
+        .hero-section {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .free-badge {
+            background: linear-gradient(45deg, #44ff44, #00cc00);
+            color: #000;
+            padding: 8px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .hero-title {
+            font-size: 56px;
+            font-weight: bold;
+            margin-bottom: 25px;
+            background: linear-gradient(45deg, #ffffff, #f17000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.2;
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .value-prop {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid #f17000;
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px auto;
+            max-width: 600px;
+            backdrop-filter: blur(15px);
+        }
+        
+        .value-prop h3 {
+            color: #f17000;
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+        
+        /* Two Column Layout */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 500px;
+            gap: 60px;
+            align-items: start;
+            margin: 60px 0;
+        }
+        
+        .content-left {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 25px;
+            padding: 50px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .section-title {
+            font-size: 32px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            color: #f17000;
+        }
+        
+        .blueprint-contents {
+            margin: 40px 0;
+        }
+        
+        .content-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin: 25px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #f17000;
+        }
+        
+        .content-icon {
+            background: #f17000;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .content-text h4 {
+            color: #f17000;
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+        
+        .content-text p {
+            opacity: 0.9;
+            font-size: 16px;
+        }
+        
+        .results-section {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+        }
+        
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 30px 0;
+        }
+        
+        .result-item {
+            text-align: center;
+        }
+        
+        .result-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #f17000;
+            display: block;
+        }
+        
+        .result-label {
+            font-size: 14px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        /* Form Section */
+        .form-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 40px;
+            backdrop-filter: blur(15px);
+            border: 2px solid #f17000;
+            position: sticky;
+            top: 140px;
+        }
+        
+        .form-title {
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #f17000;
+            text-align: center;
+        }
+        
+        .form-subtitle {
+            text-align: center;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .download-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .form-label {
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #f17000;
+        }
+        
+        .form-input {
+            padding: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #f17000;
+            box-shadow: 0 0 20px rgba(241, 112, 0, 0.3);
+        }
+        
+        .form-input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+        
+        .submit-btn {
+            background: linear-gradient(45deg, #f17000, #ff9500);
+            color: white;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(241, 112, 0, 0.5);
+        }
+        
+        .privacy-note {
+            font-size: 12px;
+            opacity: 0.7;
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .guarantee-badge {
+            background: rgba(68, 255, 68, 0.2);
+            border: 2px solid #44ff44;
+            border-radius: 15px;
+            padding: 15px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .guarantee-badge h4 {
+            color: #44ff44;
+            margin-bottom: 5px;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            text-align: center;
+        }
+        
+        .testimonial {
+            font-style: italic;
+            font-size: 18px;
+            margin: 20px 0;
+            opacity: 0.9;
+        }
+        
+        .testimonial-author {
+            color: #f17000;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+        
+        /* Tech Integration Display */
+        .tech-integration {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 20px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .tech-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin: 15px 0;
+        }
+        
+        .tech-icon {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            color: #f17000;
+        }
+        
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .form-section {
+                position: static;
+            }
+            
+            .results-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <div class="logo-icon">223</div>
+                    223 Media
+                </div>
+                <a href="index.html" class="back-link">← Back to Main Site</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="free-badge">FREE DOWNLOAD</div>
+                <h1 class="hero-title">The Content Ecosystem Blueprint</h1>
+                <p class="hero-subtitle">How to Turn Your Podcast Into a Complete Digital Growth Engine</p>
+                
+                <div class="value-prop">
+                    <h3>🚀 Transform 1 Podcast Episode Into 15+ Pieces of Content</h3>
+                    <p>Most podcasters create content in isolation. This blueprint shows you how to create an integrated ecosystem where every piece amplifies the others.</p>
+                </div>
+            </section>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Left Content -->
+                <div class="content-left">
+                    <h2 class="section-title">What's Inside the Blueprint</h2>
+                    
+                    <div class="blueprint-contents">
+                        <div class="content-item">
+                            <div class="content-icon">1</div>
+                            <div class="content-text">
+                                <h4>The 3-Platform Integration Framework</h4>
+                                <p>How to connect your podcast, website, and social media into one powerful growth engine</p>
+                            </div>
+                        </div>
+                        
+                        <div class="content-item">
+                            <div class="content-icon">2</div>
+                            <div class="content-text">
+                                <h4>Content Multiplication Matrix</h4>
+                                <p>Turn 1 episode into 15+ pieces: blog posts, social clips, newsletters, SEO pages</p>
+                            </div>
+                        </div>
+                        
+                        <div class="content-item">
+                            <div class="content-icon">3</div>
+                            <div class="content-text">
+                                <h4>SEO Amplification Strategy</h4>
+                                <p>How podcast transcripts and content boost your website rankings dramatically</p>
+                            </div>
+                        </div>
+                        
+                        <div class="content-item">
+                            <div class="content-icon">4</div>
+                            <div class="content-text">
+                                <h4>Lead Generation Loop System</h4>
+                                <p>Website visitors → Podcast subscribers → Qualified leads → Sales</p>
+                            </div>
+                        </div>
+                        
+                        <div class="content-item">
+                            <div class="content-icon">5</div>
+                            <div class="content-text">
+                                <h4>ROI Calculator Template</h4>
+                                <p>Track and optimize your content ecosystem performance with precise metrics</p>
+                            </div>
+                        </div>
+                        
+                        <div class="content-item">
+                            <div class="content-icon">6</div>
+                            <div class="content-text">
+                                <h4>30-Day Implementation Checklist</h4>
+                                <p>Step-by-step action plan to build your ecosystem from scratch</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="results-section">
+                        <h3 class="section-title" style="text-align: center; margin-bottom: 20px;">Expected Results</h3>
+                        <div class="results-grid">
+                            <div class="result-item">
+                                <span class="result-number">3x</span>
+                                <span class="result-label">More Content</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">2x</span>
+                                <span class="result-label">Faster Growth</span>
+                            </div>
+                            <div class="result-item">
+                                <span class="result-number">300%</span>
+                                <span class="result-label">Better ROI</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="social-proof">
+                        <div class="testimonial">
+                            "This blueprint completely changed how I think about content. Instead of creating scattered posts, I now have a system that turns every podcast episode into a full marketing campaign. My website traffic increased 400% in just 3 months!"
+                        </div>
+                        <div class="testimonial-author">- Sarah Johnson, Business Consultant</div>
+                    </div>
+                </div>
+
+                <!-- Right Form -->
+                <div class="form-section">
+                    <h2 class="form-title">Get Your Free Blueprint</h2>
+                    <p class="form-subtitle">Join 2,500+ podcasters who've transformed their content strategy</p>
+                    
+                    <form class="download-form" id="blueprintForm">
+                        <div class="form-group">
+                            <label class="form-label">First Name *</label>
+                            <input type="text" class="form-input" name="first_name" placeholder="Your first name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Email Address *</label>
+                            <input type="email" class="form-input" name="email" placeholder="your@email.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Current Podcast Status</label>
+                            <select class="form-input" name="podcast_status">
+                                <option value="">Select your status</option>
+                                <option value="planning">Planning to start a podcast</option>
+                                <option value="new">New podcaster (0-10 episodes)</option>
+                                <option value="growing">Growing podcast (10-50 episodes)</option>
+                                <option value="established">Established podcast (50+ episodes)</option>
+                                <option value="no_podcast">No podcast, but interested</option>
+                            </select>
+                        </div>
+                        
+                        <div class="guarantee-badge">
+                            <h4>✓ 100% Free</h4>
+                            <p>No spam, no hidden costs. Just pure value.</p>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">📥 Download Blueprint Now</button>
+                        
+                        <div class="privacy-note">
+                            We respect your privacy. Unsubscribe at any time.
+                        </div>
+                    </form>
+                    
+                    <div class="tech-integration">
+                        <p style="font-size: 12px; color: #f17000; margin-bottom: 10px;">Powered by:</p>
+                        <div class="tech-icons">
+                            <div class="tech-icon">📝 JotForms</div>
+                            <div class="tech-icon">🔄 Ontraport</div>
+                            <div class="tech-icon">📊 HubSpot</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Form submission handler
+        document.getElementById('blueprintForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+            
+            // Add lead magnet tracking
+            data.lead_source = 'content_ecosystem_blueprint';
+            data.download_timestamp = new Date().toISOString();
+            
+            // Simulate backend integration
+            console.log('Blueprint download request:', data);
+            
+            // Show success message and redirect
+            alert('Success! Check your email for the Content Ecosystem Blueprint download link.');
+            
+            // In a real implementation, this would:
+            // 1. Submit to JotForms with lead magnet tag
+            // 2. Trigger Ontraport automation sequence
+            // 3. Send download link via email
+            // 4. Track conversion in HubSpot
+            // 5. Add to nurture sequence
+            
+            // Simulate download (in real implementation, this would be an email link)
+            setTimeout(() => {
+                window.open('data:text/plain;charset=utf-8,Content Ecosystem Blueprint - This would be the actual PDF download link in production', '_blank');
+            }, 1000);
+        });
+        
+        // Track scroll depth for analytics
+        let maxScroll = 0;
+        window.addEventListener('scroll', function() {
+            const scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+            if (scrollPercent > maxScroll) {
+                maxScroll = scrollPercent;
+                // In production, send to analytics
+                console.log('Max scroll depth:', maxScroll + '%');
+            }
+        });
+    </script>
+</body>
+</html>
