@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Episodes Archive | CADA JUEVES - Cybersecurity Intelligence</title>
+    <meta name="description" content="Browse our complete archive of cybersecurity episodes. Advanced threat analysis, APT investigations, zero-day research, and digital security insights.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #000000;
+            --secondary-dark: #0a0a0a;
+            --tertiary-dark: #151515;
+            --accent-blue: #00d4ff;
+            --electric-blue: #0099ff;
+            --neon-cyan: #00ffff;
+            --warning-orange: #ff6b00;
+            --danger-red: #ff0040;
+            --success-green: #00ff88;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --text-light: #707070;
+            --bg-dark: #000000;
+            --bg-card: #0a0a0a;
+            --border-glow: #1a1a1a;
+            --gradient-primary: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #151515 100%);
+            --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            --gradient-neon: linear-gradient(135deg, #00ffff 0%, #00d4ff 100%);
+            --glow-cyan: 0 0 30px rgba(0, 255, 255, 0.4);
+            --glow-blue: 0 0 40px rgba(0, 212, 255, 0.5);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-white);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Animated Background */
+        .cyber-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--gradient-primary);
+            overflow: hidden;
+        }
+
+        .hexagon-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hexagons" width="50" height="43.4" patternUnits="userSpaceOnUse"><polygon points="25,0 50,14.4 50,28.9 25,43.4 0,28.9 0,14.4" fill="none" stroke="rgba(0,212,255,0.05)" stroke-width="0.3"/></pattern></defs><rect width="100" height="100" fill="url(%23hexagons)"/></svg>');
+            opacity: 0.2;
+            animation: hexagonMove 30s linear infinite;
+        }
+
+        @keyframes hexagonMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-50px) translateY(-43.4px); }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: var(--glow-cyan);
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: var(--glow-cyan); }
+            50% { box-shadow: var(--glow-blue); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .back-to-portfolio {
+            background: var(--gradient-neon);
+            color: var(--primary-dark);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-portfolio:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: rgba(5, 5, 5, 0.95);
+            padding: 100px 0 20px;
+            margin-top: 0;
+        }
+
+        .breadcrumb-nav {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        .breadcrumb-nav a:hover {
+            text-decoration: underline;
+        }
+
+        /* Page Header */
+        .page-header {
+            padding: 60px 0;
+            background: rgba(10, 10, 10, 0.9);
+            position: relative;
+        }
+
+        .header-content {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .page-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--text-white);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+        }
+
+        .archive-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem;
+            background: rgba(0, 212, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--neon-cyan);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+        }
+
+        /* Search and Filter */
+        .search-filter {
+            background: rgba(15, 15, 15, 0.95);
+            padding: 40px 0;
+            border-bottom: 1px solid var(--border-glow);
+        }
+
+        .filter-controls {
+            display: grid;
+            grid-template-columns: 1fr auto auto auto;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .search-box {
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-glow);
+            border-radius: 8px;
+            color: var(--text-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .search-input::placeholder {
+            color: var(--text-light);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+            font-size: 1.2rem;
+        }
+
+        .filter-dropdown {
+            padding: 15px 20px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-glow);
+            border-radius: 8px;
+            color: var(--text-white);
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-dropdown:focus {
+            outline: none;
+            border-color: var(--accent-blue);
+        }
+
+        .active-filters {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .filter-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .filter-clear {
+            background: none;
+            border: none;
+            color: var(--accent-blue);
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .results-count {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Episodes Grid */
+        .episodes-section {
+            padding: 60px 0;
+            background: rgba(5, 5, 5, 0.95);
+        }
+
+        .episodes-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .episode-item {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border-glow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .episode-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .episode-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .episode-header {
+            display: grid;
+            grid-template-columns: auto 1fr auto auto;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .episode-number {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .episode-meta {
+            flex: 1;
+        }
+
+        .episode-title {
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--text-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .episode-date {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .threat-level {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .threat-low {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--success-green);
+            border: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
+        .threat-medium {
+            background: rgba(255, 107, 0, 0.1);
+            color: var(--warning-orange);
+            border: 1px solid rgba(255, 107, 0, 0.3);
+        }
+
+        .threat-high {
+            background: rgba(255, 0, 64, 0.1);
+            color: var(--danger-red);
+            border: 1px solid rgba(255, 0, 64, 0.3);
+        }
+
+        .episode-duration {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 8px 16px;
+            border-radius: 20px;
+        }
+
+        .episode-description {
+            color: var(--text-gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .episode-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tag {
+            background: rgba(0, 212, 255, 0.1);
+            color: var(--accent-blue);
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+        }
+
+        .episode-actions {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .play-btn {
+            background: var(--gradient-accent);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .play-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .secondary-btn {
+            background: transparent;
+            color: var(--accent-blue);
+            padding: 12px 24px;
+            border: 2px solid var(--accent-blue);
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .secondary-btn:hover {
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+        }
+
+        /* Pagination */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            padding: 12px 16px;
+            background: var(--bg-card);
+            border: 2px solid var(--border-glow);
+            color: var(--text-white);
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .page-btn:hover,
+        .page-btn.active {
+            border-color: var(--accent-blue);
+            background: var(--accent-blue);
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-gray);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-glow);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-glow);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .archive-stats {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .filter-controls {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .episode-header {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+                text-align: center;
+            }
+
+            .episode-actions {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .page-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cyber-bg">
+        <div class="hexagon-pattern"></div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-icon">CJ</div>
+                CADA JUEVES
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="episodes.html" class="active">Episodes</a></li>
+                <li><a href="#watch">Watch</a></li>
+                <li><a href="#newsletter">Subscribe</a></li>
+            </ul>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <a href="../../../index.html#examples" class="back-to-portfolio">← 223 Media Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="../../../index.html">223 Media</a> > 
+                <a href="../../../index.html#examples">Examples</a> > 
+                <a href="index.html">CADA JUEVES</a> > 
+                Episodes Archive
+            </nav>
+        </div>
+    </section>
+
+    <section class="page-header">
+        <div class="container">
+            <div class="header-content">
+                <div>
+                    <h1 class="page-title">Episodes Archive</h1>
+                    <p class="page-subtitle">Complete library of cybersecurity intelligence, threat analysis, and digital protection insights</p>
+                    <div class="archive-stats">
+                        <div class="stat-item">
+                            <div class="stat-number">156</div>
+                            <div class="stat-label">Total Episodes</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">847</div>
+                            <div class="stat-label">Hours Content</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">89</div>
+                            <div class="stat-label">Threat Types</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">245</div>
+                            <div class="stat-label">Case Studies</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="search-filter">
+        <div class="container">
+            <div class="filter-controls">
+                <div class="search-box">
+                    <input type="text" class="search-input" placeholder="Search episodes, threats, techniques..." id="episodeSearch">
+                    <div class="search-icon">🔍</div>
+                </div>
+                <select class="filter-dropdown" id="categoryFilter">
+                    <option value="">All Categories</option>
+                    <option value="apt">Advanced Persistent Threats</option>
+                    <option value="ransomware">Ransomware</option>
+                    <option value="zero-day">Zero-Day Exploits</option>
+                    <option value="malware">Malware Analysis</option>
+                    <option value="phishing">Phishing & Social Engineering</option>
+                    <option value="incident">Incident Response</option>
+                </select>
+                <select class="filter-dropdown" id="threatFilter">
+                    <option value="">All Threat Levels</option>
+                    <option value="low">Low Risk</option>
+                    <option value="medium">Medium Risk</option>
+                    <option value="high">High Risk</option>
+                </select>
+                <select class="filter-dropdown" id="sortFilter">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                    <option value="popular">Most Popular</option>
+                    <option value="longest">Longest Duration</option>
+                </select>
+            </div>
+            <div class="active-filters">
+                <span class="results-count" id="resultsCount">156 episodes found</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="episodes-section">
+        <div class="container">
+            <div class="episodes-grid" id="episodesGrid">
+                
+                <div class="episode-item" data-category="apt" data-threat="high" data-date="2024-12-14">
+                    <div class="episode-header">
+                        <div class="episode-number">EP 156</div>
+                        <div class="episode-meta">
+                            <h3 class="episode-title">Advanced Persistent Threats: Detection & Response</h3>
+                            <div class="episode-date">December 14, 2024</div>
+                        </div>
+                        <div class="threat-level threat-high">
+                            <span>⚠</span> High Risk
+                        </div>
+                        <div class="episode-duration">42 min</div>
+                    </div>
+                    <p class="episode-description">
+                        Deep dive into APT groups operating in 2024, their sophisticated tactics, and how organizations can build effective detection and response capabilities. We analyze recent nation-state campaigns and reveal attribution techniques used by security researchers.
+                    </p>
+                    <div class="episode-tags">
+                        <span class="tag">APT</span>
+                        <span class="tag">Nation-State</span>
+                        <span class="tag">Detection</span>
+                        <span class="tag">Enterprise</span>
+                        <span class="tag">Response</span>
+                    </div>
+                    <div class="episode-actions">
+                        <button class="play-btn">
+                            <span>▶</span> Watch Episode
+                        </button>
+                        <a href="#" class="secondary-btn">
+                            <span>📄</span> Transcript
+                        </a>
+                        <a href="#" class="secondary-btn">
+                            <span>📊</span> Threat Intel
+                        </a>
+                    </div>
+                </div>
+
+                <div class="episode-item" data-category="zero-day" data-threat="high" data-date="2024-12-07">
+                    <div class="episode-header">
+                        <div class="episode-number">EP 155</div>
+                        <div class="episode-meta">
+                            <h3 class="episode-title">Zero-Day Exploits: The Silent Threat</h3>
+                            <div class="episode-date">December 7, 2024</div>
+                        </div>
+                        <div class="threat-level threat-high">
+                            <span>⚠</span> High Risk
+                        </div>
+                        <div class="episode-duration">38 min</div>
+                    </div>
+                    <p class="episode-description">
+                        Understanding zero-day vulnerabilities, how they're discovered, weaponized, and the underground markets where they're traded. Learn protection strategies for unknown threats and the economics of the zero-day ecosystem.
+                    </p>
+                    <div class="episode-tags">
+                        <span class="tag">Zero-Day</span>
+                        <span class="tag">Exploits</span>
+                        <span class="tag">Underground Markets</span>
+                        <span class="tag">Prevention</span>
+                        <span class="tag">Vulnerability Research</span>
+                    </div>
+                    <div class="episode-actions">
+                        <button class="play-btn">
+                            <span>▶</span> Watch Episode
+                        </button>
+                        <a href="#" class="secondary-btn">
+                            <span>📄</span> Transcript
+                        </a>
+                        <a href="#" class="secondary-btn">
+                            <span>🔬</span> Technical Analysis
+                        </a>
+                    </div>
+                </div>
+
+                <div class="episode-item" data-category="ransomware" data-threat="medium" data-date="2024-11-30">
+                    <div class="episode-header">
+                        <div class="episode-number">EP 154</div>
+                        <div class="episode-meta">
+                            <h3 class="episode-title">Ransomware Evolution: 2024 Threat Landscape</h3>
+                            <div class="episode-date">November 30, 2024</div>
+                        </div>
+                        <div class="threat-level threat-medium">
+                            <span>⚡</span> Medium Risk
+                        </div>
+                        <div class="episode-duration">45 min</div>
+                    </div>
+                    <p class="episode-description">
+                        Analyzing the latest ransomware trends, double extortion tactics, and emerging ransomware-as-a-service models. Essential insights for modern defense strategies including backup architectures and incident response planning.
+                    </p>
+                    <div class="episode-tags">
+                        <span class="tag">Ransomware</span>
+                        <span class="tag">Trends</span>
+                        <span class="tag">Double Extortion</span>
+                        <span class="tag">Defense</span>
+                        <span class="tag">2024</span>
+                    </div>
+                    <div class="episode-actions">
+                        <button class="play-btn">
+                            <span>▶</span> Watch Episode
+                        </button>
+                        <a href="#" class="secondary-btn">
+                            <span>📄</span> Transcript
+                        </a>
+                        <a href="#" class="secondary-btn">
+                            <span>🛡️</span> Defense Guide
+                        </a>
+                    </div>
+                </div>
+
+                <div class="episode-item" data-category="phishing" data-threat="medium" data-date="2024-11-23">
+                    <div class="episode-header">
+                        <div class="episode-number">EP 153</div>
+                        <div class="episode-meta">
+                            <h3 class="episode-title">AI-Powered Social Engineering Attacks</h3>
+                            <div class="episode-date">November 23, 2024</div>
+                        </div>
+                        <div class="threat-level threat-medium">
+                            <span>⚡</span> Medium Risk
+                        </div>
+                        <div class="episode-duration">41 min</div>
+                    </div>
+                    <p class="episode-description">
+                        How artificial intelligence is revolutionizing social engineering attacks. From deepfake voice calls to AI-generated phishing emails, we explore the new landscape of human-targeted cyber attacks and defense strategies.
+                    </p>
+                    <div class="episode-tags">
+                        <span class="tag">Social Engineering</span>
+                        <span class="tag">AI</span>
+                        <span class="tag">Deepfakes</span>
+                        <span class="tag">Phishing</span>
+                        <span class="tag">Human Factor</span>
+                    </div>
+                    <div class="episode-actions">
+                        <button class="play-btn">
+                            <span>▶</span> Watch Episode
+                        </button>
+                        <a href="#" class="secondary-btn">
+                            <span>📄</span> Transcript
+                        </a>
+                        <a href="#" class="secondary-btn">
+                            <span>🧠</span> Training Materials
+                        </a>
+                    </div>
+                </div>
+
+                <div class="episode-item" data-category="malware" data-threat="high" data-date="2024-11-16">
+                    <div class="episode-header">
+                        <div class="episode-number">EP 152</div>
+                        <div class="episode-meta">
+                            <h3 class="episode-title">Fileless Malware: Invisible Threats</h3>
+                            <div class="episode-date">November 16, 2024</div>
+                        </div>
+                        <div class="threat-level threat-high">
+                            <span>⚠</span> High Risk
+                        </div>
+                        <div class="episode-duration">39 min</div>
+                    </div>
+                    <p class="episode-description">
+                        Examining fileless malware techniques that operate entirely in memory, leaving minimal forensic traces. Learn detection methodologies, memory analysis techniques, and behavioral monitoring strategies for these advanced threats.
+                    </p>
+                    <div class="episode-tags">
+                        <span class="tag">Fileless Malware</span>
+                        <span class="tag">Memory Analysis</span>
+                        <span class="tag">Forensics</span>
+                        <span class="tag">Behavioral Detection</span>
+                        <span class="tag">Advanced Threats</span>
+                    </div>
+                    <div class="episode-actions">
+                        <button class="play-btn">
+                            <span>▶</span> Watch Episode
+                        </button>
+                        <a href="#" class="secondary-btn">
+                            <span>📄</span> Transcript
+                        </a>
+                        <a href="#" class="secondary-btn">
+                            <span>🔍</span> Analysis Tools
+                        </a>
+                    </div>
+                </div>
+
+                <div class="episode-item" data-category="incident" data-threat="low" data-date="2024-11-09">
+                    <div class="episode-header">
+                        <div class="episode-number">EP 151</div>
+                        <div class="episode-meta">
+                            <h3 class="episode-title">Building an Effective IR Team</h3>
+                            <div class="episode-date">November 9, 2024</div>
+                        </div>
+                        <div class="threat-level threat-low">
+                            <span>✓</span> Low Risk
+                        </div>
+                        <div class="episode-duration">47 min</div>
+                    </div>
+                    <p class="episode-description">
+                        Comprehensive guide to building and managing an incident response team. From role definitions and skill requirements to tabletop exercises and real-world case studies of successful IR operations.
+                    </p>
+                    <div class="episode-tags">
+                        <span class="tag">Incident Response</span>
+                        <span class="tag">Team Building</span>
+                        <span class="tag">Best Practices</span>
+                        <span class="tag">Management</span>
+                        <span class="tag">Training</span>
+                    </div>
+                    <div class="episode-actions">
+                        <button class="play-btn">
+                            <span>▶</span> Watch Episode
+                        </button>
+                        <a href="#" class="secondary-btn">
+                            <span>📄</span> Transcript
+                        </a>
+                        <a href="#" class="secondary-btn">
+                            <span>📋</span> Playbooks
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="pagination">
+                <a href="#" class="page-btn">← Previous</a>
+                <a href="#" class="page-btn active">1</a>
+                <a href="#" class="page-btn">2</a>
+                <a href="#" class="page-btn">3</a>
+                <a href="#" class="page-btn">...</a>
+                <a href="#" class="page-btn">26</a>
+                <a href="#" class="page-btn">Next →</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>CADA JUEVES</h4>
+                    <p>Leading cybersecurity podcast delivering cutting-edge threat intelligence and security insights every Thursday.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Episodes</h4>
+                    <ul>
+                        <li><a href="episodes.html">Episodes Archive</a></li>
+                        <li><a href="#">Threat Categories</a></li>
+                        <li><a href="#">Popular Episodes</a></li>
+                        <li><a href="#">Latest Analysis</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Threat Intelligence</a></li>
+                        <li><a href="#">Security Tools</a></li>
+                        <li><a href="#">Research Papers</a></li>
+                        <li><a href="#">Best Practices</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Collaboration</a></li>
+                        <li><a href="../../../index.html">223 Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 CADA JUEVES Cybersecurity Podcast. All rights reserved. | Website by <a href="../../../index.html" style="color: var(--accent-blue);">223 Media</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Search and filter functionality
+        const episodeSearch = document.getElementById('episodeSearch');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const threatFilter = document.getElementById('threatFilter');
+        const sortFilter = document.getElementById('sortFilter');
+        const episodesGrid = document.getElementById('episodesGrid');
+        const resultsCount = document.getElementById('resultsCount');
+
+        let allEpisodes = Array.from(document.querySelectorAll('.episode-item'));
+
+        function filterEpisodes() {
+            const searchTerm = episodeSearch.value.toLowerCase();
+            const category = categoryFilter.value;
+            const threat = threatFilter.value;
+            
+            let filteredEpisodes = allEpisodes.filter(episode => {
+                const title = episode.querySelector('.episode-title').textContent.toLowerCase();
+                const description = episode.querySelector('.episode-description').textContent.toLowerCase();
+                const tags = Array.from(episode.querySelectorAll('.tag')).map(tag => tag.textContent.toLowerCase());
+                
+                const matchesSearch = !searchTerm || 
+                    title.includes(searchTerm) || 
+                    description.includes(searchTerm) || 
+                    tags.some(tag => tag.includes(searchTerm));
+                
+                const matchesCategory = !category || episode.dataset.category === category;
+                const matchesThreat = !threat || episode.dataset.threat === threat;
+                
+                return matchesSearch && matchesCategory && matchesThreat;
+            });
+
+            // Sort episodes
+            const sortBy = sortFilter.value;
+            filteredEpisodes.sort((a, b) => {
+                switch(sortBy) {
+                    case 'newest':
+                        return new Date(b.dataset.date) - new Date(a.dataset.date);
+                    case 'oldest':
+                        return new Date(a.dataset.date) - new Date(b.dataset.date);
+                    case 'popular':
+                        // Simulate popularity based on episode number (newer = more popular)
+                        return parseInt(b.querySelector('.episode-number').textContent.replace('EP ', '')) - 
+                               parseInt(a.querySelector('.episode-number').textContent.replace('EP ', ''));
+                    case 'longest':
+                        return parseInt(b.querySelector('.episode-duration').textContent) - 
+                               parseInt(a.querySelector('.episode-duration').textContent);
+                    default:
+                        return 0;
+                }
+            });
+
+            // Hide all episodes
+            allEpisodes.forEach(episode => {
+                episode.style.display = 'none';
+            });
+
+            // Show filtered episodes
+            filteredEpisodes.forEach(episode => {
+                episode.style.display = 'block';
+            });
+
+            // Update results count
+            resultsCount.textContent = `${filteredEpisodes.length} episodes found`;
+        }
+
+        // Event listeners
+        episodeSearch.addEventListener('input', filterEpisodes);
+        categoryFilter.addEventListener('change', filterEpisodes);
+        threatFilter.addEventListener('change', filterEpisodes);
+        sortFilter.addEventListener('change', filterEpisodes);
+
+        // Play button interactions
+        document.querySelectorAll('.play-btn').forEach(button => {
+            button.addEventListener('click', function() {
+                const episodeTitle = this.closest('.episode-item').querySelector('.episode-title').textContent;
+                alert(`▶ Playing Episode: "${episodeTitle}"\n\nThis would:\n• Open video player\n• Start episode playback\n• Track viewing analytics\n• Show episode notes\n\nReady for your cybersecurity content!`);
+            });
+        });
+
+        // Secondary button interactions
+        document.querySelectorAll('.secondary-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const action = this.textContent.trim();
+                const episodeTitle = this.closest('.episode-item').querySelector('.episode-title').textContent;
+                
+                if (action.includes('Transcript')) {
+                    alert(`📄 Opening Transcript\n\nEpisode: "${episodeTitle}"\n\n• Full episode transcript\n• Searchable content\n• Key quotes highlighted\n• Technical terms defined`);
+                } else if (action.includes('Threat Intel')) {
+                    alert(`📊 Threat Intelligence Report\n\nEpisode: "${episodeTitle}"\n\n• IOCs and indicators\n• MITRE ATT&CK mapping\n• Defensive recommendations\n• Related incidents`);
+                } else if (action.includes('Technical Analysis')) {
+                    alert(`🔬 Technical Analysis\n\nEpisode: "${episodeTitle}"\n\n• Code samples\n• Vulnerability details\n• Exploitation techniques\n• Mitigation strategies`);
+                } else {
+                    alert(`🔗 Opening Resource\n\nEpisode: "${episodeTitle}"\n\nAction: ${action}\n\nAdditional cybersecurity resources and tools for this episode.`);
+                }
+            });
+        });
+
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+            }
+        });
+
+        // Animation on scroll for episode cards
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe episode cards for animation
+        document.querySelectorAll('.episode-item').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Pagination interactions
+        document.querySelectorAll('.page-btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.page-btn').forEach(b => b.classList.remove('active'));
+                if (!this.textContent.includes('Previous') && !this.textContent.includes('Next') && !this.textContent.includes('...')) {
+                    this.classList.add('active');
+                }
+                // Simulate page loading
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
