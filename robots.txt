@@ -1,0 +1,226 @@
+# ===============================================
+# 223 Media - Robots.txt
+# The Content Ecosystem Company
+# ===============================================
+
+# Allow all crawlers to access the site
+User-agent: *
+Allow: /
+
+# ===============================================
+# Sitemap Location
+# ===============================================
+
+# Main sitemap (update URL when deploying to custom domain)
+Sitemap: https://223-media.github.io/223media-website/sitemap.xml
+
+# For custom domain, update to:
+# Sitemap: https://223media.com/sitemap.xml
+
+# ===============================================
+# Crawler-Specific Instructions
+# ===============================================
+
+# Google Bot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Yahoo Bot
+User-agent: Slurp
+Allow: /
+Crawl-delay: 2
+
+# DuckDuckGo Bot
+User-agent: DuckDuckBot
+Allow: /
+Crawl-delay: 1
+
+# ===============================================
+# Social Media Crawlers
+# ===============================================
+
+# Facebook Bot (for Open Graph)
+User-agent: facebookexternalhit
+Allow: /
+
+# Twitter Bot (for Twitter Cards)
+User-agent: Twitterbot
+Allow: /
+
+# LinkedIn Bot
+User-agent: LinkedInBot
+Allow: /
+
+# ===============================================
+# SEO-Friendly Crawling Rules
+# ===============================================
+
+# Allow access to CSS and JS files for proper rendering
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+# Allow access to important pages
+Allow: /index.html
+Allow: /lead-magnet.html
+Allow: /examples.html
+
+# Allow access to downloadable content
+Allow: /docs/
+
+# ===============================================
+# Content That Should Be Indexed
+# ===============================================
+
+# Main pages (these will be indexed for SEO)
+Allow: /
+Allow: /index.html
+Allow: /lead-magnet.html
+Allow: /examples.html
+
+# Assets for proper page rendering
+Allow: /css/styles.css
+Allow: /js/script.js
+Allow: /assets/images/
+Allow: /assets/icons/
+
+# Downloadable resources
+Allow: /docs/blueprint.pdf
+
+# ===============================================
+# Optional: Disallow Certain Content
+# ===============================================
+
+# Uncomment these if you have content you don't want indexed:
+
+# Private or development directories
+# Disallow: /private/
+# Disallow: /dev/
+# Disallow: /staging/
+
+# Admin or backend areas (if any)
+# Disallow: /admin/
+# Disallow: /wp-admin/
+# Disallow: /backend/
+
+# Search result pages (if implemented)
+# Disallow: /search?
+# Disallow: /*?q=
+# Disallow: /*?search=
+
+# Temporary or test pages
+# Disallow: /test/
+# Disallow: /temp/
+# Disallow: /*.tmp
+
+# ===============================================
+# Performance & Bandwidth Considerations
+# ===============================================
+
+# Set crawl delays for resource management
+# (Adjust based on your hosting capabilities)
+
+# For high-traffic crawlers
+User-agent: Googlebot
+Crawl-delay: 1
+
+User-agent: Bingbot
+Crawl-delay: 1
+
+# For less frequent crawlers
+User-agent: *
+Crawl-delay: 2
+
+# ===============================================
+# Mobile Crawling
+# ===============================================
+
+# Google Mobile Bot
+User-agent: Googlebot-Mobile
+Allow: /
+Crawl-delay: 1
+
+# ===============================================
+# Image and Media Crawling
+# ===============================================
+
+# Google Image Bot
+User-agent: Googlebot-Image
+Allow: /assets/images/
+Allow: /assets/icons/
+
+# Google Video Bot (for future video content)
+User-agent: Googlebot-Video
+Allow: /assets/videos/
+
+# ===============================================
+# Podcast-Specific Crawlers
+# ===============================================
+
+# Apple Podcasts Bot
+User-agent: ApplePodcasts
+Allow: /
+Allow: /assets/audio/
+
+# Spotify Bot
+User-agent: Spotify
+Allow: /
+Allow: /assets/audio/
+
+# ===============================================
+# Bad Bots and Scrapers
+# ===============================================
+
+# Block known bad bots (uncomment if needed)
+# User-agent: BadBot
+# Disallow: /
+
+# User-agent: ScrapBot
+# Disallow: /
+
+# User-agent: EmailExtractor
+# Disallow: /
+
+# ===============================================
+# Archive Crawlers
+# ===============================================
+
+# Internet Archive Wayback Machine
+User-agent: ia_archiver
+Allow: /
+Crawl-delay: 5
+
+# ===============================================
+# Academic and Research Crawlers
+# ===============================================
+
+# Common Crawl
+User-agent: CCBot
+Allow: /
+Crawl-delay: 3
+
+# ===============================================
+# Additional Notes
+# ===============================================
+
+# This robots.txt is optimized for:
+# 1. Maximum SEO visibility for 223 Media services
+# 2. Proper indexing of portfolio and case studies
+# 3. Lead magnet discoverability
+# 4. Social media sharing optimization
+# 5. Podcast content discoverability
+
+# Remember to:
+# 1. Update sitemap URL when using custom domain
+# 2. Monitor Google Search Console for crawl errors
+# 3. Test robots.txt with Google's Robots Testing Tool
+# 4. Update as you add new content sections
+
+# For more information about robots.txt:
+# https://developers.google.com/search/docs/crawling-indexing/robots/intro
