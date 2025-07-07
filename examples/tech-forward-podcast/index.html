@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | Tech Forward - Meet the Host & Show</title>
+    <meta name="description" content="Learn about Tech Forward host Alex Chen and the mission to explore cutting-edge technologies, AI innovations, and the future of human-technology interaction.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-dark: #000000;
+            --secondary-dark: #0a0a0a;
+            --tertiary-dark: #151515;
+            --accent-blue: #00d4ff;
+            --electric-blue: #0099ff;
+            --neon-cyan: #00ffff;
+            --purple-accent: #8b5cf6;
+            --green-accent: #10b981;
+            --text-white: #ffffff;
+            --text-gray: #a0a0a0;
+            --text-light: #707070;
+            --bg-dark: #000000;
+            --bg-card: #0a0a0a;
+            --border-glow: #1a1a1a;
+            --gradient-primary: linear-gradient(135deg, #000000 0%, #0a0a0a 50%, #151515 100%);
+            --gradient-accent: linear-gradient(135deg, #00d4ff 0%, #0099ff 100%);
+            --gradient-tech: linear-gradient(135deg, #00d4ff 0%, #8b5cf6 50%, #10b981 100%);
+            --glow-cyan: 0 0 30px rgba(0, 255, 255, 0.4);
+            --glow-blue: 0 0 40px rgba(0, 212, 255, 0.5);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--text-white);
+            background: var(--bg-dark);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Dynamic Background - Same as other pages */
+        .tech-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--gradient-primary);
+            overflow: hidden;
+        }
+
+        .tech-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(0, 212, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.06) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(16, 185, 129, 0.04) 0%, transparent 50%);
+            animation: techFlow 25s ease-in-out infinite;
+        }
+
+        @keyframes techFlow {
+            0%, 100% { transform: translate(0, 0) rotate(0deg) scale(1); }
+            33% { transform: translate(-50px, -30px) rotate(1deg) scale(1.05); }
+            66% { transform: translate(30px, -50px) rotate(-1deg) scale(0.95); }
+        }
+
+        .circuit-pattern {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="circuit" width="40" height="40" patternUnits="userSpaceOnUse"><g fill="none" stroke="rgba(0,212,255,0.06)" stroke-width="0.5"><path d="M0 20h20M20 0v40M40 20h-20M20 40v-40"/><circle cx="20" cy="20" r="2" fill="rgba(0,212,255,0.1)"/></g></pattern></defs><rect width="100" height="100" fill="url(%23circuit)"/></svg>');
+            opacity: 0.3;
+            animation: circuitMove 30s linear infinite;
+        }
+
+        @keyframes circuitMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-40px) translateY(-40px); }
+        }
+
+        .data-stream {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .data-line {
+            position: absolute;
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, var(--accent-blue), transparent);
+            animation: dataFlow 8s linear infinite;
+        }
+
+        .data-line:nth-child(1) { left: 15%; animation-delay: 0s; }
+        .data-line:nth-child(2) { left: 35%; animation-delay: 2s; }
+        .data-line:nth-child(3) { left: 55%; animation-delay: 4s; }
+        .data-line:nth-child(4) { left: 75%; animation-delay: 6s; }
+
+        @keyframes dataFlow {
+            0% { transform: translateY(-100px); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(100vh); opacity: 0; }
+        }
+
+        /* Header */
+        header {
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-glow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--text-white);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--gradient-tech);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            box-shadow: var(--glow-cyan);
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+            0%, 100% { box-shadow: var(--glow-cyan); }
+            50% { box-shadow: var(--glow-blue), 0 0 20px rgba(139, 92, 246, 0.3); }
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-gray);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--accent-blue);
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-tech);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .back-to-portfolio {
+            background: var(--gradient-tech);
+            color: var(--primary-dark);
+            padding: 8px 16px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .back-to-portfolio:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            background: rgba(5, 5, 5, 0.95);
+            padding: 100px 0 20px;
+            margin-top: 0;
+        }
+
+        .breadcrumb-nav {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .breadcrumb-nav a {
+            color: var(--accent-blue);
+            text-decoration: none;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: var(--gradient-tech);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--accent-blue);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        .host-avatar {
+            width: 400px;
+            height: 400px;
+            background: var(--gradient-tech);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: var(--glow-blue), 0 0 60px rgba(139, 92, 246, 0.3);
+            animation: avatarFloat 4s ease-in-out infinite;
+        }
+
+        @keyframes avatarFloat {
+            0%, 100% { transform: translateY(0px) scale(1); }
+            50% { transform: translateY(-15px) scale(1.02); }
+        }
+
+        .avatar-inner {
+            width: 300px;
+            height: 300px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            font-weight: bold;
+            position: relative;
+            z-index: 2;
+            backdrop-filter: blur(10px);
+        }
+
+        .tech-rings {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .ring {
+            position: absolute;
+            border: 2px solid rgba(0, 212, 255, 0.3);
+            border-radius: 50%;
+            animation: ringRotate 20s linear infinite;
+        }
+
+        .ring:nth-child(1) {
+            width: 420px;
+            height: 420px;
+            top: -10px;
+            left: -10px;
+            animation-duration: 15s;
+        }
+
+        .ring:nth-child(2) {
+            width: 480px;
+            height: 480px;
+            top: -40px;
+            left: -40px;
+            animation-duration: 25s;
+            animation-direction: reverse;
+        }
+
+        @keyframes ringRotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* About Content */
+        .about-content {
+            padding: 80px 0;
+            background: rgba(10, 10, 10, 0.95);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--text-white);
+            margin-bottom: 2rem;
+            background: var(--gradient-tech);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .credentials {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border-glow);
+            margin-bottom: 2rem;
+        }
+
+        .credentials h3 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .credentials ul {
+            list-style: none;
+        }
+
+        .credentials li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--text-gray);
+        }
+
+        .cred-icon {
+            width: 30px;
+            height: 30px;
+            background: var(--gradient-tech);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        /* Mission Section */
+        .mission {
+            padding: 80px 0;
+            background: rgba(5, 5, 5, 0.95);
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mission-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 2rem;
+            background: var(--gradient-tech);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .mission-text {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 3rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .value-card {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid var(--border-glow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-tech);
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient-tech);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .value-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--text-white);
+            margin-bottom: 1rem;
+        }
+
+        .value-description {
+            color: var(--text-gray);
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: var(--gradient-primary);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="contact-pattern" width="30" height="30" patternUnits="userSpaceOnUse"><g fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="0.3"><path d="M0 15h30M15 0v30"/><circle cx="15" cy="15" r="1" fill="rgba(255,255,255,0.1)"/></g></pattern></defs><rect width="100" height="100" fill="url(%23contact-pattern)"/></svg>');
+            animation: contactMove 25s linear infinite;
+        }
+
+        @keyframes contactMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(-30px) translateY(-30px); }
+        }
+
+        .contact-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-title {
+            font-size: 2.8rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            background: var(--gradient-tech);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .contact-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .contact-btn {
+            background: var(--gradient-tech);
+            color: white;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .contact-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--glow-cyan);
+        }
+
+        .contact-btn.secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .contact-btn.secondary:hover {
+            background: white;
+            color: var(--primary-dark);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-gray);
+            padding: 60px 0 30px;
+            border-top: 1px solid var(--border-glow);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            color: var(--accent-blue);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: var(--accent-blue);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-glow);
+            padding-top: 2rem;
+            text-align: center;
+            color: var(--text-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            .host-avatar {
+                width: 300px;
+                height: 300px;
+            }
+
+            .avatar-inner {
+                width: 200px;
+                height: 200px;
+                font-size: 2.5rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tech-bg">
+        <div class="circuit-pattern"></div>
+        <div class="data-stream">
+            <div class="data-line"></div>
+            <div class="data-line"></div>
+            <div class="data-line"></div>
+            <div class="data-line"></div>
+        </div>
+    </div>
+
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <div class="logo-icon">TF</div>
+                TECH FORWARD
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="episodes.html">Episodes</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div style="display: flex; gap: 1rem; align-items: center;">
+                <a href="../../../index.html#examples" class="back-to-portfolio">← 223 Media Portfolio</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="breadcrumb">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="../../../index.html">223 Media</a> > 
+                <a href="../../../index.html#examples">Examples</a> > 
+                <a href="index.html">Tech Forward</a> > 
+                About
+            </nav>
+        </div>
+    </section>
+
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>MEET THE HOST</h1>
+                    <p class="hero-subtitle">ALEX CHEN - TECHNOLOGY FUTURIST</p>
+                    <p class="hero-description">
+                        Leading voice in emerging technology with 15+ years of experience in AI research, venture capital, and startup ecosystems. From Stanford AI labs to Silicon Valley boardrooms, Alex bridges the gap between cutting-edge research and real-world applications.
+                    </p>
+                </div>
+                <div class="hero-visual">
+                    <div class="host-avatar">
+                        <div class="tech-rings">
+                            <div class="ring"></div>
+                            <div class="ring"></div>
+                        </div>
+                        <div class="avatar-inner">AC</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-content">
+        <div class="container">
+            <div class="content-grid">
+                <div>
+                    <h2 class="section-title">Background & Expertise</h2>
+                    <p class="about-text">
+                        Alex Chen's journey began at Stanford's AI Research Lab, where they contributed to breakthrough research in neural networks and machine learning. After completing a PhD in Computer Science with a focus on artificial intelligence, Alex transitioned to venture capital, investing in over 50 technology startups.
+                    </p>
+                    <p class="about-text">
+                        With a unique perspective spanning academia, industry, and investment, Alex has witnessed firsthand how technologies evolve from research papers to world-changing products. This experience forms the foundation of Tech Forward's insightful analysis.
+                    </p>
+                    <p class="about-text">
+                        Today, Alex serves as a technology advisor to Fortune 500 companies, an angel investor in emerging tech startups, and a frequent speaker at major technology conferences worldwide.
+                    </p>
+                </div>
+                <div>
+                    <div class="credentials">
+                        <h3>Credentials & Achievements</h3>
+                        <ul>
+                            <li>
+                                <div class="cred-icon">🎓</div>
+                                PhD Computer Science, Stanford University
+                            </li>
+                            <li>
+                                <div class="cred-icon">🏆</div>
+                                40 Under 40 Tech Innovators, TechCrunch
+                            </li>
+                            <li>
+                                <div class="cred-icon">💡</div>
+                                15+ AI Research Publications
+                            </li>
+                            <li>
+                                <div class="cred-icon">💰</div>
+                                $500M+ Portfolio Value, Venture Capital
+                            </li>
+                            <li>
+                                <div class="cred-icon">🚀</div>
+                                50+ Startup Investments & Exits
+                            </li>
+                            <li>
+                                <div class="cred-icon">🎤</div>
+                                Keynote Speaker at CES, Web Summit, AI Expo
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="credentials">
+                        <h3>Current Roles</h3>
+                        <ul>
+                            <li>
+                                <div class="cred-icon">📡</div>
+                                Host & Creator, Tech Forward Podcast
+                            </li>
+                            <li>
+                                <div class="cred-icon">🏢</div>
+                                Technology Advisor, Meta & Google
+                            </li>
+                            <li>
+                                <div class="cred-icon">📊</div>
+                                Partner, Quantum Ventures VC
+                            </li>
+                            <li>
+                                <div class="cred-icon">🎯</div>
+                                Board Member, AI Ethics Institute
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mission">
+        <div class="container">
+            <div class="mission-content">
+                <h2 class="mission-title">Our Mission</h2>
+                <p class="mission-text">
+                    Tech Forward exists to bridge the gap between complex technological innovations and practical understanding. We believe that everyone deserves to understand the technologies shaping our future, from AI and quantum computing to biotechnology and space exploration.
+                </p>
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">🔍</div>
+                        <h3 class="value-title">Deep Research</h3>
+                        <p class="value-description">We dive deep into emerging technologies, consulting with leading researchers and industry experts to bring you accurate, comprehensive insights.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🌐</div>
+                        <h3 class="value-title">Global Perspective</h3>
+                        <p class="value-description">Technology knows no borders. We explore innovations from around the world, from Silicon Valley to Shenzhen, London to Tel Aviv.</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🚀</div>
+                        <h3 class="value-title">Future-Focused</h3>
+                        <p class="value-description">While others report on today's news, we explore tomorrow's possibilities. What will technology look like in 5, 10, or 20 years?</p>
+                    </div>
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h3 class="value-title">Practical Impact</h3>
+                        <p class="value-description">Every episode connects breakthrough research to real-world applications, helping listeners understand how technology affects their lives and careers.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="contact-title">Let's Connect</h2>
+                <p class="contact-subtitle">
+                    Have a technology story to share? Want to discuss emerging trends? Interested in collaborating on research or speaking opportunities?
+                </p>
+                <div class="contact-buttons">
+                    <a href="#" class="contact-btn">
+                        <span>📧</span> Email Alex
+                    </a>
+                    <a href="#" class="contact-btn secondary">
+                        <span>💼</span> LinkedIn
+                    </a>
+                    <a href="#" class="contact-btn secondary">
+                        <span>🐦</span> Twitter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>TECH FORWARD</h4>
+                    <p>Leading technology podcast exploring AI, quantum computing, blockchain, and the innovations shaping tomorrow.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Content</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="episodes.html">All Episodes</a></li>
+                        <li><a href="about.html">About Alex</a></li>
+                        <li><a href="#">Newsletter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Email</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Speaking Inquiries</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Tech Research</a></li>
+                        <li><a href="#">Investment Database</a></li>
+                        <li><a href="#">Innovation Reports</a></li>
+                        <li><a href="../../../index.html">223 Media</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Tech Forward Podcast. All rights reserved. | Website by <a href="../../../index.html" style="color: var(--accent-blue);">223 Media</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact button interactions
+        document.querySelectorAll('.contact-btn').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                const action = this.textContent.trim();
+                
+                if (action.includes('Email')) {
+                    alert('📧 Email Alex Chen\n\nEmail: alex@techforward.com\n\nSubject suggestions:\n• Guest interview requests\n• Technology partnership inquiries\n• Speaking engagement bookings\n• Research collaboration proposals');
+                } else if (action.includes('LinkedIn')) {
+                    alert('💼 Connect on LinkedIn\n\nFind Alex Chen at:\nlinkedin.com/in/alexchen-techforward\n\n• Professional networking\n• Industry insights\n• Startup investment opportunities\n• Technology advisory discussions');
+                } else if (action.includes('Twitter')) {
+                    alert('🐦 Follow on Twitter\n\n@AlexChenTech\n\n• Daily tech insights\n• Breaking technology news\n• Live-tweeting from conferences\n• Tech startup spotlights');
+                }
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(0, 0, 0, 0.98)';
+                header.style.borderBottom = '1px solid rgba(0, 212, 255, 0.3)';
+            } else {
+                header.style.background = 'rgba(0, 0, 0, 0.95)';
+                header.style.borderBottom = '1px solid var(--border-glow)';
+            }
+        });
+
+        // Enhanced animations on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe value cards for staggered animation
+        document.querySelectorAll('.value-card, .credentials').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(30px)';
+            card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
+            observer.observe(card);
+        });
+
+        // Interactive avatar effect
+        const avatar = document.querySelector('.host-avatar');
+        avatar.addEventListener('click', function() {
+            alert('⚡ Alex Chen - Technology Futurist\n\n🎓 Stanford PhD in AI\n💡 15+ years tech experience\n🚀 50+ startup investments\n🎤 Global conference speaker\n\nExploring tomorrow\'s technology today!');
+        });
+
+        // Enhanced data stream effect
+        function createDataPoint() {
+            const dataPoint = document.createElement('div');
+            dataPoint.style.position = 'absolute';
+            dataPoint.style.width = '3px';
+            dataPoint.style.height = '3px';
+            dataPoint.style.background = `linear-gradient(45deg, ${['#00d4ff', '#8b5cf6', '#10b981'][Math.floor(Math.random() * 3)]}, transparent)`;
+            dataPoint.style.borderRadius = '50%';
+            dataPoint.style.left = Math.random() * 100 + '%';
+            dataPoint.style.top = '-10px';
+            dataPoint.style.animation = `dataFlow ${Math.random() * 5 + 8}s linear infinite`;
+            
+            document.querySelector('.data-stream').appendChild(dataPoint);
+            
+            setTimeout(() => {
+                dataPoint.remove();
+            }, 15000);
+        }
+
+        // Create data points periodically
+        setInterval(createDataPoint, 2000);
+
+        // Tech glow effect for interactive elements
+        document.querySelectorAll('.value-card, .credentials, .contact-btn').forEach(element => {
+            element.addEventListener('mouseenter', function() {
+                this.style.boxShadow = 'var(--glow-cyan), 0 0 40px rgba(139, 92, 246, 0.3)';
+            });
+            
+            element.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '';
+            });
+        });
+    </script>
+</body>
+</html>
