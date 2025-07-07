@@ -4,933 +4,1753 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>223 Media - The Content Ecosystem Company</title>
+    <meta name="description" content="Transform your podcast into a complete digital growth engine. Integrated podcast production and website development that creates exponential results.">
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="223 Media - The Content Ecosystem Company">
+    <meta property="og:description" content="Transform scattered content into powerful ecosystems. 300% more results from the same effort.">
+    <meta property="og:image" content="assets/images/223-media-social.jpg">
+    
     <style>
+        /* ===============================================
+           223 Media - Premium Website Styles
+           The Content Ecosystem Company
+           =============================================== */
+
+        /* CSS Variables for consistent theming */
+        :root {
+            --primary-color: #f17000;
+            --secondary-color: #200c2a;
+            --accent-color: #786c7e;
+            --text-color: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --success-color: #44ff44;
+            --warning-color: #ff4444;
+            --gradient-bg: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 50%, var(--primary-color) 100%);
+        }
+
+        /* Reset and Base Styles */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #200c2a 0%, #f17000 100%);
-            color: white;
+            background: var(--gradient-bg);
+            color: var(--text-color);
+            line-height: 1.6;
             overflow-x: hidden;
+            min-height: 100vh;
         }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        
-        /* Navigation */
-        .nav {
-            background: rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+        /* Enhanced Background Animation */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(247, 112, 0, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(120, 108, 126, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(32, 12, 42, 0.15) 0%, transparent 50%);
+            animation: backgroundShift 20s ease-in-out infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(-20px, -20px) rotate(1deg); }
+            66% { transform: translate(20px, -10px) rotate(-1deg); }
+        }
+
+        /* Floating Geometric Elements */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        .shape.circle {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary-color);
+        }
+
+        .shape.triangle {
+            width: 0;
+            height: 0;
+            border-left: 30px solid transparent;
+            border-right: 30px solid transparent;
+            border-bottom: 52px solid var(--accent-color);
+        }
+
+        .shape.square {
+            width: 50px;
+            height: 50px;
+            background: var(--secondary-color);
+            transform: rotate(45deg);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        /* Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 0;
+            background: rgba(32, 12, 42, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
             z-index: 1000;
+            transition: all 0.3s ease;
         }
-        
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 15px 20px;
-            max-width: 1400px;
+
+        .nav {
+            max-width: 1200px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
         }
-        
+
         .logo {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 24px;
-            font-weight: bold;
-            color: #f17000;
+            gap: 1rem;
+            text-decoration: none;
         }
-        
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(45deg, #200c2a, #786c7e);
+
+        .logo-image {
+            width: 50px;
+            height: 50px;
             border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), #e5640a);
             display: flex;
             align-items: center;
             justify-content: center;
+            font-weight: bold;
             font-size: 18px;
-            border: 2px solid #f17000;
+            color: white;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 15px rgba(247, 112, 0, 0.3);
         }
-        
+
+        .logo-image:hover {
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
         .nav-links {
             display: flex;
-            gap: 30px;
             list-style: none;
+            gap: 2rem;
         }
-        
+
         .nav-links a {
-            color: white;
+            color: var(--text-color);
             text-decoration: none;
             font-weight: 500;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary-color);
+        }
+
+        /* Mobile menu toggle */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-color);
+            font-size: 1.5rem;
             cursor: pointer;
         }
-        
-        .nav-links a:hover {
-            color: #f17000;
-        }
-        
-        .nav-cta {
-            background: linear-gradient(45deg, #f17000, #ff9500);
-            padding: 12px 25px;
-            border-radius: 25px;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(241, 112, 0, 0.4);
-        }
-        
-        /* Page Sections */
+
+        /* Page Container */
         .page {
             display: none;
             min-height: 100vh;
-            padding: 100px 0 50px 0;
+            padding-top: 100px;
         }
-        
+
         .page.active {
             display: block;
         }
-        
-        /* Homepage Styles */
-        .hero {
-            text-align: center;
-            padding: 80px 0;
-        }
-        
-        .hero-title {
-            font-size: 64px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            background: linear-gradient(45deg, #ffffff, #f17000);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.2;
-        }
-        
-        .hero-subtitle {
-            font-size: 24px;
-            margin-bottom: 40px;
-            opacity: 0.9;
-            max-width: 800px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.6;
-        }
-        
-        .hero-cta {
-            display: inline-block;
-            background: linear-gradient(45deg, #f17000, #ff9500);
-            padding: 20px 50px;
-            border-radius: 30px;
-            text-decoration: none;
-            color: white;
-            font-size: 20px;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            margin-bottom: 60px;
-        }
-        
-        .hero-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(241, 112, 0, 0.5);
-        }
-        
-        .problem-solution {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            margin: 80px 0;
-            align-items: center;
-        }
-        
-        .problem, .solution {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 25px;
-            padding: 50px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        .problem {
-            border-left: 5px solid #ff4444;
-        }
-        
-        .solution {
-            border-left: 5px solid #44ff44;
-        }
-        
-        .section-title {
-            font-size: 32px;
-            font-weight: bold;
-            margin-bottom: 25px;
-            color: #f17000;
-        }
-        
-        .section-text {
-            font-size: 18px;
-            line-height: 1.7;
-            opacity: 0.9;
-        }
-        
-        /* Services Page Styles */
-        .services-hero {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .services-title {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ffffff, #f17000);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        .services-subtitle {
-            font-size: 20px;
-            opacity: 0.9;
-            max-width: 600px;
+
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
+            padding: 0 2rem;
         }
-        
-        .packages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-            margin: 60px 0;
-        }
-        
-        .package-card {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 25px;
-            padding: 45px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+
+        /* Enhanced Glass Morphism Cards */
+        .glass-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             transition: all 0.4s ease;
             position: relative;
+            overflow: hidden;
         }
-        
-        .package-card:hover {
-            transform: translateY(-15px) scale(1.05);
-            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s ease;
         }
-        
-        .package-card.featured {
-            border: 3px solid #f17000;
-            transform: scale(1.05);
+
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.4);
         }
-        
-        .package-name {
-            font-size: 28px;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #f17000;
+
+        .glass-card:hover::before {
+            left: 100%;
         }
-        
-        .package-price {
-            font-size: 48px;
-            font-weight: bold;
-            background: linear-gradient(45deg, #f17000, #ff9500);
+
+        /* Typography */
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--text-color) 0%, var(--primary-color) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin: 20px 0;
         }
-        
-        .package-period {
-            font-size: 16px;
-            opacity: 0.8;
-            margin-bottom: 30px;
+
+        h2 {
+            font-size: 2.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-color);
         }
-        
-        .package-features {
-            list-style: none;
-            margin: 30px 0;
+
+        h3 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            color: var(--text-color);
         }
-        
-        .package-features li {
-            padding: 12px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: relative;
-            padding-left: 30px;
+
+        .subtitle {
+            font-size: 1.3rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            opacity: 0.9;
         }
-        
-        .package-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: #f17000;
-            font-weight: bold;
-            font-size: 18px;
-        }
-        
-        .package-cta {
-            background: linear-gradient(45deg, #f17000, #ff9500);
+
+        /* Enhanced Buttons */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), #e5640a);
             color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
             border: none;
-            padding: 18px 35px;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
+            font-size: 1rem;
+            box-shadow: 0 4px 15px rgba(247, 112, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
             width: 100%;
-            margin-top: 25px;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.6s ease;
         }
-        
-        .package-cta:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(241, 112, 0, 0.5);
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);
         }
-        
-        .individual-services {
-            margin-top: 80px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 25px;
-            padding: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+
+        .btn:hover::before {
+            left: 100%;
         }
-        
-        .individual-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
         }
-        
-        .individual-item {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 15px;
-            padding: 30px;
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
             text-align: center;
+            padding: 4rem 0;
+            position: relative;
         }
-        
-        .individual-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #f17000;
-            margin-bottom: 15px;
-        }
-        
-        .individual-price {
-            font-size: 32px;
-            font-weight: bold;
-            margin: 15px 0;
-        }
-        
-        /* About Page Styles */
-        .about-content {
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-        
-        .about-hero {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-        
-        .story-section {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 25px;
-            padding: 50px;
-            margin: 40px 0;
-            backdrop-filter: blur(15px);
-        }
-        
-        .advantages-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 60px 0;
-        }
-        
-        .advantage-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 35px;
-            text-align: center;
-            transition: all 0.3s ease;
-        }
-        
-        .advantage-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-        }
-        
-        .advantage-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-            display: block;
-        }
-        
-        .advantage-title {
-            font-size: 20px;
-            font-weight: bold;
-            color: #f17000;
-            margin-bottom: 15px;
-        }
-        
-        /* Onboarding Page Styles */
-        .onboarding-container {
+
+        .hero-content {
             max-width: 800px;
             margin: 0 auto;
         }
-        
-        .onboarding-hero {
-            text-align: center;
-            margin-bottom: 60px;
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
         }
-        
-        .step-indicator {
+
+        /* Enhanced Stats Section */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border: 2px solid var(--primary-color);
+            border-radius: 15px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+            opacity: 1;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--text-color);
+            margin-top: 0.5rem;
+            opacity: 0.8;
+        }
+
+        /* Enhanced Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        /* Geometric Icons */
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1rem;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .feature-icon::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-icon.success::before {
+            clip-path: polygon(20% 0%, 0% 20%, 30% 50%, 0% 80%, 20% 100%, 50% 70%, 80% 100%, 100% 80%, 70% 50%, 100% 20%, 80% 0%, 50% 30%);
+        }
+
+        .feature-icon.integration::before {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+        }
+
+        .feature-icon.growth::before {
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(360deg);
+        }
+
+        /* Enhanced Pricing Cards */
+        .pricing {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .pricing-card {
+            position: relative;
+            text-align: center;
+            padding: 3rem 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card.featured {
+            border: 2px solid var(--primary-color);
+            position: relative;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            color: var(--primary-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            z-index: 100;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border: 2px solid var(--primary-color);
+        }
+
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .price-period {
+            font-size: 1rem;
+            color: var(--text-color);
+            opacity: 0.7;
+        }
+
+        .features-list {
+            list-style: none;
+            margin: 2rem 0;
+        }
+
+        .features-list li {
+            padding: 0.5rem 0;
+            color: var(--text-color);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .features-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 10px;
+            height: 10px;
+            background: var(--success-color);
+            border-radius: 50%;
+        }
+
+        /* Enhanced Portfolio Grid */
+        .portfolio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .portfolio-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-image {
+            height: 200px;
+            background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-content {
+            padding: 1.5rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+        }
+
+        .portfolio-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .portfolio-desc {
+            color: var(--text-color);
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+
+        .portfolio-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background: var(--primary-color);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        .portfolio-results {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-number {
+            font-weight: bold;
+            color: var(--success-color);
+            font-size: 1.1rem;
+        }
+
+        .result-label {
+            font-size: 0.8rem;
+            color: var(--text-color);
+            opacity: 0.8;
+        }
+
+        /* Enhanced Portfolio Filter */
+        .portfolio-filter-container {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 40px 0;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
         }
-        
+
+        .portfolio-filter {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid var(--glass-border);
+            background: var(--glass-bg);
+            color: var(--text-color);
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(20px);
+            font-weight: 500;
+        }
+
+        .portfolio-filter:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+        .portfolio-filter.active {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(247, 112, 0, 0.3);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            background: var(--glass-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(247, 112, 0, 0.1);
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
         .step {
-            width: 40px;
-            height: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            background: linear-gradient(135deg, var(--primary-color), #e5640a);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
             font-weight: bold;
+            font-size: 1.5rem;
+            margin: 0 auto 1rem;
             transition: all 0.3s ease;
         }
-        
-        .step.active {
-            background: #f17000;
-            transform: scale(1.2);
+
+        .step:hover .step-number {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);
         }
-        
-        .onboarding-form {
-            background: rgba(255, 255, 255, 0.08);
-            border-radius: 25px;
-            padding: 50px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
-        
-        .form-group {
-            margin-bottom: 25px;
+
+        .step-desc {
+            color: var(--text-color);
+            opacity: 0.8;
         }
-        
-        .form-label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #f17000;
-        }
-        
-        .form-input, .form-select, .form-textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            color: white;
-            font-size: 16px;
-            transition: all 0.3s ease;
-        }
-        
-        .form-input:focus, .form-select:focus, .form-textarea:focus {
-            outline: none;
-            border-color: #f17000;
-            box-shadow: 0 0 20px rgba(241, 112, 0, 0.3);
-        }
-        
-        .form-input::placeholder, .form-textarea::placeholder {
-            color: rgba(255, 255, 255, 0.6);
-        }
-        
-        .package-selection {
+
+        /* Team Section */
+        .team {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
         }
-        
-        .package-option {
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 15px;
-            padding: 20px;
+
+        .team-member {
             text-align: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            padding: 2rem;
         }
-        
-        .package-option:hover {
-            border-color: #f17000;
-            transform: translateY(-5px);
-        }
-        
-        .package-option.selected {
-            border-color: #f17000;
-            background: rgba(241, 112, 0, 0.2);
-        }
-        
-        .submit-btn {
-            background: linear-gradient(45deg, #f17000, #ff9500);
-            color: white;
-            border: none;
-            padding: 18px 40px;
-            border-radius: 30px;
-            font-size: 18px;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            width: 100%;
-            margin-top: 30px;
-        }
-        
-        .submit-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(241, 112, 0, 0.5);
-        }
-        
-        .tech-integration {
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 20px;
-            padding: 30px;
-            margin: 40px 0;
-            text-align: center;
-        }
-        
-        .tech-icons {
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            margin: 0 auto 1rem;
             display: flex;
+            align-items: center;
             justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin: 20px 0;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
         }
-        
-        .tech-icon {
-            background: rgba(255, 255, 255, 0.1);
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 14px;
-            font-weight: bold;
-            color: #f17000;
+
+        .team-avatar::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
         }
-        
+
+        .team-member:hover .team-avatar {
+            transform: scale(1.05);
+        }
+
+        /* CTA Sections */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            margin: 4rem 0;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            position: relative;
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
         /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .hero-title {
-                font-size: 36px;
-            }
-            
-            .problem-solution {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .packages-grid {
-                grid-template-columns: 1fr;
-            }
-            
             .nav-links {
                 display: none;
             }
-            
+
+            .mobile-menu-toggle {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
             .container {
-                padding: 0 15px;
+                padding: 0 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .portfolio-filter-container {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Floating Geometric Shapes -->
+    <div class="floating-shapes">
+        <div class="shape circle" style="top: 10%; left: 10%; animation-delay: 0s;"></div>
+        <div class="shape triangle" style="top: 20%; right: 15%; animation-delay: 3s;"></div>
+        <div class="shape square" style="top: 60%; left: 5%; animation-delay: 6s;"></div>
+        <div class="shape circle" style="top: 70%; right: 10%; animation-delay: 9s;"></div>
+        <div class="shape triangle" style="top: 40%; right: 50%; animation-delay: 12s;"></div>
+    </div>
+
     <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <div class="logo">
-                <div class="logo-icon">223</div>
-                223 Media
-            </div>
+    <header class="header" id="header">
+        <nav class="nav">
+            <a href="#" class="logo" onclick="showPage('home')">
+                <div class="logo-image">223</div>
+                <span class="logo-text">223 Media</span>
+            </a>
             <ul class="nav-links">
-                <li><a onclick="showPage('home')">Home</a></li>
-                <li><a onclick="showPage('services')">Services</a></li>
-                <li><a onclick="showPage('about')">About</a></li>
-                <li><a onclick="showPage('onboarding')" class="nav-cta">Start Your Ecosystem</a></li>
+                <li><a href="#" onclick="showPage('home')" class="nav-link active">Home</a></li>
+                <li><a href="#" onclick="showPage('services')" class="nav-link">Services</a></li>
+                <li><a href="#" onclick="showPage('portfolio')" class="nav-link">Portfolio</a></li>
+                <li><a href="#" onclick="showPage('about')" class="nav-link">About</a></li>
+                <li><a href="#" onclick="showPage('start')" class="nav-link btn" style="padding: 0.5rem 1rem; margin-left: 1rem;">Choose Package</a></li>
             </ul>
-        </div>
-    </nav>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+        </nav>
+    </header>
 
-    <div class="container">
-        <!-- Homepage -->
-        <div id="home" class="page active">
-            <div class="hero">
-                <h1 class="hero-title">The Content Ecosystem Company</h1>
-                <p class="hero-subtitle">We Don't Just Tell Your Story. We Design Your Future. Transform your voice into a complete digital presence with integrated podcast + website ecosystems.</p>
-                <a href="#" onclick="showPage('onboarding')" class="hero-cta">Start Your Ecosystem</a>
-            </div>
-            
-            <div class="problem-solution">
-                <div class="problem">
-                    <h2 class="section-title">❌ The Problem</h2>
-                    <p class="section-text">Most businesses have scattered content efforts. Your podcast lives on one platform, your website on another. Content gets duplicated, audiences get fragmented, and ROI gets diluted. You're working twice as hard for half the results.</p>
-                </div>
-                <div class="solution">
-                    <h2 class="section-title">✅ Our Solution</h2>
-                    <p class="section-text">We create integrated content ecosystems where your podcast and website work together synergistically. One piece of content becomes ten. Your audience grows across platforms. Your message amplifies itself. Maximum impact, minimum effort.</p>
-                </div>
-            </div>
-            
-            <div class="story-section">
-                <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">Why Integrated Ecosystems Win</h2>
-                <div class="advantages-grid">
-                    <div class="advantage-card">
-                        <div class="advantage-icon">📈</div>
-                        <div class="advantage-title">300% More Content</div>
-                        <p>One podcast episode becomes blog posts, social content, newsletters, and SEO pages</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">🎯</div>
-                        <div class="advantage-title">Unified Audience</div>
-                        <p>Website visitors become podcast subscribers. Podcast listeners become website leads.</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">🚀</div>
-                        <div class="advantage-title">Compound Growth</div>
-                        <p>Each platform amplifies the other, creating exponential rather than linear growth</p>
+    <!-- Page 1: Home -->
+    <div id="home" class="page active">
+        <div class="container">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content fade-in">
+                    <h1>The Content Ecosystem Company</h1>
+                    <p class="subtitle">Transform your podcast into a complete digital growth engine that amplifies your voice, grows your audience, and drives real business results</p>
+                    <div class="hero-buttons">
+                        <a href="https://buy.stripe.com/bJe8wQ0nk1lu8D91KRgUM07" target="_blank" class="btn">Start Your Ecosystem</a>
+                        <a href="#" onclick="showPage('portfolio')" class="btn-secondary">View Our Work</a>
                     </div>
                 </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- Services Page -->
-        <div id="services" class="page">
-            <div class="services-hero">
-                <h1 class="services-title">Ecosystem Packages</h1>
-                <p class="services-subtitle">Choose the perfect package to transform your content into a growth engine</p>
-            </div>
-            
-            <div class="packages-grid">
-                <div class="package-card">
-                    <div class="package-name">Growth Package</div>
-                    <div class="package-price">$497</div>
-                    <div class="package-period">per month</div>
-                    <ul class="package-features">
+            <!-- Stats Section -->
+            <section class="stats fade-in">
+                <div class="stat-card glass-card">
+                    <span class="stat-number">300%</span>
+                    <span class="stat-label">More Content from Same Effort</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Content Pieces per Episode</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number">2x</span>
+                    <span class="stat-label">Faster Audience Growth</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number">400%</span>
+                    <span class="stat-label">Better ROI on Content</span>
+                </div>
+            </section>
+
+            <!-- Problem/Solution Section -->
+            <section class="features fade-in">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon"></div>
+                    <h3>The Scattered Content Problem</h3>
+                    <p>Most businesses create content in silos - a podcast here, a website there, social media somewhere else. Each platform works independently, creating fragmented efforts with mediocre results.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon integration"></div>
+                    <h3>The Integration Solution</h3>
+                    <p>We create content ecosystems where your podcast, website, and social media work together synergistically. One piece of content becomes 15+ assets, each amplifying the others.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon growth"></div>
+                    <h3>Exponential Results</h3>
+                    <p>When content platforms work together instead of independently, you get compound growth. Your podcast drives website traffic, your website captures leads, your social media amplifies everything.</p>
+                </div>
+            </section>
+
+            <!-- How It Works -->
+            <section class="cta-section fade-in">
+                <h2>How Content Ecosystems Create Exponential Growth</h2>
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-title">Podcast Production</div>
+                        <div class="step-desc">Professional post-production that makes you sound like a media company</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-title">Content Multiplication</div>
+                        <div class="step-desc">Transform each episode into 15+ pieces of content across all platforms</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-title">Website Integration</div>
+                        <div class="step-desc">Custom website that showcases your content and captures leads automatically</div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-title">Ecosystem Management</div>
+                        <div class="step-desc">Ongoing optimization that keeps all platforms working together for maximum impact</div>
+                    </div>
+                </div>
+                <a href="#" onclick="showPage('start')" class="btn">Choose Your Package</a>
+            </section>
+        </div>
+    </div>
+
+    <!-- Page 2: Services -->
+    <div id="services" class="page">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content fade-in">
+                    <h1>Ecosystem Packages</h1>
+                    <p class="subtitle">Choose your perfect content ecosystem package - from growing startups to established enterprises</p>
+                </div>
+            </section>
+
+            <!-- Pricing Cards -->
+            <section class="pricing fade-in">
+                <div class="pricing-card glass-card">
+                    <h3>Growth Package</h3>
+                    <div class="price">$497<span class="price-period">/month</span></div>
+                    <ul class="features-list">
                         <li>4 podcast episodes per month</li>
+                        <li>Professional editing & mixing</li>
                         <li>Basic website maintenance</li>
                         <li>Episode-to-blog conversion</li>
                         <li>Basic SEO optimization</li>
                         <li>Social media assets</li>
                         <li>Monthly analytics report</li>
                     </ul>
-                    <button class="package-cta" onclick="selectPackage('growth')">Start Growing</button>
+                    <a href="https://buy.stripe.com/9B6cN6gmid4cf1xahngUM08" target="_blank" class="btn">Start Growing</a>
                 </div>
-                
-                <div class="package-card featured">
-                    <div class="package-name">Scale Package</div>
-                    <div class="package-price">$997</div>
-                    <div class="package-period">per month</div>
-                    <ul class="package-features">
+
+                <div class="pricing-card glass-card featured">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Scale Package</h3>
+                    <div class="price">$997<span class="price-period">/month</span></div>
+                    <ul class="features-list">
                         <li>8 podcast episodes per month</li>
+                        <li>Advanced editing & mixing</li>
                         <li>Advanced website features</li>
                         <li>Complete content repurposing</li>
                         <li>Advanced SEO strategy</li>
                         <li>Lead magnet integration</li>
                         <li>YouTube optimization</li>
                         <li>Bi-weekly strategy calls</li>
+                        <li>Priority support</li>
                     </ul>
-                    <button class="package-cta" onclick="selectPackage('scale')">Scale Your Impact</button>
+                    <a href="https://buy.stripe.com/bJe8wQ0nk1lu8D91KRgUM07" target="_blank" class="btn">Scale Your Growth</a>
                 </div>
-                
-                <div class="package-card">
-                    <div class="package-name">Enterprise-Lite</div>
-                    <div class="package-price">$1,497</div>
-                    <div class="package-period">per month</div>
-                    <ul class="package-features">
+
+                <div class="pricing-card glass-card">
+                    <h3>Enterprise-Lite</h3>
+                    <div class="price">$1,497<span class="price-period">/month</span></div>
+                    <ul class="features-list">
                         <li>12 podcast episodes per month</li>
+                        <li>Enterprise-level production</li>
                         <li>Enterprise website features</li>
                         <li>Multi-platform distribution</li>
                         <li>Custom integrations</li>
                         <li>Advanced analytics dashboard</li>
-                        <li>Priority support</li>
                         <li>Weekly strategy sessions</li>
+                        <li>Dedicated account manager</li>
+                        <li>Custom automation</li>
                     </ul>
-                    <button class="package-cta" onclick="selectPackage('enterprise')">Dominate Your Market</button>
+                    <a href="https://buy.stripe.com/9B6eVe3zw8NW2eLfBHgUM06" target="_blank" class="btn">Dominate Your Market</a>
                 </div>
-            </div>
-            
-            <div class="individual-services">
-                <h2 class="section-title" style="text-align: center;">Individual Services</h2>
-                <p style="text-align: center; margin-bottom: 40px; opacity: 0.9;">Need just one piece of the ecosystem? We've got you covered.</p>
-                
-                <div class="individual-grid">
-                    <div class="individual-item">
-                        <div class="individual-title">Podcast Production</div>
-                        <div class="individual-price">$110<span style="font-size: 16px;">/episode</span></div>
-                        <p>vs. market $200-$500</p>
-                    </div>
-                    <div class="individual-item">
-                        <div class="individual-title">Enterprise-Lite Websites</div>
-                        <div class="individual-price">$7,997<span style="font-size: 16px;">/project</span></div>
-                        <p>vs. market $15,000-$75,000</p>
-                    </div>
-                    <div class="individual-item">
-                        <div class="individual-title">Website Management</div>
-                        <div class="individual-price">$297<span style="font-size: 16px;">/month</span></div>
-                        <p>vs. market $500-$2,000</p>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </section>
 
-        <!-- About Page -->
-        <div id="about" class="page">
-            <div class="about-content">
-                <div class="about-hero">
-                    <h1 class="services-title">The Integration Advantage</h1>
-                    <p class="services-subtitle">Why integrated ecosystems outperform isolated efforts</p>
-                </div>
-                
-                <div class="story-section">
-                    <h2 class="section-title">Our Story & Vision</h2>
-                    <p class="section-text">223 Media was born from a simple realization: most businesses are working twice as hard for half the results. They create podcasts in one silo, websites in another, and wonder why their content isn't performing.</p>
-                    <br>
-                    <p class="section-text">We saw an opportunity to revolutionize digital presence by creating integrated content ecosystems where every piece of content works together to amplify your message, grow your audience, and drive real business results.</p>
-                </div>
-                
-                <div class="story-section">
-                    <h2 class="section-title">Why Integration Works</h2>
-                    <p class="section-text">Traditional content marketing is like having a bunch of solo musicians. Integration is like having a symphony orchestra. Each instrument (podcast, website, social media) plays its part, but together they create something magnificent that's greater than the sum of its parts.</p>
-                    <br>
-                    <p class="section-text">Our integrated approach delivers 3x more content from the same effort, 2x faster audience growth, and 300% better ROI because everything works together toward the same goal.</p>
-                </div>
-                
-                <div class="advantages-grid">
-                    <div class="advantage-card">
-                        <div class="advantage-icon">🛠️</div>
-                        <div class="advantage-title">Advanced Tech Stack</div>
-                        <p>Usemotion, Ontraport, HubSpot, GitHub, and cutting-edge automation</p>
+            <!-- Individual Services -->
+            <section class="fade-in" style="margin-top: 4rem;">
+                <h2 style="text-align: center; margin-bottom: 2rem;">Individual Services</h2>
+                <div class="features">
+                    <div class="feature-card glass-card">
+                        <h3>Podcast Production</h3>
+                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$110<span class="price-period">/episode</span></div>
+                        <p>Professional post-production for single episodes. Perfect for testing our quality before committing to a package.</p>
+                        <ul class="features-list" style="text-align: left; margin: 1rem 0;">
+                            <li>Professional editing & mixing</li>
+                            <li>Noise reduction & enhancement</li>
+                            <li>Intro/outro integration</li>
+                            <li>Show notes creation</li>
+                            <li>48-72 hour turnaround</li>
+                        </ul>
+                        <a href="https://buy.stripe.com/aFa3cwfiefckf1x3SZgUM05" target="_blank" class="btn">Order Single Episode</a>
                     </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">🎯</div>
-                        <div class="advantage-title">Strategic Expertise</div>
-                        <p>Not just production, but strategic guidance for maximum business impact</p>
-                    </div>
-                    <div class="advantage-card">
-                        <div class="advantage-icon">📊</div>
-                        <div class="advantage-title">Data-Driven Results</div>
-                        <p>Complete analytics across platforms to optimize performance continuously</p>
-                    </div>
-                </div>
-                
-                <div class="story-section">
-                    <h2 class="section-title">Client Success Stories</h2>
-                    <p class="section-text">Our clients don't just get podcasts and websites - they get growth engines. Like the consultant who saw 400% increase in organic traffic when we integrated their podcast content with their website SEO strategy. Or the entrepreneur whose integrated approach generated 250% more qualified leads in just 6 months.</p>
-                    <br>
-                    <p class="section-text">Ready to see what integrated ecosystems can do for your business?</p>
-                </div>
-            </div>
-        </div>
 
-        <!-- Onboarding Page -->
-        <div id="onboarding" class="page">
-            <div class="onboarding-container">
-                <div class="onboarding-hero">
-                    <h1 class="services-title">Start Your Ecosystem</h1>
-                    <p class="services-subtitle">Let's build your integrated content ecosystem together</p>
-                </div>
-                
-                <div class="step-indicator">
-                    <div class="step active">1</div>
-                    <div class="step">2</div>
-                    <div class="step">3</div>
-                    <div class="step">4</div>
-                </div>
-                
-                <div class="onboarding-form">
-                    <form id="onboardingForm">
-                        <div class="form-group">
-                            <label class="form-label">Your Name *</label>
-                            <input type="text" class="form-input" name="name" placeholder="John Smith" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Business Email *</label>
-                            <input type="email" class="form-input" name="email" placeholder="john@company.com" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Company Name *</label>
-                            <input type="text" class="form-input" name="company" placeholder="Your Company Inc." required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Phone Number</label>
-                            <input type="tel" class="form-input" name="phone" placeholder="+1 (555) 123-4567">
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Select Your Package *</label>
-                            <div class="package-selection">
-                                <div class="package-option" onclick="selectPackageOption('growth')">
-                                    <h4>Growth</h4>
-                                    <p>$497/month</p>
-                                </div>
-                                <div class="package-option" onclick="selectPackageOption('scale')">
-                                    <h4>Scale</h4>
-                                    <p>$997/month</p>
-                                </div>
-                                <div class="package-option" onclick="selectPackageOption('enterprise')">
-                                    <h4>Enterprise-Lite</h4>
-                                    <p>$1,497/month</p>
-                                </div>
-                            </div>
-                            <input type="hidden" name="package" id="selectedPackage" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Current Content Challenges *</label>
-                            <select class="form-select" name="challenge" required>
-                                <option value="">Select your biggest challenge</option>
-                                <option value="no_podcast">Don't have a podcast yet</option>
-                                <option value="no_website">Need a new website</option>
-                                <option value="scattered_content">Content efforts are scattered</option>
-                                <option value="low_engagement">Low audience engagement</option>
-                                <option value="poor_roi">Poor content ROI</option>
-                                <option value="time_consuming">Content creation takes too long</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Tell Us About Your Goals</label>
-                            <textarea class="form-textarea" name="goals" rows="4" placeholder="What do you want to achieve with your content ecosystem?"></textarea>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label">Preferred Start Date</label>
-                            <select class="form-select" name="start_date">
-                                <option value="asap">As soon as possible</option>
-                                <option value="within_month">Within 1 month</option>
-                                <option value="within_quarter">Within 3 months</option>
-                                <option value="planning">Just planning ahead</option>
-                            </select>
-                        </div>
-                        
-                        <button type="submit" class="submit-btn">Get Started → Schedule Discovery Call</button>
-                    </form>
-                </div>
-                
-                <div class="tech-integration">
-                    <h3 style="color: #f17000; margin-bottom: 15px;">Powered by Advanced Integration</h3>
-                    <p style="opacity: 0.8; margin-bottom: 20px;">Your submission automatically triggers our sophisticated backend process</p>
-                    <div class="tech-icons">
-                        <div class="tech-icon">📝 JotForms</div>
-                        <div class="tech-icon">🔄 Ontraport</div>
-                        <div class="tech-icon">📅 Usemotion</div>
-                        <div class="tech-icon">💳 Stripe</div>
-                        <div class="tech-icon">📊 HubSpot</div>
-                        <div class="tech-icon">⚡ GitHub</div>
+                    <div class="feature-card glass-card">
+                        <h3>Enterprise Website</h3>
+                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$7,997<span class="price-period">/project</span></div>
+                        <p>Custom enterprise-level website with advanced features and integrations. Built to scale with your business.</p>
+                        <ul class="features-list" style="text-align: left; margin: 1rem 0;">
+                            <li>Custom responsive design</li>
+                            <li>Advanced integrations</li>
+                            <li>Content management system</li>
+                            <li>SEO optimization</li>
+                            <li>90 days included support</li>
+                        </ul>
+                        <a href="https://buy.stripe.com/6oUdRagmi6FO4mTexDgUM04" target="_blank" class="btn">Build Your Website</a>
                     </div>
-                    <p style="font-size: 14px; opacity: 0.7; margin-top: 15px;">
-                        Form submission → CRM entry → Calendar booking → Project setup → Payment processing → Development kickoff
-                    </p>
+
+                    <div class="feature-card glass-card">
+                        <h3>Website Management</h3>
+                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$297<span class="price-period">/month</span></div>
+                        <p>Ongoing website maintenance and optimization. Keep your site running smoothly while you focus on your business.</p>
+                        <ul class="features-list" style="text-align: left; margin: 1rem 0;">
+                            <li>Monthly content updates</li>
+                            <li>Security monitoring</li>
+                            <li>Performance optimization</li>
+                            <li>Analytics reporting</li>
+                            <li>Technical support</li>
+                        </ul>
+                        <a href="https://buy.stripe.com/00w6oI5HE2py06DdtzgUM02" target="_blank" class="btn">Manage My Website</a>
+                    </div>
                 </div>
-            </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section fade-in">
+                <h2>Ready to Build Your Content Ecosystem?</h2>
+                <p>Join successful entrepreneurs who've transformed their scattered content into powerful growth engines</p>
+                <a href="#" onclick="showPage('start')" class="btn">Choose Your Package Today</a>
+            </section>
         </div>
     </div>
 
+    <!-- Page 3: Portfolio -->
+    <div id="portfolio" class="page">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content fade-in">
+                    <h1>Portfolio Showcase</h1>
+                    <p class="subtitle">Real content ecosystems delivering real results for real businesses</p>
+                </div>
+            </section>
+
+            <!-- Portfolio Filter -->
+            <section class="fade-in">
+                <div class="portfolio-filter-container">
+                    <button class="portfolio-filter active" data-filter="all">All Projects</button>
+                    <button class="portfolio-filter" data-filter="ecosystems">Full Ecosystems</button>
+                    <button class="portfolio-filter" data-filter="websites">Websites</button>
+                    <button class="portfolio-filter" data-filter="podcasts">Podcasts</button>
+                </div>
+            </section>
+
+            <!-- Portfolio Grid -->
+            <section class="portfolio fade-in">
+                <!-- Growth Mindset Show -->
+                <div class="portfolio-item glass-card" data-category="ecosystems podcasts">
+                    <div class="portfolio-image">
+                        <div style="color: white; font-size: 1.5rem; font-weight: bold; text-align: center;">
+                            <div style="width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.2); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">GM</div>
+                            Growth Mindset Show
+                        </div>
+                        <div class="portfolio-overlay">
+                            <a href="examples/growth-mindset-show/index.html" target="_blank" class="btn">View Live Site</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Growth Mindset Show - Business Podcast Ecosystem</h3>
+                        <p class="portfolio-desc">Complete ecosystem transformation for business mindset content creator</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Podcast Production</span>
+                            <span class="tag">Website Design</span>
+                            <span class="tag">Content Strategy</span>
+                            <span class="tag">Lead Generation</span>
+                        </div>
+                        <div class="portfolio-results">
+                            <div class="result-item">
+                                <div class="result-number">400%</div>
+                                <div class="result-label">Traffic Growth</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">89%</div>
+                                <div class="result-label">Conversion Rate</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">$47K</div>
+                                <div class="result-label">Revenue Boost</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ProjectFlow Pro -->
+                <div class="portfolio-item glass-card" data-category="ecosystems websites">
+                    <div class="portfolio-image">
+                        <div style="color: white; font-size: 1.5rem; font-weight: bold; text-align: center;">
+                            <div style="width: 60px; height: 60px; border-radius: 10px; background: rgba(255,255,255,0.2); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">PF</div>
+                            ProjectFlow Pro
+                        </div>
+                        <div class="portfolio-overlay">
+                            <a href="examples/projectflow-pro/index.html" target="_blank" class="btn">View Live Site</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">ProjectFlow Pro - B2B SaaS Platform</h3>
+                        <p class="portfolio-desc">Complete digital presence for productivity software startup</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">SaaS Landing Page</span>
+                            <span class="tag">B2B Design</span>
+                            <span class="tag">Mobile App Page</span>
+                            <span class="tag">Conversion Optimization</span>
+                        </div>
+                        <div class="portfolio-results">
+                            <div class="result-item">
+                                <div class="result-number">250%</div>
+                                <div class="result-label">Lead Generation</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">67%</div>
+                                <div class="result-label">Trial Signup Rate</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">$125K</div>
+                                <div class="result-label">Monthly ARR</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CADA JUEVES -->
+                <div class="portfolio-item glass-card" data-category="ecosystems podcasts">
+                    <div class="portfolio-image">
+                        <div style="color: white; font-size: 1.5rem; font-weight: bold; text-align: center;">
+                            <div style="width: 60px; height: 60px; border-radius: 10px; background: rgba(255,255,255,0.2); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; position: relative;">
+                                <div style="position: absolute; width: 20px; height: 20px; border: 2px solid white; border-radius: 50%; top: 20px; left: 20px;"></div>
+                                CJ
+                            </div>
+                            CADA JUEVES
+                        </div>
+                        <div class="portfolio-overlay">
+                            <a href="examples/cada-jueves-podcast/index.html" target="_blank" class="btn">View Live Site</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">CADA JUEVES - Cybersecurity Podcast</h3>
+                        <p class="portfolio-desc">Hybrid podcast-website experience for cybersecurity expertise</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Cybersecurity</span>
+                            <span class="tag">Video Integration</span>
+                            <span class="tag">Professional Design</span>
+                            <span class="tag">Expert Positioning</span>
+                        </div>
+                        <div class="portfolio-results">
+                            <div class="result-item">
+                                <div class="result-number">300%</div>
+                                <div class="result-label">Expert Inquiries</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">85%</div>
+                                <div class="result-label">Episode Completion</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">$95K</div>
+                                <div class="result-label">Consulting Revenue</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tech Forward -->
+                <div class="portfolio-item glass-card" data-category="podcasts websites">
+                    <div class="portfolio-image">
+                        <div style="color: white; font-size: 1.5rem; font-weight: bold; text-align: center;">
+                            <div style="width: 60px; height: 60px; border-radius: 15px; background: rgba(255,255,255,0.2); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);">TF</div>
+                            Tech Forward
+                        </div>
+                        <div class="portfolio-overlay">
+                            <a href="examples/tech-forward-podcast/index.html" target="_blank" class="btn">View Live Site</a>
+                        </div>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3 class="portfolio-title">Tech Forward - Future Technology Podcast</h3>
+                        <p class="portfolio-desc">Dynamic tech podcast with innovative design and engagement features</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Technology</span>
+                            <span class="tag">Dynamic Backgrounds</span>
+                            <span class="tag">Interactive Design</span>
+                            <span class="tag">Innovation Focus</span>
+                        </div>
+                        <div class="portfolio-results">
+                            <div class="result-item">
+                                <div class="result-number">180%</div>
+                                <div class="result-label">Subscriber Growth</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">92%</div>
+                                <div class="result-label">Engagement Rate</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">$65K</div>
+                                <div class="result-label">Sponsorship Revenue</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Case Study Feature -->
+                <div class="portfolio-item glass-card" data-category="ecosystems" style="grid-column: 1 / -1;">
+                    <div style="padding: 2rem; text-align: center;">
+                        <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Featured Case Study: Sarah's Real Estate Empire</h3>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem;">How we transformed a solo real estate agent into a market authority through integrated content ecosystems</p>
+                        
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                            <div>
+                                <div style="font-size: 2.5rem; font-weight: bold; color: var(--success-color);">312%</div>
+                                <div style="color: var(--text-color); opacity: 0.8;">Increase in qualified leads</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2.5rem; font-weight: bold; color: var(--success-color);">2.5M</div>
+                                <div style="color: var(--text-color); opacity: 0.8;">Monthly podcast downloads</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2.5rem; font-weight: bold; color: var(--success-color);">$847K</div>
+                                <div style="color: var(--text-color); opacity: 0.8;">Additional annual revenue</div>
+                            </div>
+                            <div>
+                                <div style="font-size: 2.5rem; font-weight: bold; color: var(--success-color);">89%</div>
+                                <div style="color: var(--text-color); opacity: 0.8;">Client conversion rate</div>
+                            </div>
+                        </div>
+                        
+                        <blockquote style="font-style: italic; color: var(--text-color); margin: 2rem 0; padding: 1rem; border-left: 3px solid var(--primary-color);">
+                            "223 Media didn't just build us a podcast and website - they created a complete ecosystem that positions me as THE real estate authority in my market. The results speak for themselves."
+                            <footer style="margin-top: 1rem; color: var(--text-color); opacity: 0.8;">- Sarah Mitchell, Real Estate Agent</footer>
+                        </blockquote>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Stats -->
+            <section class="stats fade-in">
+                <div class="stat-card glass-card">
+                    <span class="stat-number">47</span>
+                    <span class="stat-label">Completed Projects</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number">312%</span>
+                    <span class="stat-label">Avg Traffic Increase</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number">2.5M</span>
+                    <span class="stat-label">Total Downloads Generated</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number">89%</span>
+                    <span class="stat-label">Client Satisfaction Rate</span>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section fade-in">
+                <h2>Ready to Join Our Success Stories?</h2>
+                <p>See how we can transform your content into a powerful ecosystem that drives real business results</p>
+                <a href="#" onclick="showPage('start')" class="btn">Start Your Transformation</a>
+            </section>
+        </div>
+    </div>
+
+    <!-- Page 4: About -->
+    <div id="about" class="page">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content fade-in">
+                    <h1>The Integration Advantage</h1>
+                    <p class="subtitle">Why integrated content ecosystems outperform scattered efforts by 300%</p>
+                </div>
+            </section>
+
+            <!-- Our Story -->
+            <section class="fade-in">
+                <div class="glass-card" style="margin-bottom: 4rem;">
+                    <h2>Our Story: From Scattered to Systematic</h2>
+                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                        We founded 223 Media after witnessing countless businesses struggle with the same problem: creating amazing content that never reached its full potential. Podcasts with no web presence. Websites with no ongoing content. Social media disconnected from everything else.
+                    </p>
+                    <p style="font-size: 1.2rem; line-height: 1.8; margin-bottom: 2rem;">
+                        We realized that the future belongs to businesses that don't just create content - but create content <strong>ecosystems</strong>. Systems where every piece of content amplifies every other piece. Where your podcast drives website traffic, your website captures leads, and your social media multiplies everything.
+                    </p>
+                    <p style="font-size: 1.2rem; line-height: 1.8;">
+                        Today, we're the only agency that specializes exclusively in creating these integrated ecosystems. Not just podcast production. Not just website development. Complete systems that work together to create exponential growth.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Why Integration Works -->
+            <section class="features fade-in">
+                <div class="feature-card glass-card">
+                    <div class="feature-icon integration"></div>
+                    <h3>Compound Growth Effect</h3>
+                    <p>When platforms work together instead of independently, growth compounds. Your podcast audience becomes website visitors. Website visitors become email subscribers. Email subscribers become customers. Each platform feeds the others.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon success"></div>
+                    <h3>Content Multiplication</h3>
+                    <p>One podcast episode becomes 15+ pieces of content: blog posts, social media content, email newsletters, website copy, and more. Instead of creating from scratch, you're maximizing every piece of content you already create.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon growth"></div>
+                    <h3>Unified Messaging</h3>
+                    <p>Consistent branding and messaging across all platforms builds trust and authority faster. Your audience sees the same professional quality everywhere they encounter your brand, creating a cohesive experience.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon"></div>
+                    <h3>Data Integration</h3>
+                    <p>Analytics from all platforms inform each other. Podcast topics that perform well become blog posts. Popular blog content becomes podcast episodes. You're making data-driven decisions across your entire content strategy.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon success"></div>
+                    <h3>Cost Efficiency</h3>
+                    <p>Integrated systems are 60% more cost-effective than managing separate platforms. One team, one strategy, one cohesive approach saves time, money, and energy while delivering better results.</p>
+                </div>
+                <div class="feature-card glass-card">
+                    <div class="feature-icon growth"></div>
+                    <h3>Scalable Systems</h3>
+                    <p>As your business grows, integrated ecosystems scale seamlessly. Add new platforms, expand content types, or increase production volume - the system grows with you without breaking.</p>
+                </div>
+            </section>
+
+            <!-- Team -->
+            <section class="fade-in">
+                <h2 style="text-align: center; margin-bottom: 2rem;">The 223 Media Team</h2>
+                <div class="team">
+                    <div class="team-member glass-card">
+                        <div class="team-avatar"></div>
+                        <h3>Founder & CEO</h3>
+                        <p style="color: var(--text-color); margin-bottom: 1rem; opacity: 0.8;">Content Ecosystem Strategist</p>
+                        <p>10+ years building integrated content systems for businesses. Pioneer of the content ecosystem methodology that transforms scattered efforts into exponential growth.</p>
+                    </div>
+                    <div class="team-member glass-card">
+                        <div class="team-avatar"></div>
+                        <h3>Lead Audio Engineer</h3>
+                        <p style="color: var(--text-color); margin-bottom: 1rem; opacity: 0.8;">Podcast Production Specialist</p>
+                        <p>Professional audio engineer with expertise in podcast post-production. Transforms raw recordings into broadcast-quality content that commands attention and builds authority.</p>
+                    </div>
+                    <div class="team-member glass-card">
+                        <div class="team-avatar"></div>
+                        <h3>Technical Director</h3>
+                        <p style="color: var(--accent-color); margin-bottom: 1rem;">Website Development Lead</p>
+                        <p>Full-stack developer specializing in high-conversion websites and custom integrations. Builds the technical infrastructure that makes content ecosystems work seamlessly.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Results Philosophy -->
+            <section class="cta-section fade-in">
+                <h2>Our Philosophy: Results Over Everything</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    We don't create content for the sake of content. We create content ecosystems that drive real business results. Every piece of content, every website feature, every integration decision is made with one question in mind: "Does this help our client grow their business?"
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--success-color); margin-bottom: 0.5rem;">300%</div>
+                        <div style="color: var(--text-color); opacity: 0.8;">Average increase in content ROI</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--success-color); margin-bottom: 0.5rem;">15x</div>
+                        <div style="color: var(--text-color); opacity: 0.8;">Content multiplication factor</div>
+                    </div>
+                    <div style="text-align: center;">
+                        <div style="font-size: 2.5rem; font-weight: bold; color: var(--success-color); margin-bottom: 0.5rem;">2x</div>
+                        <div style="color: var(--text-color); opacity: 0.8;">Faster audience growth</div>
+                    </div>
+                </div>
+                <a href="#" onclick="showPage('start')" class="btn">Experience The Difference</a>
+            </section>
+        </div>
+    </div>
+
+    <!-- Page 5: Start Your Ecosystem -->
+    <div id="start" class="page">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content fade-in">
+                    <h1>Choose Your Content Ecosystem</h1>
+                    <p class="subtitle">Select your package and start growing immediately - no calls, no delays, just results</p>
+                </div>
+            </section>
+
+            <!-- Direct Purchase Options -->
+            <section class="pricing fade-in">
+                <div class="pricing-card glass-card">
+                    <h3>Growth Package</h3>
+                    <div class="price">$497<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li>4 podcast episodes per month</li>
+                        <li>Professional editing & mixing</li>
+                        <li>Basic website maintenance</li>
+                        <li>Episode-to-blog conversion</li>
+                        <li>Basic SEO optimization</li>
+                        <li>Social media assets</li>
+                        <li>Monthly analytics report</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/9B6cN6gmid4cf1xahngUM08" target="_blank" class="btn">Start Growing Now</a>
+                </div>
+
+                <div class="pricing-card glass-card featured">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <h3>Scale Package</h3>
+                    <div class="price">$997<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li>8 podcast episodes per month</li>
+                        <li>Advanced editing & mixing</li>
+                        <li>Advanced website features</li>
+                        <li>Complete content repurposing</li>
+                        <li>Advanced SEO strategy</li>
+                        <li>Lead magnet integration</li>
+                        <li>YouTube optimization</li>
+                        <li>Bi-weekly strategy calls</li>
+                        <li>Priority support</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/bJe8wQ0nk1lu8D91KRgUM07" target="_blank" class="btn">Scale Your Growth Now</a>
+                </div>
+
+                <div class="pricing-card glass-card">
+                    <h3>Enterprise-Lite</h3>
+                    <div class="price">$1,497<span class="price-period">/month</span></div>
+                    <ul class="features-list">
+                        <li>12 podcast episodes per month</li>
+                        <li>Enterprise-level production</li>
+                        <li>Enterprise website features</li>
+                        <li>Multi-platform distribution</li>
+                        <li>Custom integrations</li>
+                        <li>Advanced analytics dashboard</li>
+                        <li>Weekly strategy sessions</li>
+                        <li>Dedicated account manager</li>
+                        <li>Custom automation</li>
+                    </ul>
+                    <a href="https://buy.stripe.com/9B6eVe3zw8NW2eLfBHgUM06" target="_blank" class="btn">Dominate Your Market Now</a>
+                </div>
+            </section>
+
+            <!-- Individual Services -->
+            <section class="fade-in" style="margin-top: 4rem;">
+                <h2 style="text-align: center; margin-bottom: 3rem;">Individual Services</h2>
+                <div class="features">
+                    <div class="feature-card glass-card">
+                        <h3>Single Episode Production</h3>
+                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$110<span class="price-period">/episode</span></div>
+                        <p>Test our quality with a single episode. Perfect for trying our service before committing to a monthly package.</p>
+                        <a href="https://buy.stripe.com/aFa3cwfiefckf1x3SZgUM05" target="_blank" class="btn">Order Episode Now</a>
+                    </div>
+
+                    <div class="feature-card glass-card">
+                        <h3>Enterprise Website</h3>
+                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$7,997<span class="price-period">/project</span></div>
+                        <p>Custom enterprise-level website built to scale with your business and integrate with your content strategy.</p>
+                        <a href="https://buy.stripe.com/6oUdRagmi6FO4mTexDgUM04" target="_blank" class="btn">Build Website Now</a>
+                    </div>
+
+                    <div class="feature-card glass-card">
+                        <h3>Website Management</h3>
+                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$297<span class="price-period">/month</span></div>
+                        <p>Ongoing website maintenance and optimization. Keep your site running smoothly while you focus on growth.</p>
+                        <a href="https://buy.stripe.com/00w6oI5HE2py06DdtzgUM02" target="_blank" class="btn">Start Management Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust. Try. Pay. Process -->
+            <section class="fade-in">
+                <div class="glass-card" style="max-width: 800px; margin: 4rem auto; text-align: center;">
+                    <h2 style="margin-bottom: 2rem;">Trust. Try. Pay. Grow.</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
+                        <div>
+                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
+                                <div style="width: 30px; height: 30px; background: white; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+                            </div>
+                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Choose Your Package</h3>
+                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">Select the ecosystem package that fits your business needs and pay securely with Stripe</p>
+                        </div>
+                        <div>
+                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
+                                <div style="width: 30px; height: 30px; background: white; border-radius: 50%;"></div>
+                            </div>
+                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Instant Onboarding</h3>
+                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">Get immediate access to our client portal and automated onboarding sequence</p>
+                        </div>
+                        <div>
+                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
+                                <div style="width: 30px; height: 30px; background: white; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
+                            </div>
+                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Start Growing</h3>
+                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">We immediately begin building your content ecosystem for maximum impact</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Simple Trust Message -->
+            <section class="cta-section fade-in">
+                <h2>Start Growing Your Content Ecosystem Today</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Choose your package and begin transforming your content strategy immediately.
+                </p>
+                <div style="margin: 2rem 0;">
+                    <p style="color: var(--text-color); font-size: 1.1rem; opacity: 0.9;">Secured by Stripe. Cancel anytime.</p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: rgba(32, 12, 42, 0.95); padding: 3rem 0 2rem; margin-top: 4rem; border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-image" style="width: 40px; height: 40px; font-size: 16px;">223</div>
+                        <span class="logo-text" style="font-size: 20px;">223 Media</span>
+                    </div>
+                    <p style="color: var(--text-color); margin-bottom: 1rem; opacity: 0.8;">The Content Ecosystem Company</p>
+                    <p style="color: var(--text-color); font-style: italic; opacity: 0.8;">We Don't Just Tell Your Story. We Design Your Future.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Services</h4>
+                    <ul style="list-style: none; color: var(--text-color);">
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Podcast Production</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Website Development</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Ecosystem Packages</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Website Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Company</h4>
+                    <ul style="list-style: none; color: var(--text-color);">
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('about')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">About Us</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('portfolio')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Portfolio</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('start')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Get Started</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Connect</h4>
+                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">2twenty3media@gmail.com</p>
+                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">223media.com</p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--glass-border); padding-top: 2rem; text-align: center; color: var(--text-color); opacity: 0.7;">
+                <p>&copy; 2025 223 Media. All rights reserved. | Privacy Policy | Terms of Service</p>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        let selectedPackageValue = '';
-        
+        // Page Navigation
         function showPage(pageId) {
             // Hide all pages
             const pages = document.querySelectorAll('.page');
-            pages.forEach(page => page.classList.remove('active'));
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
             
             // Show selected page
             document.getElementById(pageId).classList.add('active');
-        }
-        
-        function selectPackage(packageName) {
-            showPage('onboarding');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find and activate current nav link
+            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+            if (activeLink && activeLink.classList.contains('nav-link')) {
+                activeLink.classList.add('active');
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Trigger animations
             setTimeout(() => {
-                selectPackageOption(packageName);
-            }, 500);
+                triggerAnimations();
+            }, 100);
         }
-        
-        function selectPackageOption(packageName) {
-            // Remove previous selections
-            const options = document.querySelectorAll('.package-option');
-            options.forEach(option => option.classList.remove('selected'));
-            
-            // Add selection to clicked option
-            event.target.closest('.package-option').classList.add('selected');
-            
-            // Update hidden input
-            document.getElementById('selectedPackage').value = packageName;
-            selectedPackageValue = packageName;
-            
-            // Update step indicator
-            const steps = document.querySelectorAll('.step');
-            steps[0].classList.remove('active');
-            steps[1].classList.add('active');
+
+        // Portfolio Filtering
+        function initPortfolioFilter() {
+            const filterButtons = document.querySelectorAll('.portfolio-filter');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+                    
+                    // Filter items
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
         }
-        
-        // Form submission handler
-        document.getElementById('onboardingForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+
+        // Scroll Animations
+        function triggerAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
             
-            // Collect form data
-            const formData = new FormData(this);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
             });
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Header Scroll Effect
+        function initHeaderScroll() {
+            const header = document.getElementById('header');
             
-            // Simulate backend integration
-            console.log('Form submitted:', data);
-            
-            // Update step indicator to show completion
-            const steps = document.querySelectorAll('.step');
-            steps.forEach((step, index) => {
-                step.classList.remove('active');
-                if (index < 4) step.classList.add('active');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(32, 12, 42, 0.98)';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+                } else {
+                    header.style.background = 'rgba(32, 12, 42, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
             });
-            
-            // Show success message
-            alert('Success! Your ecosystem setup is starting. Check your email for next steps and calendar booking link.');
-            
-            // In a real implementation, this would:
-            // 1. Submit to JotForms
-            // 2. Trigger Ontraport automation
-            // 3. Create Usemotion project
-            // 4. Set up HubSpot tracking
-            // 5. Send calendar booking link
-        });
-        
-        // Mobile menu toggle (simple implementation)
+        }
+
+        // Initialize everything when DOM loads
         document.addEventListener('DOMContentLoaded', function() {
-            // Add mobile menu functionality if needed
+            triggerAnimations();
+            initPortfolioFilter();
+            initHeaderScroll();
+            
+            // Add scroll listener for animations
+            window.addEventListener('scroll', triggerAnimations);
+            
+            // Add resize listener for mobile
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    document.querySelector('.nav-links').style.display = 'flex';
+                }
+            });
         });
+
+        // Analytics tracking (replace with your tracking code)
+        function trackEvent(action, category, label) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    'event_category': category,
+                    'event_label': label
+                });
+            }
+        }
+
+        // Track page views
+        function trackPageView(page) {
+            trackEvent('page_view', 'navigation', page);
+        }
+
+        // Enhanced page navigation with tracking
+        const originalShowPage = showPage;
+        showPage = function(pageId) {
+            originalShowPage(pageId);
+            trackPageView(pageId);
+        };
     </script>
 </body>
 </html>
