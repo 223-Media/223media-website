@@ -303,7 +303,7 @@
             display: inline-block;
             padding: 1rem 2rem;
             background: linear-gradient(135deg, var(--primary-color), #e5640a);
-            color: white;
+            color: white !important;
             text-decoration: none;
             border-radius: 50px;
             font-weight: 600;
@@ -366,8 +366,6 @@
             flex-wrap: wrap;
             margin-top: 2rem;
         }
-
-
 
         /* Enhanced Stats Section */
         .stats {
@@ -719,13 +717,13 @@
         }
 
         .form-group select {
-            color: var(--text-color);
-            background: rgba(32, 12, 42, 0.8);
+            color: white !important;
+            background: rgba(32, 12, 42, 0.8) !important;
         }
 
         .form-group select option {
-            background: var(--secondary-color);
-            color: var(--text-color);
+            background: var(--secondary-color) !important;
+            color: white !important;
             padding: 0.5rem;
         }
 
@@ -843,47 +841,6 @@
             transform: translateY(0);
         }
 
-        /* Instagram Reels Scrolling Section */
-        .instagram-reels-section {
-            overflow: hidden;
-        }
-
-        .reels-container {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        .reels-scroll {
-            display: flex;
-            gap: 2rem;
-            animation: scrollReels 40s linear infinite;
-            width: fit-content;
-        }
-
-        .reels-scroll:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scrollReels {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .reel-item {
-            min-width: 300px;
-            flex-shrink: 0;
-        }
-
-        .reel-embed iframe {
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
         /* Contact Form Styling */
         .contact-form {
             max-width: 100%;
@@ -972,19 +929,6 @@
             .portfolio-filter-container {
                 flex-direction: column;
                 align-items: center;
-            }
-
-            .reel-item {
-                min-width: 250px;
-            }
-            
-            .reels-scroll {
-                gap: 1rem;
-            }
-            
-            .reel-embed iframe {
-                width: 250px;
-                height: 444px;
             }
 
             .contact-form {
@@ -1419,8 +1363,6 @@
                 </div>
             </section>
 
-
-
             <!-- CTA Section -->
             <section class="cta-section fade-in">
                 <h2>Ready to Join Our Success Stories?</h2>
@@ -1631,7 +1573,7 @@
         </div>
     </div>
 
-    <!-- Page 7: Privacy Policy -->
+    <!-- Page 6: Privacy Policy -->
     <div id="privacy" class="page">
         <div class="container">
             <section class="hero">
@@ -1744,7 +1686,7 @@
         </div>
     </div>
 
-    <!-- Page 8: Terms of Service -->
+    <!-- Page 7: Terms of Service -->
     <div id="terms" class="page">
         <div class="container">
             <section class="hero">
@@ -1910,6 +1852,9 @@
             </section>
         </div>
     </div>
+
+    <!-- Page 8: Onboarding -->
+    <div id="onboarding" class="page">
         <div class="container">
             <section class="hero">
                 <div class="hero-content fade-in">
@@ -2042,107 +1987,16 @@
         </div>
     </div>
 
-    <!-- Instagram Reels Section - Bottom of Site -->
-    <section class="instagram-reels-section" style="background: var(--glass-bg); backdrop-filter: blur(20px); padding: 4rem 0; margin-top: 4rem;">
+    <!-- Social Media CTA Section -->
+    <section style="background: var(--glass-bg); backdrop-filter: blur(20px); padding: 3rem 0; margin-top: 4rem; text-align: center;">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="margin-bottom: 1rem;">See Our Work in Action</h2>
-                <p style="font-size: 1.2rem; color: var(--text-color); opacity: 0.9; margin-bottom: 2rem;">
-                    Follow our journey and client success stories on Instagram
-                </p>
-                <a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" class="btn" style="margin-bottom: 2rem;">
-                    📱 Follow @twotwentythreemedia
-                </a>
-            </div>
-            
-            <!-- Instagram Reels Scroll -->
-            <div class="reels-container">
-                <div class="reels-scroll">
-                    
-                    <!-- Reel 1 - Client Feedback -->
-                    <div class="reel-item">
-                        <div class="reel-embed">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <!-- Reel 2 - Behind the Scenes -->
-                    <div class="reel-item">
-                        <div class="reel-embed">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_2/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <!-- Reel 3 - Service Demo -->
-                    <div class="reel-item">
-                        <div class="reel-embed">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_3/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <!-- Reel 4 - Tips & Insights -->
-                    <div class="reel-item">
-                        <div class="reel-embed">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_4/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <!-- Duplicate first few reels for seamless loop -->
-                    <div class="reel-item">
-                        <div class="reel-embed">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <div class="reel-item">
-                        <div class="reel-embed">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_2/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <h2 style="margin-bottom: 1rem;">Follow Our Journey</h2>
+            <p style="font-size: 1.2rem; color: var(--text-color); opacity: 0.9; margin-bottom: 2rem;">
+                See behind-the-scenes content and client success stories
+            </p>
+            <a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" class="btn">
+                📱 Follow @twotwentythreemedia
+            </a>
         </div>
     </section>
 
