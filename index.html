@@ -367,131 +367,6 @@
             margin-top: 2rem;
         }
 
-        /* Hero Video Styles */
-        .hero-video {
-            margin: 2rem 0;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin: 0 auto;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .video-container video {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .video-controls {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .video-container:hover .video-controls {
-            opacity: 1;
-        }
-
-        .video-sound-toggle {
-            background: rgba(0,0,0,0.7);
-            border: none;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 20px;
-            cursor: pointer;
-            font-size: 12px;
-        }
-
-        /* Testimonials Section */
-        .testimonials-section {
-            overflow: hidden;
-            padding: 4rem 0;
-        }
-
-        .testimonials-container {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        .testimonials-scroll {
-            display: flex;
-            gap: 2rem;
-            animation: scrollTestimonials 30s linear infinite;
-            width: fit-content;
-        }
-
-        .testimonials-scroll:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scrollTestimonials {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .testimonial-card {
-            min-width: 350px;
-            flex-shrink: 0;
-            background: var(--glass-bg);
-            backdrop-filter: blur(20px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .testimonial-stars {
-            color: #ffd700;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1.5rem;
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
-        .testimonial-author {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .author-avatar {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-
-        .author-info h4 {
-            margin: 0;
-            color: var(--text-color);
-        }
-
-        .author-info p {
-            margin: 0;
-            color: var(--text-color);
-            opacity: 0.8;
-            font-size: 0.9rem;
-        }
-
         /* Enhanced Stats Section */
         .stats {
             display: grid;
@@ -876,6 +751,46 @@
             opacity: 0.8;
         }
 
+        /* Team Section */
+        .team {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .team-member {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .team-avatar::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .team-member:hover .team-avatar {
+            transform: scale(1.05);
+        }
+
         /* CTA Sections */
         .cta-section {
             text-align: center;
@@ -983,7 +898,7 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
-        /* Mobile Responsiveness */
+        /* Mobile Responsiveness for Reels and Contact Form */
         @media (max-width: 768px) {
             .reel-item {
                 min-width: 250px;
@@ -1001,7 +916,7 @@
             .contact-form {
                 padding: 1rem;
             }
-            
+        }
             .nav-links {
                 display: none;
             }
@@ -1035,14 +950,6 @@
                 flex-direction: column;
                 align-items: center;
             }
-
-            .testimonials-scroll {
-                gap: 1rem;
-            }
-            
-            .testimonial-card {
-                min-width: 300px;
-            }
         }
 
         @media (max-width: 480px) {
@@ -1056,10 +963,6 @@
 
             .features {
                 grid-template-columns: 1fr;
-            }
-
-            .testimonial-card {
-                min-width: 280px;
             }
         }
     </style>
@@ -1086,7 +989,6 @@
                 <li><a href="#" onclick="showPage('services')" class="nav-link">Services</a></li>
                 <li><a href="#" onclick="showPage('portfolio')" class="nav-link">Portfolio</a></li>
                 <li><a href="#" onclick="showPage('about')" class="nav-link">About</a></li>
-                <li><a href="#" onclick="showPage('contact')" class="nav-link">Contact</a></li>
                 <li><a href="#" onclick="showPage('start')" class="nav-link btn" style="padding: 0.5rem 1rem; margin-left: 1rem;">Choose Package</a></li>
                 <li><a href="#" onclick="showPage('onboarding')" class="nav-link" id="onboarding-nav" style="display: none;">Onboarding</a></li>
             </ul>
@@ -1104,8 +1006,8 @@
                     <p class="subtitle">Transform your podcast into a complete digital growth engine that amplifies your voice, grows your audience, and drives real business results</p>
                     
                     <!-- Video Section -->
-                    <div class="hero-video">
-                        <div class="video-container">
+                    <div class="hero-video" style="margin: 2rem 0;">
+                        <div style="position: relative; width: 100%; max-width: 600px; margin: 0 auto; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
                             <video 
                                 width="100%" 
                                 height="auto" 
@@ -1113,8 +1015,7 @@
                                 loop 
                                 muted 
                                 playsinline
-                                onplay="trackVideoPlay()"
-                                onclick="trackVideoClick()"
+                                style="display: block;"
                             >
                                 <source src="https://dl.dropboxusercontent.com/scl/fi/ukvhlgfz2k2zve6hy1esa/Copy-of-gaming-channel.mp4?rlkey=o87190ok2yamnq3myj7p0r3ju&dl=1" type="video/mp4">
                                 <!-- Fallback for browsers that don't support video -->
@@ -1125,9 +1026,9 @@
                                 </div>
                             </video>
                             
-                            <!-- Video controls overlay (shows on hover) -->
-                            <div class="video-controls">
-                                <button class="video-sound-toggle" onclick="toggleVideoSound()" id="soundToggle">
+                            <!-- Optional: Video controls overlay (shows on hover) -->
+                            <div class="video-controls" style="position: absolute; bottom: 10px; right: 10px; opacity: 0; transition: opacity 0.3s ease;">
+                                <button onclick="toggleVideoSound()" style="background: rgba(0,0,0,0.7); border: none; color: white; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 12px;">
                                     🔇 Unmute
                                 </button>
                             </div>
@@ -1135,118 +1036,16 @@
                     </div>
                     
                     <div class="hero-buttons">
-                        <a href="https://buy.stripe.com/bJe8wQ0nk1lu8D91KRgUM07" target="_blank" class="btn" onclick="trackEvent('conversion', 'cta_click', 'hero_primary')">Start Your Ecosystem</a>
+                        <a href="https://buy.stripe.com/bJe8wQ0nk1lu8D91KRgUM07" target="_blank" class="btn">Start Your Ecosystem</a>
                         <a href="#" onclick="showPage('portfolio')" class="btn-secondary">View Our Work</a>
                     </div>
                 </div>
             </section>
 
-            <!-- Client Testimonials Scrolling Section -->
-            <section class="testimonials-section fade-in">
-                <div class="container">
-                    <div style="text-align: center; margin-bottom: 3rem;">
-                        <h2>What Our Clients Say</h2>
-                        <p style="font-size: 1.2rem; color: var(--text-color); opacity: 0.9; margin-bottom: 2rem;">
-                            Real results from real businesses transforming their content ecosystems
-                        </p>
-                    </div>
-                    
-                    <!-- Scrolling Testimonials -->
-                    <div class="testimonials-container">
-                        <div class="testimonials-scroll">
-                            <!-- Testimonial 1 -->
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <p class="testimonial-text">"223 Media transformed our scattered content into a cohesive ecosystem. Our podcast now drives 400% more traffic to our website, and we're generating qualified leads every week."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">SM</div>
-                                    <div class="author-info">
-                                        <h4>Sarah Mitchell</h4>
-                                        <p>CEO, Growth Strategies Inc.</p>
-                                    </div>
-                                </div>
-                            </div>
+            <!-- Client Testimonials Scrolling Section - REMOVED -->
+            <!-- Replaced with Instagram Reels section at bottom -->
 
-                            <!-- Testimonial 2 -->
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <p class="testimonial-text">"The content multiplication approach is genius. One podcast episode becomes 15+ pieces of content. We went from struggling to post consistently to having content for months."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">MJ</div>
-                                    <div class="author-info">
-                                        <h4>Marcus Johnson</h4>
-                                        <p>Founder, TechForward Consulting</p>
-                                    </div>
-                                </div>
-                            </div>
 
-                            <!-- Testimonial 3 -->
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <p class="testimonial-text">"Professional podcast production that makes us sound like a major media company. Our credibility skyrocketed, and we're booking higher-value clients than ever."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">LC</div>
-                                    <div class="author-info">
-                                        <h4>Lisa Chen</h4>
-                                        <p>Host, Real Estate Mastery Podcast</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Testimonial 4 -->
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <p class="testimonial-text">"The integrated website and podcast approach is brilliant. Our content works together instead of competing for attention. ROI was positive within the first month."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">RK</div>
-                                    <div class="author-info">
-                                        <h4>Robert Kumar</h4>
-                                        <p>Director, Innovation Labs</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Testimonial 5 -->
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <p class="testimonial-text">"Finally, someone who understands that content needs to work as a system, not individual pieces. 223 Media gets it. Our growth has been exponential."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">AG</div>
-                                    <div class="author-info">
-                                        <h4>Amanda Green</h4>
-                                        <p>CMO, Digital Transformation Co.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Duplicate first few testimonials for seamless loop -->
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <p class="testimonial-text">"223 Media transformed our scattered content into a cohesive ecosystem. Our podcast now drives 400% more traffic to our website, and we're generating qualified leads every week."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">SM</div>
-                                    <div class="author-info">
-                                        <h4>Sarah Mitchell</h4>
-                                        <p>CEO, Growth Strategies Inc.</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="testimonial-card">
-                                <div class="testimonial-stars">★★★★★</div>
-                                <p class="testimonial-text">"The content multiplication approach is genius. One podcast episode becomes 15+ pieces of content. We went from struggling to post consistently to having content for months."</p>
-                                <div class="testimonial-author">
-                                    <div class="author-avatar">MJ</div>
-                                    <div class="author-info">
-                                        <h4>Marcus Johnson</h4>
-                                        <p>Founder, TechForward Consulting</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
 
             <!-- Problem/Solution Section -->
             <section class="features fade-in">
@@ -1403,628 +1202,7 @@
                             <li>Analytics reporting</li>
                             <li>Technical support</li>
                         </ul>
-                        <a href="https://buy.stripe.com/00w6oI5HE2py06DdtzgUM02" target="_blank" class="btn">Start Management Now</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Trust. Try. Pay. Process -->
-            <section class="fade-in">
-                <div class="glass-card" style="max-width: 800px; margin: 4rem auto; text-align: center;">
-                    <h2 style="margin-bottom: 2rem;">Trust. Try. Pay. Grow.</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
-                        <div>
-                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
-                                <div style="width: 30px; height: 30px; background: white; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
-                            </div>
-                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Choose Your Package</h3>
-                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">Select the ecosystem package that fits your business needs and pay securely with Stripe</p>
-                        </div>
-                        <div>
-                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
-                                <div style="width: 30px; height: 30px; background: white; border-radius: 50%;"></div>
-                            </div>
-                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Instant Onboarding</h3>
-                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">Get immediate access to our client portal and automated onboarding sequence</p>
-                        </div>
-                        <div>
-                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
-                                <div style="width: 30px; height: 30px; background: white; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
-                            </div>
-                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Start Growing</h3>
-                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">We immediately begin building your content ecosystem for maximum impact</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- CTA Section -->
-            <section class="cta-section fade-in">
-                <h2>Get Started Today</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                    Choose your package and begin transforming your content strategy immediately.
-                </p>
-                <div style="margin: 2rem 0;">
-                    <p style="color: var(--text-color); font-size: 1.1rem; opacity: 0.9;">Secured by Stripe. Cancel anytime.</p>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <!-- Page 7: Onboarding -->
-    <div id="onboarding" class="page">
-        <div class="container">
-            <section class="hero">
-                <div class="hero-content fade-in">
-                    <h1>Welcome to Your Content Ecosystem! 🎉</h1>
-                    <p class="subtitle">Thank you for choosing 223 Media! Your payment has been processed successfully.</p>
-                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-color); opacity: 0.8;">
-                        Please complete the onboarding form below so we can create your custom content ecosystem.
-                    </p>
-                </div>
-            </section>
-
-            <!-- Onboarding Form -->
-            <section class="fade-in">
-                <div class="glass-card" style="max-width: 900px; margin: 0 auto 2rem;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Client Onboarding Form</h2>
-                    
-                    <!-- JotForms Integration Placeholder -->
-                    <div id="jotform-container" style="margin-bottom: 2rem;">
-                        <!-- Replace with your actual JotForms embed code -->
-                        <script type="text/javascript" src="https://form.jotform.com/jsform/YOUR_FORM_ID"></script>
-                        
-                        <!-- Setup Instructions (Remove after setup) -->
-                        <div style="padding: 2rem; background: rgba(120, 108, 126, 0.1); border-radius: 15px; border: 1px solid rgba(120, 108, 126, 0.3);">
-                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🔧 Setup Instructions:</h3>
-                            <ol style="color: var(--text-color); line-height: 1.6; padding-left: 1.5rem;">
-                                <li>Create your onboarding form in JotForms with fields for:
-                                    <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
-                                        <li>Client contact information</li>
-                                        <li>Business details and goals</li>
-                                        <li>Current content channels</li>
-                                        <li>Podcast topic and format preferences</li>
-                                        <li>Website requirements</li>
-                                        <li>Brand guidelines and preferences</li>
-                                    </ul>
-                                </li>
-                                <li>Enable Stripe integration in JotForms</li>
-                                <li>Set up Zapier: JotForms → Motion project creation</li>
-                                <li>Replace "YOUR_FORM_ID" with your actual form ID</li>
-                                <li>Test the complete workflow</li>
-                            </ol>
-                        </div>
-                    </div>
-
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <p style="color: var(--text-color); opacity: 0.7; font-size: 0.9rem;">
-                            This form will automatically create your project in our system and assign your dedicated team.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- What Happens Next -->
-            <section class="fade-in">
-                <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">What Happens Next?</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">1</span>
-                            </div>
-                            <div>
-                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Project Creation</h4>
-                                <p style="color: var(--text-color); opacity: 0.8;">Your project is automatically created in our Motion system with assessment tasks assigned to our team.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">2</span>
-                            </div>
-                            <div>
-                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Team Assignment</h4>
-                                <p style="color: var(--text-color); opacity: 0.8;">Your dedicated content ecosystem team is assigned and immediately notified to begin work.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">3</span>
-                            </div>
-                            <div>
-                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Initial Contact</h4>
-                                <p style="color: var(--text-color); opacity: 0.8;">You'll receive a welcome email within 24 hours with your project timeline and next steps.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">4</span>
-                            </div>
-                            <div>
-                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Content Production</h4>
-                                <p style="color: var(--text-color); opacity: 0.8;">Your content ecosystem begins production according to your chosen package within 48 hours.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <!-- Instagram Reels Section - Bottom of Site -->
-    <section class="instagram-reels-section" style="background: var(--glass-bg); backdrop-filter: blur(20px); padding: 4rem 0; margin-top: 4rem;">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="margin-bottom: 1rem;">See Our Work in Action</h2>
-                <p style="font-size: 1.2rem; color: var(--text-color); opacity: 0.9; margin-bottom: 2rem;">
-                    Follow our journey and client success stories on Instagram
-                </p>
-                <a href="https://www.instagram.com/twotwentythreemedia/reels/" target="_blank" class="btn" style="margin-bottom: 2rem;">
-                    📱 Follow @twotwentythreemedia
-                </a>
-            </div>
-            
-            <!-- Instagram Reels Scroll -->
-            <div class="reels-container" style="overflow: hidden; width: 100%; position: relative;">
-                <div class="reels-scroll" style="display: flex; gap: 2rem; animation: scrollReels 40s linear infinite; width: fit-content;">
-                    
-                    <!-- Reel 1 - Client Feedback -->
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C_MDC84tSuJ/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:15px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:300px; min-width:300px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-                                <div style="padding:16px;">
-                                    <a href="https://www.instagram.com/reel/C_MDC84tSuJ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
-                                        <div style=" display: flex; flex-direction: row; align-items: center;">
-                                            <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
-                                            <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
-                                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
-                                            </div>
-                                        </div>
-                                        <div style="padding: 19% 0;"></div>
-                                        <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
-                                            <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                                                        <g>
-                                                            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div style="padding-top: 8px;">
-                                            <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
-                                        </div>
-                                        <div style="padding: 12.5% 0;"></div>
-                                    </a>
-                                    <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
-                                        <a href="https://www.instagram.com/reel/C_MDC84tSuJ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by twotwentythreemedia (@twotwentythreemedia)</a>
-                                    </p>
-                                </div>
-                            </blockquote>
-                        </div>
-                    </div>
-
-                    <!-- Placeholder reels - Replace with actual Instagram embeds -->
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div style="width: 300px; height: 533px; background: var(--glass-bg); border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <div style="text-align: center; color: var(--text-color);">
-                                <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
-                                    <span style="color: white; font-size: 24px;">📱</span>
-                                </div>
-                                <h4>Behind the Scenes</h4>
-                                <p style="opacity: 0.8;">Content Creation Process</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div style="width: 300px; height: 533px; background: var(--glass-bg); border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <div style="text-align: center; color: var(--text-color);">
-                                <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
-                                    <span style="color: white; font-size: 24px;">🎙️</span>
-                                </div>
-                                <h4>Podcast Tips</h4>
-                                <p style="opacity: 0.8;">Professional Audio Setup</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div style="width: 300px; height: 533px; background: var(--glass-bg); border-radius: 15px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <div style="text-align: center; color: var(--text-color);">
-                                <div style="width: 60px; height: 60px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
-                                    <span style="color: white; font-size: 24px;">💰</span>
-                                </div>
-                                <h4>Success Stories</h4>
-                                <p style="opacity: 0.8;">Client Results</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Duplicate for seamless loop -->
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C_MDC84tSuJ/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:15px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:300px; min-width:300px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-                                <div style="padding:16px;">
-                                    <a href="https://www.instagram.com/reel/C_MDC84tSuJ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
-                                        <div style=" display: flex; flex-direction: row; align-items: center;">
-                                            <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
-                                            <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
-                                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
-                                            </div>
-                                        </div>
-                                        <div style="padding: 19% 0;"></div>
-                                    </a>
-                                </div>
-                            </blockquote>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Privacy Policy Modal -->
-    <div id="privacyModal" class="modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto;">
-        <div class="modal-content" style="background: var(--glass-bg); backdrop-filter: blur(20px); margin: 5% auto; padding: 2rem; width: 90%; max-width: 800px; border-radius: 20px; border: 1px solid var(--glass-border); max-height: 80vh; overflow-y: auto;">
-            <span class="close" onclick="closeModal('privacyModal')" style="color: var(--text-color); float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-            <h2 style="color: var(--text-color); margin-bottom: 2rem;">Privacy Policy</h2>
-            <div style="color: var(--text-color); line-height: 1.6;">
-                <p><strong>Last updated:</strong> January 2025</p>
-                
-                <h3>Information We Collect</h3>
-                <p>We collect information you provide directly to us, such as when you create an account, make a purchase, or contact us for support.</p>
-                
-                <h3>How We Use Your Information</h3>
-                <p>We use the information we collect to provide, maintain, and improve our services, process transactions, and communicate with you.</p>
-                
-                <h3>Information Sharing</h3>
-                <p>We do not sell, trade, or otherwise transfer your personal information to third parties except as described in this policy.</p>
-                
-                <h3>Data Security</h3>
-                <p>We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
-                
-                <h3>Contact Us</h3>
-                <p>If you have questions about this Privacy Policy, please contact us at 2twenty3media@gmail.com</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Terms of Service Modal -->
-    <div id="termsModal" class="modal" style="display: none; position: fixed; z-index: 10000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); overflow-y: auto;">
-        <div class="modal-content" style="background: var(--glass-bg); backdrop-filter: blur(20px); margin: 5% auto; padding: 2rem; width: 90%; max-width: 800px; border-radius: 20px; border: 1px solid var(--glass-border); max-height: 80vh; overflow-y: auto;">
-            <span class="close" onclick="closeModal('termsModal')" style="color: var(--text-color); float: right; font-size: 28px; font-weight: bold; cursor: pointer;">&times;</span>
-            <h2 style="color: var(--text-color); margin-bottom: 2rem;">Terms of Service</h2>
-            <div style="color: var(--text-color); line-height: 1.6;">
-                <p><strong>Last updated:</strong> January 2025</p>
-                
-                <h3>1. Acceptance of Terms</h3>
-                <p>By accessing and using 223 Media services, you accept and agree to be bound by the terms and provision of this agreement.</p>
-                
-                <h3>2. Services Description</h3>
-                <p>223 Media provides content ecosystem services including podcast production, website development, and content marketing services.</p>
-                
-                <h3>3. Payment and Billing</h3>
-                <p>Payment for services is processed through Stripe. Subscriptions are billed monthly and can be cancelled anytime with 30 days notice.</p>
-                
-                <h3>4. Intellectual Property</h3>
-                <p>Content created by 223 Media becomes the intellectual property of the client upon full payment. 223 Media retains the right to showcase work in portfolios.</p>
-                
-                <h3>5. Limitation of Liability</h3>
-                <p>223 Media shall not be liable for any indirect, incidental, special, consequential, or punitive damages.</p>
-                
-                <h3>6. Contact Information</h3>
-                <p>For questions regarding these terms, contact us at 2twenty3media@gmail.com</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Footer -->
-    <footer style="background: rgba(32, 12, 42, 0.95); padding: 3rem 0 2rem; margin-top: 4rem; border-top: 1px solid var(--glass-border);">
-        <div class="container">
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
-                <div>
-                    <div class="logo" style="margin-bottom: 1rem;">
-                        <div class="logo-image" style="width: 40px; height: 40px; font-size: 16px;">223</div>
-                        <span class="logo-text" style="font-size: 20px;">223 Media</span>
-                    </div>
-                    <p style="color: var(--text-color); margin-bottom: 1rem; opacity: 0.8;">The Content Ecosystem Company</p>
-                    <p style="color: var(--text-color); font-style: italic; opacity: 0.8;">"We Don't Just Tell Your Story. We Design Your Future."</p>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 1rem;">Services</h4>
-                    <ul style="list-style: none; color: var(--text-color);">
-                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Podcast Production</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Website Development</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Ecosystem Packages</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Website Management</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 1rem;">Company</h4>
-                    <ul style="list-style: none; color: var(--text-color);">
-                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('about')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">About Us</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('portfolio')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Portfolio</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('start')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Get Started</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('contact')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Contact</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 style="margin-bottom: 1rem;">Connect</h4>
-                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">📧 2twenty3media@gmail.com</p>
-                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">📱 <a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" style="color: var(--text-color); text-decoration: none;">@twotwentythreemedia</a></p>
-                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">📞 Contact form available</p>
-                </div>
-            </div>
-            <div style="border-top: 1px solid var(--glass-border); padding-top: 2rem; text-align: center; color: var(--text-color); opacity: 0.7;">
-                <p>&copy; 2025 223 Media. All rights reserved. | 
-                    <a href="#" onclick="openModal('privacyModal')" style="color: var(--text-color); text-decoration: none;">Privacy Policy</a> | 
-                    <a href="#" onclick="openModal('termsModal')" style="color: var(--text-color); text-decoration: none;">Terms of Service</a>
-                </p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Include Instagram embed script -->
-    <script async src="//www.instagram.com/embed.js"></script>
-
-    <script>
-        // Page Navigation
-        function showPage(pageId) {
-            // Hide all pages
-            const pages = document.querySelectorAll('.page');
-            pages.forEach(page => {
-                page.classList.remove('active');
-            });
-            
-            // Show selected page
-            document.getElementById(pageId).classList.add('active');
-            
-            // Update navigation
-            const navLinks = document.querySelectorAll('.nav-link');
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-            });
-            
-            // Find and activate current nav link
-            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
-            if (activeLink && activeLink.classList.contains('nav-link')) {
-                activeLink.classList.add('active');
-            }
-            
-            // Show/hide onboarding nav
-            const onboardingNav = document.getElementById('onboarding-nav');
-            if (pageId === 'onboarding') {
-                onboardingNav.style.display = 'block';
-            } else if (pageId !== 'onboarding') {
-                onboardingNav.style.display = 'none';
-            }
-            
-            // Scroll to top
-            window.scrollTo(0, 0);
-            
-            // Trigger animations
-            setTimeout(() => {
-                triggerAnimations();
-            }, 100);
-        }
-
-        // Check for onboarding redirect
-        function checkOnboardingRedirect() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const sessionId = urlParams.get('session_id');
-            const onboard = urlParams.get('onboard');
-            
-            if (sessionId || onboard === 'true') {
-                // Show onboarding page
-                showPage('onboarding');
-                
-                // Track conversion
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'purchase', {
-                        'transaction_id': sessionId,
-                        'value': 1,
-                        'currency': 'USD'
-                    });
-                }
-            }
-        }
-
-        // Portfolio Filtering
-        function initPortfolioFilter() {
-            const filterButtons = document.querySelectorAll('.portfolio-filter');
-            const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-            filterButtons.forEach(button => {
-                button.addEventListener('click', () => {
-                    const filter = button.getAttribute('data-filter');
-                    
-                    // Update active button
-                    filterButtons.forEach(btn => {
-                        btn.classList.remove('active');
-                    });
-                    button.classList.add('active');
-                    
-                    // Filter items
-                    portfolioItems.forEach(item => {
-                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
-                            item.style.display = 'block';
-                        } else {
-                            item.style.display = 'none';
-                        }
-                    });
-                });
-            });
-        }
-
-        // Scroll Animations
-        function triggerAnimations() {
-            const elements = document.querySelectorAll('.fade-in');
-            
-            elements.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
-        // Mobile Menu
-        function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
-        }
-
-        // Header Scroll Effect
-        function initHeaderScroll() {
-            const header = document.getElementById('header');
-            
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 100) {
-                    header.style.background = 'rgba(32, 12, 42, 0.98)';
-                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
-                } else {
-                    header.style.background = 'rgba(32, 12, 42, 0.95)';
-                    header.style.boxShadow = 'none';
-                }
-            });
-        }
-
-        // Video Functions
-        function toggleVideoSound() {
-            const video = document.querySelector('.hero-video video');
-            const button = document.getElementById('soundToggle');
-            
-            if (video.muted) {
-                video.muted = false;
-                button.textContent = '🔊 Mute';
-            } else {
-                video.muted = true;
-                button.textContent = '🔇 Unmute';
-            }
-        }
-
-        function trackVideoPlay() {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'video_play', {
-                    'event_category': 'engagement',
-                    'event_label': 'hero_video'
-                });
-            }
-        }
-
-        function trackVideoClick() {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'video_click', {
-                    'event_category': 'engagement',
-                    'event_label': 'hero_video'
-                });
-            }
-        }
-
-        // Contact Form Handler
-        function handleContactSubmit(event) {
-            event.preventDefault();
-            
-            const formData = new FormData(event.target);
-            const data = Object.fromEntries(formData);
-            
-            // Here you would normally send the data to your server
-            // For now, we'll just log it and show a success message
-            console.log('Contact form submitted:', data);
-            
-            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
-            event.target.reset();
-            
-            // Track form submission
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'form_submit', {
-                    'event_category': 'contact',
-                    'event_label': 'contact_form'
-                });
-            }
-        }
-
-        // Modal Functions
-        function openModal(modalId) {
-            document.getElementById(modalId).style.display = 'block';
-        }
-
-        function closeModal(modalId) {
-            document.getElementById(modalId).style.display = 'none';
-        }
-
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modals = document.querySelectorAll('.modal');
-            modals.forEach(modal => {
-                if (event.target === modal) {
-                    modal.style.display = 'none';
-                }
-            });
-        }
-
-        // Analytics tracking (replace with your tracking code)
-        function trackEvent(action, category, label) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', action, {
-                    'event_category': category,
-                    'event_label': label
-                });
-            }
-        }
-
-        // Track page views
-        function trackPageView(page) {
-            trackEvent('page_view', 'navigation', page);
-        }
-
-        // Enhanced page navigation with tracking
-        const originalShowPage = showPage;
-        showPage = function(pageId) {
-            originalShowPage(pageId);
-            trackPageView(pageId);
-        };
-
-        // Initialize everything when DOM loads
-        document.addEventListener('DOMContentLoaded', function() {
-            checkOnboardingRedirect();
-            triggerAnimations();
-            initPortfolioFilter();
-            initHeaderScroll();
-            
-            // Add scroll listener for animations
-            window.addEventListener('scroll', triggerAnimations);
-            
-            // Add resize listener for mobile
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768) {
-                    document.querySelector('.nav-links').style.display = 'flex';
-                }
-            });
-
-            // Pause scrolling animations on touch devices
-            const scrollingElements = document.querySelectorAll('.testimonials-scroll, .reels-scroll');
-            scrollingElements.forEach(element => {
-                element.addEventListener('touchstart', () => {
-                    element.style.animationPlayState = 'paused';
-                });
-                
-                element.addEventListener('touchend', () => {
-                    setTimeout(() => {
-                        element.style.animationPlayState = 'running';
-                    }, 2000);
-                });
-            });
-        });
-    </script>
-</body>
-</html>btn">Manage My Website</a>
+                        <a href="https://buy.stripe.com/00w6oI5HE2py06DdtzgUM02" target="_blank" class="btn">Manage My Website</a>
                     </div>
                 </div>
             </section>
@@ -2210,6 +1388,28 @@
                         </div>
                     </div>
                 </div>
+
+
+            </section>
+
+            <!-- Portfolio Stats -->
+            <section class="stats fade-in">
+                <div class="stat-card glass-card">
+                    <span class="stat-number">47</span>
+                    <span class="stat-label">Completed Projects</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number">312%</span>
+                    <span class="stat-label">Avg Traffic Increase</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number">2.5M</span>
+                    <span class="stat-label">Total Downloads Generated</span>
+                </div>
+                <div class="stat-card glass-card">
+                    <span class="stat-number">89%</span>
+                    <span class="stat-label">Client Satisfaction Rate</span>
+                </div>
             </section>
 
             <!-- CTA Section -->
@@ -2281,214 +1481,13 @@
                 </div>
             </section>
 
-            <!-- Social Media Section -->
-            <section class="fade-in">
-                <div class="glass-card" style="text-align: center; margin-bottom: 4rem;">
-                    <h3>Follow Our Journey</h3>
-                    <p>See behind-the-scenes content and client success stories on our social media channels.</p>
-                    
-                    <!-- Featured Client Feedback Post -->
-                    <div style="max-width: 500px; margin: 2rem auto; padding: 1.5rem; background: var(--glass-bg); backdrop-filter: blur(20px); border: 1px solid var(--glass-border); border-radius: 20px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                        <h4 style="text-align: center; margin-bottom: 1rem; color: var(--primary-color);">Client Success Story</h4>
-                        <div style="display: flex; justify-content: center;">
-                            <blockquote class="instagram-media" data-instgrm-captioned data-instgrm-permalink="https://www.instagram.com/reel/C_MDC84tSuJ/?utm_source=ig_embed&amp;utm_campaign=loading" data-instgrm-version="14" style=" background:#FFF; border:0; border-radius:3px; box-shadow:0 0 1px 0 rgba(0,0,0,0.5),0 1px 10px 0 rgba(0,0,0,0.15); margin: 1px; max-width:400px; min-width:326px; padding:0; width:99.375%; width:-webkit-calc(100% - 2px); width:calc(100% - 2px);">
-                                <div style="padding:16px;">
-                                    <a href="https://www.instagram.com/reel/C_MDC84tSuJ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" background:#FFFFFF; line-height:0; padding:0 0; text-align:center; text-decoration:none; width:100%;" target="_blank">
-                                        <div style=" display: flex; flex-direction: row; align-items: center;">
-                                            <div style="background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 40px; margin-right: 14px; width: 40px;"></div>
-                                            <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center;">
-                                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 100px;"></div>
-                                                <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 60px;"></div>
-                                            </div>
-                                        </div>
-                                        <div style="padding: 19% 0;"></div>
-                                        <div style="display:block; height:50px; margin:0 auto 12px; width:50px;">
-                                            <svg width="50px" height="50px" viewBox="0 0 60 60" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
-                                                <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                                    <g transform="translate(-511.000000, -20.000000)" fill="#000000">
-                                                        <g>
-                                                            <path d="M556.869,30.41 C554.814,30.41 553.148,32.076 553.148,34.131 C553.148,36.186 554.814,37.852 556.869,37.852 C558.924,37.852 560.59,36.186 560.59,34.131 C560.59,32.076 558.924,30.41 556.869,30.41 M541,60.657 C535.114,60.657 530.342,55.887 530.342,50 C530.342,44.114 535.114,39.342 541,39.342 C546.887,39.342 551.658,44.114 551.658,50 C551.658,55.887 546.887,60.657 541,60.657 M541,33.886 C532.1,33.886 524.886,41.1 524.886,50 C524.886,58.899 532.1,66.113 541,66.113 C549.9,66.113 557.115,58.899 557.115,50 C557.115,41.1 549.9,33.886 541,33.886 M565.378,62.101 C565.244,65.022 564.756,66.606 564.346,67.663 C563.803,69.06 563.154,70.057 562.106,71.106 C561.058,72.155 560.06,72.803 558.662,73.347 C557.607,73.757 556.021,74.244 553.102,74.378 C549.944,74.521 548.997,74.552 541,74.552 C533.003,74.552 532.056,74.521 528.898,74.378 C525.979,74.244 524.393,73.757 523.338,73.347 C521.94,72.803 520.942,72.155 519.894,71.106 C518.846,70.057 518.197,69.06 517.654,67.663 C517.244,66.606 516.755,65.022 516.623,62.101 C516.479,58.943 516.448,57.996 516.448,50 C516.448,42.003 516.479,41.056 516.623,37.899 C516.755,34.978 517.244,33.391 517.654,32.338 C518.197,30.938 518.846,29.942 519.894,28.894 C520.942,27.846 521.94,27.196 523.338,26.654 C524.393,26.244 525.979,25.756 528.898,25.623 C532.057,25.479 533.004,25.448 541,25.448 C548.997,25.448 549.943,25.479 553.102,25.623 C556.021,25.756 557.607,26.244 558.662,26.654 C560.06,27.196 561.058,27.846 562.106,28.894 C563.154,29.942 563.803,30.938 564.346,32.338 C564.756,33.391 565.244,34.978 565.378,37.899 C565.522,41.056 565.552,42.003 565.552,50 C565.552,57.996 565.522,58.943 565.378,62.101 M570.82,37.631 C570.674,34.438 570.167,32.258 569.425,30.349 C568.659,28.377 567.633,26.702 565.965,25.035 C564.297,23.368 562.623,22.342 560.652,21.575 C558.743,20.834 556.562,20.326 553.369,20.18 C550.169,20.033 549.148,20 541,20 C532.853,20 531.831,20.033 528.631,20.18 C525.438,20.326 523.257,20.834 521.349,21.575 C519.376,22.342 517.703,23.368 516.035,25.035 C514.368,26.702 513.342,28.377 512.574,30.349 C511.834,32.258 511.326,34.438 511.181,37.631 C511.035,40.831 511,41.851 511,50 C511,58.147 511.035,59.17 511.181,62.369 C511.326,65.562 511.834,67.743 512.574,69.651 C513.342,71.625 514.368,73.296 516.035,74.965 C517.703,76.634 519.376,77.658 521.349,78.425 C523.257,79.167 525.438,79.673 528.631,79.82 C531.831,79.965 532.853,80.001 541,80.001 C549.148,80.001 550.169,79.965 553.369,79.82 C556.562,79.673 558.743,79.167 560.652,78.425 C562.623,77.658 564.297,76.634 565.965,74.965 C567.633,73.296 568.659,71.625 569.425,69.651 C570.167,67.743 570.674,65.562 570.82,62.369 C570.966,59.17 571,58.147 571,50 C571,41.851 570.966,40.831 570.82,37.631"></path>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </svg>
-                                        </div>
-                                        <div style="padding-top: 8px;">
-                                            <div style=" color:#3897f0; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:550; line-height:18px;">View this post on Instagram</div>
-                                        </div>
-                                        <div style="padding: 12.5% 0;"></div>
-                                        <div style="display: flex; flex-direction: row; margin-bottom: 14px; align-items: center;">
-                                            <div>
-                                                <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(0px) translateY(7px);"></div>
-                                                <div style="background-color: #F4F4F4; height: 12.5px; transform: rotate(-45deg) translateX(3px) translateY(1px); width: 12.5px; flex-grow: 0; margin-right: 14px; margin-left: 2px;"></div>
-                                                <div style="background-color: #F4F4F4; border-radius: 50%; height: 12.5px; width: 12.5px; transform: translateX(9px) translateY(-18px);"></div>
-                                            </div>
-                                            <div style="margin-left: 8px;">
-                                                <div style=" background-color: #F4F4F4; border-radius: 50%; flex-grow: 0; height: 20px; width: 20px;"></div>
-                                                <div style=" width: 0; height: 0; border-top: 2px solid transparent; border-left: 6px solid #f4f4f4; border-bottom: 2px solid transparent; transform: translateX(16px) translateY(-4px) rotate(30deg)"></div>
-                                            </div>
-                                            <div style="margin-left: auto;">
-                                                <div style=" width: 0px; border-top: 8px solid #F4F4F4; border-right: 8px solid transparent; transform: translateY(16px);"></div>
-                                                <div style=" background-color: #F4F4F4; flex-grow: 0; height: 12px; width: 16px; transform: translateY(-4px);"></div>
-                                                <div style=" width: 0; height: 0; border-top: 8px solid #F4F4F4; border-left: 8px solid transparent; transform: translateY(-4px) translateX(8px);"></div>
-                                            </div>
-                                        </div>
-                                        <div style="display: flex; flex-direction: column; flex-grow: 1; justify-content: center; margin-bottom: 24px;">
-                                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; margin-bottom: 6px; width: 224px;"></div>
-                                            <div style=" background-color: #F4F4F4; border-radius: 4px; flex-grow: 0; height: 14px; width: 144px;"></div>
-                                        </div>
-                                    </a>
-                                    <p style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; line-height:17px; margin-bottom:0; margin-top:8px; overflow:hidden; padding:8px 0 7px; text-align:center; text-overflow:ellipsis; white-space:nowrap;">
-                                        <a href="https://www.instagram.com/reel/C_MDC84tSuJ/?utm_source=ig_embed&amp;utm_campaign=loading" style=" color:#c9c8cd; font-family:Arial,sans-serif; font-size:14px; font-style:normal; font-weight:normal; line-height:17px; text-decoration:none;" target="_blank">A post shared by twotwentythreemedia (@twotwentythreemedia)</a>
-                                    </p>
-                                </div>
-                            </blockquote>
-                            <script async src="//www.instagram.com/embed.js"></script>
-                        </div>
-                    </div>
 
-                    <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
-                        <a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" class="btn">
-                            📱 Follow @twotwentythreemedia
-                        </a>
-                    </div>
-                </div>
-            </section>
+
+
         </div>
     </div>
 
-    <!-- Page 5: Contact -->
-    <div id="contact" class="page">
-        <div class="container">
-            <section class="hero">
-                <div class="hero-content fade-in">
-                    <h1>Let's Transform Your Content</h1>
-                    <p class="subtitle">Ready to turn scattered content into a powerful ecosystem? Let's discuss your vision.</p>
-                </div>
-            </section>
-
-            <!-- Contact Form Section -->
-            <section class="fade-in">
-                <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
-                        <!-- Contact Info -->
-                        <div>
-                            <h2 style="margin-bottom: 2rem;">Get In Touch</h2>
-                            
-                            <div style="margin-bottom: 2rem;">
-                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">📧 Email</h4>
-                                <p style="margin: 0; font-size: 1.1rem;">
-                                    <a href="mailto:2twenty3media@gmail.com" style="color: var(--text-color); text-decoration: none;">2twenty3media@gmail.com</a>
-                                </p>
-                            </div>
-
-                            <div style="margin-bottom: 2rem;">
-                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">📱 Social Media</h4>
-                                <p style="margin: 0; font-size: 1.1rem;">
-                                    <a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" style="color: var(--text-color); text-decoration: none;">@twotwentythreemedia</a>
-                                </p>
-                            </div>
-
-                            <div style="margin-bottom: 2rem;">
-                                <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">⚡ Quick Start</h4>
-                                <p style="margin: 0; font-size: 1.1rem; line-height: 1.6;">
-                                    Ready to get started immediately? 
-                                    <a href="#" onclick="showPage('start')" style="color: var(--primary-color); text-decoration: none; font-weight: 600;">Choose your package →</a>
-                                </p>
-                            </div>
-
-                            <div>
-                                <h4 style="color: var(--primary-color); margin-bottom: 1rem;">💬 Response Time</h4>
-                                <p style="margin: 0; font-size: 1rem; opacity: 0.8; line-height: 1.6;">
-                                    We respond to all inquiries within 24 hours. For urgent requests, please mention "URGENT" in your subject line.
-                                </p>
-                            </div>
-                        </div>
-
-                        <!-- Contact Form -->
-                        <form id="contactForm" class="contact-form" onsubmit="handleContactSubmit(event)">
-                            <div class="form-group">
-                                <label for="name">Full Name *</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="email">Email Address *</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="company">Company Name</label>
-                                <input type="text" id="company" name="company">
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="interest">I'm Interested In:</label>
-                                <select id="interest" name="interest">
-                                    <option value="">Select a service...</option>
-                                    <option value="growth-package">Growth Package ($497/month)</option>
-                                    <option value="scale-package">Scale Package ($997/month)</option>
-                                    <option value="enterprise-package">Enterprise-Lite Package ($1,497/month)</option>
-                                    <option value="single-episode">Single Episode Production ($110)</option>
-                                    <option value="website-development">Enterprise Website ($7,997)</option>
-                                    <option value="website-management">Website Management ($297/month)</option>
-                                    <option value="consultation">Free Consultation</option>
-                                </select>
-                            </div>
-                            
-                            <div class="form-group">
-                                <label for="message">Tell Us About Your Project *</label>
-                                <textarea id="message" name="message" rows="4" placeholder="Describe your current content situation and what you'd like to achieve..." required></textarea>
-                            </div>
-                            
-                            <div style="text-align: center; margin-top: 2rem;">
-                                <button type="submit" class="btn" style="width: 100%;">Send Message</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </section>
-
-            <!-- FAQ Section -->
-            <section class="fade-in" style="margin-top: 4rem;">
-                <div class="glass-card">
-                    <h2 style="text-align: center; margin-bottom: 3rem;">Frequently Asked Questions</h2>
-                    
-                    <div style="display: grid; gap: 2rem;">
-                        <div>
-                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;">How quickly can you get started?</h4>
-                            <p style="color: var(--text-color); opacity: 0.9; line-height: 1.6;">
-                                We can begin your content ecosystem within 48 hours of purchase. Our automated onboarding process creates your project immediately, and our team starts work on your strategy within 1 business day.
-                            </p>
-                        </div>
-                        
-                        <div>
-                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;">What makes you different from other agencies?</h4>
-                            <p style="color: var(--text-color); opacity: 0.9; line-height: 1.6;">
-                                We're the only agency that specializes exclusively in content ecosystems. Instead of treating podcast production and website development as separate services, we integrate them from day one to create exponential growth.
-                            </p>
-                        </div>
-                        
-                        <div>
-                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;">Do I need my own podcast equipment?</h4>
-                            <p style="color: var(--text-color); opacity: 0.9; line-height: 1.6;">
-                                Not necessarily! We can work with any recording setup, from professional studios to smartphone recordings. We'll assess your current equipment and recommend upgrades only if needed for your goals.
-                            </p>
-                        </div>
-                        
-                        <div>
-                            <h4 style="color: var(--primary-color); margin-bottom: 1rem;">Can I cancel anytime?</h4>
-                            <p style="color: var(--text-color); opacity: 0.9; line-height: 1.6;">
-                                Yes, all our monthly packages can be cancelled anytime with 30 days notice. We're confident in our results and don't believe in long-term contracts that lock you in.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </div>
-    </div>
-
-    <!-- Page 6: Start Your Ecosystem -->
+    <!-- Page 5: Start Your Ecosystem -->
     <div id="start" class="page">
         <div class="container">
             <section class="hero">
@@ -2573,4 +1572,548 @@
                         <h3>Website Management</h3>
                         <div class="price" style="font-size: 2rem; margin: 1rem 0;">$297<span class="price-period">/month</span></div>
                         <p>Ongoing website maintenance and optimization. Keep your site running smoothly while you focus on growth.</p>
-                        <a href="https://buy.stripe.com/00w6oI5HE2py06DdtzgUM02" target="_blank" class="
+                        <a href="https://buy.stripe.com/00w6oI5HE2py06DdtzgUM02" target="_blank" class="btn">Start Management Now</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trust. Try. Pay. Process -->
+            <section class="fade-in">
+                <div class="glass-card" style="max-width: 800px; margin: 4rem auto; text-align: center;">
+                    <h2 style="margin-bottom: 2rem;">Trust. Try. Pay. Grow.</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
+                        <div>
+                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
+                                <div style="width: 30px; height: 30px; background: white; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
+                            </div>
+                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Choose Your Package</h3>
+                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">Select the ecosystem package that fits your business needs and pay securely with Stripe</p>
+                        </div>
+                        <div>
+                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
+                                <div style="width: 30px; height: 30px; background: white; border-radius: 50%;"></div>
+                            </div>
+                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Instant Onboarding</h3>
+                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">Get immediate access to our client portal and automated onboarding sequence</p>
+                        </div>
+                        <div>
+                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
+                                <div style="width: 30px; height: 30px; background: white; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
+                            </div>
+                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Start Growing</h3>
+                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">We immediately begin building your content ecosystem for maximum impact</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Form Section -->
+            <section class="cta-section fade-in">
+                <h2>Get Started Today</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
+                    Choose your package and begin transforming your content strategy immediately.
+                </p>
+                <div style="margin: 2rem 0;">
+                    <p style="color: var(--text-color); font-size: 1.1rem; opacity: 0.9;">Secured by Stripe. Cancel anytime.</p>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="glass-card" style="max-width: 600px; margin: 3rem auto 0; text-align: left;">
+                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--text-color);">Have Questions? Let's Talk</h3>
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name *</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="company">Company Name</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="interest">I'm Interested In:</label>
+                            <select id="interest" name="interest">
+                                <option value="">Select a service...</option>
+                                <option value="growth-package">Growth Package ($497/month)</option>
+                                <option value="scale-package">Scale Package ($997/month)</option>
+                                <option value="enterprise-package">Enterprise-Lite Package ($1,497/month)</option>
+                                <option value="single-episode">Single Episode Production ($110)</option>
+                                <option value="website-development">Enterprise Website ($7,997)</option>
+                                <option value="website-management">Website Management ($297/month)</option>
+                                <option value="consultation">Free Consultation</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Project *</label>
+                            <textarea id="message" name="message" rows="4" placeholder="Describe your current content situation and what you'd like to achieve..." required></textarea>
+                        </div>
+                        
+                        <div style="text-align: center; margin-top: 2rem;">
+                            <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Instagram Reels Section - Bottom of Site -->
+    <section class="instagram-reels-section" style="background: var(--glass-bg); backdrop-filter: blur(20px); padding: 4rem 0; margin-top: 4rem;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <h2 style="margin-bottom: 1rem;">See Our Work in Action</h2>
+                <p style="font-size: 1.2rem; color: var(--text-color); opacity: 0.9; margin-bottom: 2rem;">
+                    Follow our journey and client success stories on Instagram
+                </p>
+                <a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" class="btn" style="margin-bottom: 2rem;">
+                    📱 Follow @twotwentythreemedia
+                </a>
+            </div>
+            
+            <!-- Instagram Reels Scroll -->
+            <div class="reels-container" style="overflow: hidden; width: 100%; position: relative;">
+                <div class="reels-scroll" style="display: flex; gap: 2rem; animation: scrollReels 40s linear infinite; width: fit-content;">
+                    
+                    <!-- Reel 1 - Client Feedback -->
+                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
+                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
+                            <iframe 
+                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID/embed" 
+                                width="300" 
+                                height="533" 
+                                frameborder="0" 
+                                scrolling="no" 
+                                allowtransparency="true"
+                                style="border-radius: 15px;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Reel 2 - Behind the Scenes -->
+                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
+                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
+                            <iframe 
+                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_2/embed" 
+                                width="300" 
+                                height="533" 
+                                frameborder="0" 
+                                scrolling="no" 
+                                allowtransparency="true"
+                                style="border-radius: 15px;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Reel 3 - Service Demo -->
+                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
+                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
+                            <iframe 
+                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_3/embed" 
+                                width="300" 
+                                height="533" 
+                                frameborder="0" 
+                                scrolling="no" 
+                                allowtransparency="true"
+                                style="border-radius: 15px;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Reel 4 - Tips & Insights -->
+                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
+                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
+                            <iframe 
+                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_4/embed" 
+                                width="300" 
+                                height="533" 
+                                frameborder="0" 
+                                scrolling="no" 
+                                allowtransparency="true"
+                                style="border-radius: 15px;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <!-- Duplicate first few reels for seamless loop -->
+                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
+                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
+                            <iframe 
+                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID/embed" 
+                                width="300" 
+                                height="533" 
+                                frameborder="0" 
+                                scrolling="no" 
+                                allowtransparency="true"
+                                style="border-radius: 15px;">
+                            </iframe>
+                        </div>
+                    </div>
+
+                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
+                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
+                            <iframe 
+                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_2/embed" 
+                                width="300" 
+                                height="533" 
+                                frameborder="0" 
+                                scrolling="no" 
+                                allowtransparency="true"
+                                style="border-radius: 15px;">
+                            </iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Page 6: Onboarding -->
+    <div id="onboarding" class="page">
+        <div class="container">
+            <section class="hero">
+                <div class="hero-content fade-in">
+                    <h1>Welcome to Your Content Ecosystem! 🎉</h1>
+                    <p class="subtitle">Thank you for choosing 223 Media! Your payment has been processed successfully.</p>
+                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-color); opacity: 0.8;">
+                        Please complete the onboarding form below so we can create your custom content ecosystem.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Onboarding Form -->
+            <section class="fade-in">
+                <div class="glass-card" style="max-width: 900px; margin: 0 auto 2rem;">
+                    <h2 style="text-align: center; margin-bottom: 2rem;">Client Onboarding Form</h2>
+                    
+                    <!-- JotForms Integration -->
+                    <div id="jotform-container" style="margin-bottom: 2rem;">
+                        <!-- Replace with your actual JotForms embed code -->
+                        <script type="text/javascript" src="https://form.jotform.com/jsform/YOUR_FORM_ID"></script>
+                        
+                        <!-- Setup Instructions (Remove after setup) -->
+                        <div style="padding: 2rem; background: rgba(120, 108, 126, 0.1); border-radius: 15px; border: 1px solid rgba(120, 108, 126, 0.3);">
+                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🔧 Setup Instructions:</h3>
+                            <ol style="color: var(--text-color); line-height: 1.6; padding-left: 1.5rem;">
+                                <li>Create your onboarding form in JotForms with fields for:
+                                    <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
+                                        <li>Client contact information</li>
+                                        <li>Business details and goals</li>
+                                        <li>Current content channels</li>
+                                        <li>Podcast topic and format preferences</li>
+                                        <li>Website requirements</li>
+                                        <li>Brand guidelines and preferences</li>
+                                    </ul>
+                                </li>
+                                <li>Enable Stripe integration in JotForms</li>
+                                <li>Set up Zapier: JotForms → Motion project creation</li>
+                                <li>Replace "YOUR_FORM_ID" with your actual form ID</li>
+                                <li>Test the complete workflow</li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 2rem;">
+                        <p style="color: var(--text-color); opacity: 0.7; font-size: 0.9rem;">
+                            This form will automatically create your project in our system and assign your dedicated team.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- What Happens Next -->
+            <section class="fade-in">
+                <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
+                    <h2 style="text-align: center; margin-bottom: 2rem;">What Happens Next?</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">1</span>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Project Creation</h4>
+                                <p style="color: var(--text-color); opacity: 0.8;">Your project is automatically created in our Motion system with 5 assessment tasks assigned to our team.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">2</span>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Team Assignment</h4>
+                                <p style="color: var(--text-color); opacity: 0.8;">Your dedicated content ecosystem team is assigned and immediately notified to begin work.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">3</span>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Initial Contact</h4>
+                                <p style="color: var(--text-color); opacity: 0.8;">You'll receive a welcome email within 24 hours with your project timeline and next steps.</p>
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">4</span>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Content Production</h4>
+                                <p style="color: var(--text-color); opacity: 0.8;">Your content ecosystem begins production according to your chosen package within 48 hours.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5 Auto Tasks Info -->
+            <section class="fade-in" style="margin-top: 3rem;">
+                <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
+                    <h2 style="text-align: center; margin-bottom: 2rem;">Your 5 Auto Tasks in Progress</h2>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
+                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 1: Client Discovery & Content Audit</h4>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 2 days</p>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Review your goals, current content, and create ecosystem strategy</p>
+                        </div>
+                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
+                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 2: Website Setup & Configuration</h4>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 3 days</p>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Set up your custom website with branding and initial pages</p>
+                        </div>
+                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
+                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 3: Podcast Production Planning</h4>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 2 days</p>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Create podcast format, episode structure, and production schedule</p>
+                        </div>
+                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
+                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 4: Content Calendar Creation</h4>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 3 days</p>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Build 90-day content calendar with all 15+ content pieces per episode</p>
+                        </div>
+                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
+                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 5: System Integration & Testing</h4>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 2 days</p>
+                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Connect all tools and test workflow before first episode</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer style="background: rgba(32, 12, 42, 0.95); padding: 3rem 0 2rem; margin-top: 4rem; border-top: 1px solid var(--glass-border);">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
+                <div>
+                    <div class="logo" style="margin-bottom: 1rem;">
+                        <div class="logo-image" style="width: 40px; height: 40px; font-size: 16px;">223</div>
+                        <span class="logo-text" style="font-size: 20px;">223 Media</span>
+                    </div>
+                    <p style="color: var(--text-color); margin-bottom: 1rem; opacity: 0.8;">The Content Ecosystem Company</p>
+                    <p style="color: var(--text-color); font-style: italic; opacity: 0.8;">We Don't Just Tell Your Story. We Design Your Future.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Services</h4>
+                    <ul style="list-style: none; color: var(--text-color);">
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Podcast Production</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Website Development</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Ecosystem Packages</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('services')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Website Management</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Company</h4>
+                    <ul style="list-style: none; color: var(--text-color);">
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('about')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">About Us</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('portfolio')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Portfolio</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('start')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Get Started</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 1rem;">Connect</h4>
+                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">📧 2twenty3media@gmail.com</p>
+                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">📱 <a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" style="color: var(--text-color); text-decoration: none;">@twotwentythreemedia</a></p>
+                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">💼 Contact form above</p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid var(--glass-border); padding-top: 2rem; text-align: center; color: var(--text-color); opacity: 0.7;">
+                <p>&copy; 2025 223 Media. All rights reserved. | <a href="#privacy" style="color: var(--text-color); text-decoration: none;">Privacy Policy</a> | <a href="#terms" style="color: var(--text-color); text-decoration: none;">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        function showPage(pageId) {
+            // Hide all pages
+            const pages = document.querySelectorAll('.page');
+            pages.forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update navigation
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find and activate current nav link
+            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
+            if (activeLink && activeLink.classList.contains('nav-link')) {
+                activeLink.classList.add('active');
+            }
+            
+            // Show/hide onboarding nav
+            const onboardingNav = document.getElementById('onboarding-nav');
+            if (pageId === 'onboarding') {
+                onboardingNav.style.display = 'block';
+            } else if (pageId !== 'onboarding') {
+                onboardingNav.style.display = 'none';
+            }
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+            
+            // Trigger animations
+            setTimeout(() => {
+                triggerAnimations();
+            }, 100);
+        }
+
+        // Check for onboarding redirect
+        function checkOnboardingRedirect() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const sessionId = urlParams.get('session_id');
+            const onboard = urlParams.get('onboard');
+            
+            if (sessionId || onboard === 'true') {
+                // Show onboarding page
+                showPage('onboarding');
+                
+                // Track conversion
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'purchase', {
+                        'transaction_id': sessionId,
+                        'value': 1,
+                        'currency': 'USD'
+                    });
+                }
+            }
+        }
+
+        // Portfolio Filtering
+        function initPortfolioFilter() {
+            const filterButtons = document.querySelectorAll('.portfolio-filter');
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Update active button
+                    filterButtons.forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    button.classList.add('active');
+                    
+                    // Filter items
+                    portfolioItems.forEach(item => {
+                        if (filter === 'all' || item.getAttribute('data-category').includes(filter)) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+
+        // Scroll Animations
+        function triggerAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Mobile Menu
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        }
+
+        // Header Scroll Effect
+        function initHeaderScroll() {
+            const header = document.getElementById('header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.style.background = 'rgba(32, 12, 42, 0.98)';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+                } else {
+                    header.style.background = 'rgba(32, 12, 42, 0.95)';
+                    header.style.boxShadow = 'none';
+                }
+            });
+        }
+
+        // Initialize everything when DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            checkOnboardingRedirect();
+            triggerAnimations();
+            initPortfolioFilter();
+            initHeaderScroll();
+            
+            // Add scroll listener for animations
+            window.addEventListener('scroll', triggerAnimations);
+            
+            // Add resize listener for mobile
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 768) {
+                    document.querySelector('.nav-links').style.display = 'flex';
+                }
+            });
+        });
+
+        // Analytics tracking (replace with your tracking code)
+        function trackEvent(action, category, label) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    'event_category': category,
+                    'event_label': label
+                });
+            }
+        }
+
+        // Track page views
+        function trackPageView(page) {
+            trackEvent('page_view', 'navigation', page);
+        }
+
+        // Enhanced page navigation with tracking
+        const originalShowPage = showPage;
+        showPage = function(pageId) {
+            originalShowPage(pageId);
+            trackPageView(pageId);
+        };
+    </script>
+</body>
+</html>
