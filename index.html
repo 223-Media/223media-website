@@ -367,51 +367,6 @@
             margin-top: 2rem;
         }
 
-        /* Enhanced Stats Section */
-        .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-
-        .stat-card {
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .stat-card::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: 10px;
-            bottom: 10px;
-            border: 2px solid var(--primary-color);
-            border-radius: 15px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .stat-card:hover::before {
-            opacity: 1;
-        }
-
-        .stat-number {
-            font-size: 3rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            display: block;
-        }
-
-        .stat-label {
-            font-size: 1rem;
-            color: var(--text-color);
-            margin-top: 0.5rem;
-            opacity: 0.8;
-        }
-
         /* Enhanced Features Grid */
         .features {
             display: grid;
@@ -468,9 +423,10 @@
         /* Enhanced Pricing Cards */
         .pricing {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 2rem;
             margin: 4rem 0;
+            align-items: stretch;
         }
 
         .pricing-card {
@@ -478,13 +434,27 @@
             text-align: center;
             padding: 3rem 2rem;
             transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 600px;
         }
 
         .pricing-card.featured {
             border: 2px solid var(--primary-color);
-            position: relative;
             background: var(--glass-bg);
             backdrop-filter: blur(20px);
+            transform: scale(1.05);
+        }
+
+        .pricing-card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .pricing-card-header {
+            margin-bottom: 1rem;
         }
 
         .popular-badge {
@@ -519,6 +489,7 @@
         .features-list {
             list-style: none;
             margin: 2rem 0;
+            flex-grow: 1;
         }
 
         .features-list li {
@@ -526,18 +497,22 @@
             color: var(--text-color);
             position: relative;
             padding-left: 1.5rem;
+            text-align: left;
         }
 
         .features-list li::before {
-            content: '';
+            content: '✓';
             position: absolute;
             left: 0;
             top: 50%;
             transform: translateY(-50%);
-            width: 10px;
-            height: 10px;
-            background: var(--success-color);
-            border-radius: 50%;
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .pricing-card .btn {
+            width: 100%;
+            margin-top: auto;
         }
 
         /* Enhanced Portfolio Grid */
@@ -751,46 +726,6 @@
             opacity: 0.8;
         }
 
-        /* Team Section */
-        .team {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-
-        .team-member {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .team-avatar {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .team-avatar::before {
-            content: '';
-            position: absolute;
-            width: 30px;
-            height: 30px;
-            background: white;
-            border-radius: 50%;
-        }
-
-        .team-member:hover .team-avatar {
-            transform: scale(1.05);
-        }
-
         /* CTA Sections */
         .cta-section {
             text-align: center;
@@ -812,6 +747,35 @@
         .fade-in.visible {
             opacity: 1;
             transform: translateY(0);
+        }
+
+        /* Client Testimonial Video Section - Reel Style */
+        .testimonial-video-section {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .reel-video-container {
+            position: relative;
+            width: 350px;
+            max-width: 90%;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            aspect-ratio: 9/16;
+        }
+
+        .reel-video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
         }
 
         /* Contact Form Styling */
@@ -857,68 +821,22 @@
             min-height: 120px;
         }
 
-        /* Instagram Reels Scrolling Section */
-        .instagram-reels-section {
-            overflow: hidden;
-        }
-
-        .reels-container {
-            overflow: hidden;
-            width: 100%;
-            position: relative;
-        }
-
-        .reels-scroll {
-            display: flex;
-            gap: 2rem;
-            animation: scrollReels 40s linear infinite;
-            width: fit-content;
-        }
-
-        .reels-scroll:hover {
-            animation-play-state: paused;
-        }
-
-        @keyframes scrollReels {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
-        }
-
-        .reel-item {
-            min-width: 300px;
-            flex-shrink: 0;
-        }
-
-        .reel-embed iframe {
-            border-radius: 15px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Mobile Responsiveness for Reels and Contact Form */
+        /* Mobile Responsiveness */
         @media (max-width: 768px) {
-            .reel-item {
-                min-width: 250px;
-            }
-            
-            .reels-scroll {
-                gap: 1rem;
-            }
-            
-            .reel-embed iframe {
-                width: 250px;
-                height: 444px;
-            }
-
-            .contact-form {
-                padding: 1rem;
-            }
-        }
             .nav-links {
                 display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(32, 12, 42, 0.98);
+                flex-direction: column;
+                padding: 1rem;
+                border-top: 1px solid var(--glass-border);
+            }
+
+            .nav-links.show {
+                display: flex;
             }
 
             .mobile-menu-toggle {
@@ -942,26 +860,34 @@
                 align-items: center;
             }
 
-            .stats {
-                grid-template-columns: repeat(2, 1fr);
-            }
-
             .portfolio-filter-container {
                 flex-direction: column;
                 align-items: center;
             }
+
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+
+            .contact-form {
+                padding: 1rem;
+            }
+
+            .pricing {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
-            .stats {
-                grid-template-columns: 1fr;
-            }
-
             .portfolio {
                 grid-template-columns: 1fr;
             }
 
             .features {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing {
                 grid-template-columns: 1fr;
             }
         }
@@ -984,13 +910,13 @@
                 <div class="logo-image">223</div>
                 <span class="logo-text">223 Media</span>
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#" onclick="showPage('home')" class="nav-link active">Home</a></li>
                 <li><a href="#" onclick="showPage('services')" class="nav-link">Services</a></li>
                 <li><a href="#" onclick="showPage('portfolio')" class="nav-link">Portfolio</a></li>
                 <li><a href="#" onclick="showPage('about')" class="nav-link">About</a></li>
-                <li><a href="#" onclick="showPage('start')" class="nav-link btn" style="padding: 0.5rem 1rem; margin-left: 1rem;">Choose Package</a></li>
-                <li><a href="#" onclick="showPage('onboarding')" class="nav-link" id="onboarding-nav" style="display: none;">Onboarding</a></li>
+                <li><a href="#" onclick="showPage('contact')" class="nav-link">Contact</a></li>
+                <li><a href="#" onclick="showPage('start')" class="nav-link btn" style="padding: 0.5rem 1rem; margin-left: 1rem; color: white !important;">Choose Package</a></li>
             </ul>
             <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
         </nav>
@@ -1025,27 +951,15 @@
                                     <a href="https://www.dropbox.com/scl/fi/ukvhlgfz2k2zve6hy1esa/Copy-of-gaming-channel.mp4?rlkey=o87190ok2yamnq3myj7p0r3ju&st=wdfk4gkg&dl=0" target="_blank" class="btn">Watch Video</a>
                                 </div>
                             </video>
-                            
-                            <!-- Optional: Video controls overlay (shows on hover) -->
-                            <div class="video-controls" style="position: absolute; bottom: 10px; right: 10px; opacity: 0; transition: opacity 0.3s ease;">
-                                <button onclick="toggleVideoSound()" style="background: rgba(0,0,0,0.7); border: none; color: white; padding: 8px 12px; border-radius: 20px; cursor: pointer; font-size: 12px;">
-                                    🔇 Unmute
-                                </button>
-                            </div>
                         </div>
                     </div>
                     
                     <div class="hero-buttons">
                         <a href="https://buy.stripe.com/bJe8wQ0nk1lu8D91KRgUM07" target="_blank" class="btn">Start Your Ecosystem</a>
-                        <a href="#" onclick="showPage('portfolio')" class="btn-secondary">View Our Work</a>
+                        <a href="#" onclick="showPage('portfolio')" class="btn btn-secondary">View Our Work</a>
                     </div>
                 </div>
             </section>
-
-            <!-- Client Testimonials Scrolling Section - REMOVED -->
-            <!-- Replaced with Instagram Reels section at bottom -->
-
-
 
             <!-- Problem/Solution Section -->
             <section class="features fade-in">
@@ -1109,52 +1023,64 @@
             <!-- Pricing Cards -->
             <section class="pricing fade-in">
                 <div class="pricing-card glass-card">
-                    <h3>Growth Package</h3>
-                    <div class="price">$497<span class="price-period">/month</span></div>
-                    <ul class="features-list">
-                        <li>4 podcast episodes per month</li>
-                        <li>Professional editing & mixing</li>
-                        <li>Basic website maintenance</li>
-                        <li>Episode-to-blog conversion</li>
-                        <li>Basic SEO optimization</li>
-                        <li>Social media assets</li>
-                        <li>Monthly analytics report</li>
-                    </ul>
+                    <div class="pricing-card-content">
+                        <div class="pricing-card-header">
+                            <h3>Growth Package</h3>
+                            <div class="price">$497<span class="price-period">/month</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li>4 podcast episodes per month</li>
+                            <li>Professional editing & mixing</li>
+                            <li>Basic website maintenance</li>
+                            <li>Episode-to-blog conversion</li>
+                            <li>Basic SEO optimization</li>
+                            <li>Social media assets</li>
+                            <li>Monthly analytics report</li>
+                        </ul>
+                    </div>
                     <a href="https://buy.stripe.com/9B6cN6gmid4cf1xahngUM08" target="_blank" class="btn">Start Growing</a>
                 </div>
 
                 <div class="pricing-card glass-card featured">
                     <div class="popular-badge">MOST POPULAR</div>
-                    <h3>Scale Package</h3>
-                    <div class="price">$997<span class="price-period">/month</span></div>
-                    <ul class="features-list">
-                        <li>8 podcast episodes per month</li>
-                        <li>Advanced editing & mixing</li>
-                        <li>Advanced website features</li>
-                        <li>Complete content repurposing</li>
-                        <li>Advanced SEO strategy</li>
-                        <li>Lead magnet integration</li>
-                        <li>YouTube optimization</li>
-                        <li>Bi-weekly strategy calls</li>
-                        <li>Priority support</li>
-                    </ul>
+                    <div class="pricing-card-content">
+                        <div class="pricing-card-header">
+                            <h3>Scale Package</h3>
+                            <div class="price">$997<span class="price-period">/month</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li>8 podcast episodes per month</li>
+                            <li>Advanced editing & mixing</li>
+                            <li>Advanced website features</li>
+                            <li>Complete content repurposing</li>
+                            <li>Advanced SEO strategy</li>
+                            <li>Lead magnet integration</li>
+                            <li>YouTube optimization</li>
+                            <li>Bi-weekly strategy calls</li>
+                            <li>Priority support</li>
+                        </ul>
+                    </div>
                     <a href="https://buy.stripe.com/bJe8wQ0nk1lu8D91KRgUM07" target="_blank" class="btn">Scale Your Growth</a>
                 </div>
 
                 <div class="pricing-card glass-card">
-                    <h3>Enterprise-Lite</h3>
-                    <div class="price">$1,497<span class="price-period">/month</span></div>
-                    <ul class="features-list">
-                        <li>12 podcast episodes per month</li>
-                        <li>Enterprise-level production</li>
-                        <li>Enterprise website features</li>
-                        <li>Multi-platform distribution</li>
-                        <li>Custom integrations</li>
-                        <li>Advanced analytics dashboard</li>
-                        <li>Weekly strategy sessions</li>
-                        <li>Dedicated account manager</li>
-                        <li>Custom automation</li>
-                    </ul>
+                    <div class="pricing-card-content">
+                        <div class="pricing-card-header">
+                            <h3>Enterprise-Lite</h3>
+                            <div class="price">$1,497<span class="price-period">/month</span></div>
+                        </div>
+                        <ul class="features-list">
+                            <li>12 podcast episodes per month</li>
+                            <li>Enterprise-level production</li>
+                            <li>Enterprise website features</li>
+                            <li>Multi-platform distribution</li>
+                            <li>Custom integrations</li>
+                            <li>Advanced analytics dashboard</li>
+                            <li>Weekly strategy sessions</li>
+                            <li>Dedicated account manager</li>
+                            <li>Custom automation</li>
+                        </ul>
+                    </div>
                     <a href="https://buy.stripe.com/9B6eVe3zw8NW2eLfBHgUM06" target="_blank" class="btn">Dominate Your Market</a>
                 </div>
             </section>
@@ -1162,56 +1088,61 @@
             <!-- Individual Services -->
             <section class="fade-in" style="margin-top: 4rem;">
                 <h2 style="text-align: center; margin-bottom: 2rem;">Individual Services</h2>
-                <div class="features">
-                    <div class="feature-card glass-card">
-                        <h3>Podcast Production</h3>
-                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$110<span class="price-period">/episode</span></div>
-                        <p>Professional post-production for single episodes. Perfect for testing our quality before committing to a package.</p>
-                        <ul class="features-list" style="text-align: left; margin: 1rem 0;">
-                            <li>Professional editing & mixing</li>
-                            <li>Noise reduction & enhancement</li>
-                            <li>Intro/outro integration</li>
-                            <li>Show notes creation</li>
-                            <li>48-72 hour turnaround</li>
-                        </ul>
+                <div class="pricing">
+                    <div class="pricing-card glass-card">
+                        <div class="pricing-card-content">
+                            <div class="pricing-card-header">
+                                <h3>Podcast Production</h3>
+                                <div class="price" style="font-size: 2rem;">$110<span class="price-period">/episode</span></div>
+                            </div>
+                            <p>Professional post-production for single episodes. Perfect for testing our quality before committing to a package.</p>
+                            <ul class="features-list" style="margin: 1rem 0;">
+                                <li>Professional editing & mixing</li>
+                                <li>Noise reduction & enhancement</li>
+                                <li>Intro/outro integration</li>
+                                <li>Show notes creation</li>
+                                <li>48-72 hour turnaround</li>
+                            </ul>
+                        </div>
                         <a href="https://buy.stripe.com/aFa3cwfiefckf1x3SZgUM05" target="_blank" class="btn">Order Single Episode</a>
                     </div>
 
-                    <div class="feature-card glass-card">
-                        <h3>Enterprise Website</h3>
-                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$7,997<span class="price-period">/project</span></div>
-                        <p>Custom enterprise-level website with advanced features and integrations. Built to scale with your business.</p>
-                        <ul class="features-list" style="text-align: left; margin: 1rem 0;">
-                            <li>Custom responsive design</li>
-                            <li>Advanced integrations</li>
-                            <li>Content management system</li>
-                            <li>SEO optimization</li>
-                            <li>90 days included support</li>
-                        </ul>
+                    <div class="pricing-card glass-card">
+                        <div class="pricing-card-content">
+                            <div class="pricing-card-header">
+                                <h3>Enterprise Website</h3>
+                                <div class="price" style="font-size: 2rem;">$7,997<span class="price-period">/project</span></div>
+                            </div>
+                            <p>Custom enterprise-level website with advanced features and integrations. Built to scale with your business.</p>
+                            <ul class="features-list" style="margin: 1rem 0;">
+                                <li>Custom responsive design</li>
+                                <li>Advanced integrations</li>
+                                <li>Content management system</li>
+                                <li>SEO optimization</li>
+                                <li>90 days included support</li>
+                            </ul>
+                        </div>
                         <a href="https://buy.stripe.com/6oUdRagmi6FO4mTexDgUM04" target="_blank" class="btn">Build Your Website</a>
                     </div>
 
-                    <div class="feature-card glass-card">
-                        <h3>Website Management</h3>
-                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$297<span class="price-period">/month</span></div>
-                        <p>Ongoing website maintenance and optimization. Keep your site running smoothly while you focus on your business.</p>
-                        <ul class="features-list" style="text-align: left; margin: 1rem 0;">
-                            <li>Monthly content updates</li>
-                            <li>Security monitoring</li>
-                            <li>Performance optimization</li>
-                            <li>Analytics reporting</li>
-                            <li>Technical support</li>
-                        </ul>
+                    <div class="pricing-card glass-card">
+                        <div class="pricing-card-content">
+                            <div class="pricing-card-header">
+                                <h3>Website Management</h3>
+                                <div class="price" style="font-size: 2rem;">$297<span class="price-period">/month</span></div>
+                            </div>
+                            <p>Ongoing website maintenance and optimization. Keep your site running smoothly while you focus on your business.</p>
+                            <ul class="features-list" style="margin: 1rem 0;">
+                                <li>Monthly content updates</li>
+                                <li>Security monitoring</li>
+                                <li>Performance optimization</li>
+                                <li>Analytics reporting</li>
+                                <li>Technical support</li>
+                            </ul>
+                        </div>
                         <a href="https://buy.stripe.com/00w6oI5HE2py06DdtzgUM02" target="_blank" class="btn">Manage My Website</a>
                     </div>
                 </div>
-            </section>
-
-            <!-- CTA Section -->
-            <section class="cta-section fade-in">
-                <h2>Ready to Build Your Content Ecosystem?</h2>
-                <p>Join successful entrepreneurs who've transformed their scattered content into powerful growth engines</p>
-                <a href="#" onclick="showPage('start')" class="btn">Choose Your Package Today</a>
             </section>
         </div>
     </div>
@@ -1388,28 +1319,6 @@
                         </div>
                     </div>
                 </div>
-
-
-            </section>
-
-            <!-- Portfolio Stats -->
-            <section class="stats fade-in">
-                <div class="stat-card glass-card">
-                    <span class="stat-number">47</span>
-                    <span class="stat-label">Completed Projects</span>
-                </div>
-                <div class="stat-card glass-card">
-                    <span class="stat-number">312%</span>
-                    <span class="stat-label">Avg Traffic Increase</span>
-                </div>
-                <div class="stat-card glass-card">
-                    <span class="stat-number">2.5M</span>
-                    <span class="stat-label">Total Downloads Generated</span>
-                </div>
-                <div class="stat-card glass-card">
-                    <span class="stat-number">89%</span>
-                    <span class="stat-label">Client Satisfaction Rate</span>
-                </div>
             </section>
 
             <!-- CTA Section -->
@@ -1464,163 +1373,73 @@
                     <h3>Unified Messaging</h3>
                     <p>Consistent branding and messaging across all platforms builds trust and authority faster. Your audience sees the same professional quality everywhere they encounter your brand, creating a cohesive experience.</p>
                 </div>
-                <div class="feature-card glass-card">
-                    <div class="feature-icon"></div>
-                    <h3>Data Integration</h3>
-                    <p>Analytics from all platforms inform each other. Podcast topics that perform well become blog posts. Popular blog content becomes podcast episodes. You're making data-driven decisions across your entire content strategy.</p>
-                </div>
-                <div class="feature-card glass-card">
-                    <div class="feature-icon success"></div>
-                    <h3>Cost Efficiency</h3>
-                    <p>Integrated systems are 60% more cost-effective than managing separate platforms. One team, one strategy, one cohesive approach saves time, money, and energy while delivering better results.</p>
-                </div>
-                <div class="feature-card glass-card">
-                    <div class="feature-icon growth"></div>
-                    <h3>Scalable Systems</h3>
-                    <p>As your business grows, integrated ecosystems scale seamlessly. Add new platforms, expand content types, or increase production volume - the system grows with you without breaking.</p>
-                </div>
             </section>
 
-
-
-
+            <!-- Client Testimonial Video Section - Reel Style (ONLY ON ABOUT PAGE) -->
+            <section class="testimonial-video-section" style="background: var(--glass-bg); backdrop-filter: blur(20px); padding: 4rem 0; margin-top: 4rem; border-radius: 20px;">
+                <div class="container">
+                    <div style="text-align: center; margin-bottom: 3rem;">
+                        <h2 style="margin-bottom: 1rem; color: var(--text-color);">Real Client Success Story</h2>
+                        <p style="font-size: 1.2rem; color: var(--text-color); opacity: 0.9; margin-bottom: 2rem;">
+                            Hear directly from our clients about their transformation
+                        </p>
+                    </div>
+                    
+                    <!-- Client Testimonial Video - Reel Style -->
+                    <div class="reel-video-container">
+                        <video 
+                            id="testimonialVideo"
+                            autoplay 
+                            loop 
+                            muted 
+                            playsinline
+                        >
+                            <source src="https://dl.dropboxusercontent.com/scl/fi/oh7wxdttwjfyu7iq0vxka/Abigail-A.-Gonzales-Review.mp4?rlkey=bofq4ej8c1nuqc6fzoevl6hgs&dl=1" type="video/mp4">
+                            <!-- Fallback for browsers that don't support video -->
+                            <div style="padding: 3rem; text-align: center; background: var(--glass-bg); border-radius: 15px;">
+                                <h3 style="color: var(--primary-color); margin-bottom: 1rem;">Client Success Story</h3>
+                                <p style="color: var(--text-color); margin-bottom: 2rem;">Watch how we transformed Abigail's business with our content ecosystem</p>
+                                <a href="https://www.dropbox.com/scl/fi/oh7wxdttwjfyu7iq0vxka/Abigail-A.-Gonzales-Review.mp4?rlkey=bofq4ej8c1nuqc6fzoevl6hgs&st=anheaa8b&dl=0" target="_blank" class="btn">Watch Testimonial</a>
+                            </div>
+                        </video>
+                        
+                        <!-- Video Controls Overlay -->
+                        <div style="position: absolute; bottom: 20px; right: 20px; display: flex; gap: 10px;">
+                            <button id="muteToggle" onclick="toggleTestimonialSound()" style="background: rgba(0,0,0,0.7); border: none; color: white; padding: 10px 15px; border-radius: 25px; cursor: pointer; font-size: 14px; transition: all 0.3s ease; display: flex; align-items: center; gap: 8px;">
+                                <span id="soundIcon">🔇</span>
+                                <span id="soundText">Click to Unmute</span>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Additional Social Proof -->
+                    <div style="text-align: center; margin-top: 3rem;">
+                        <p style="color: var(--primary-color); font-size: 1.1rem; font-weight: bold; margin-bottom: 1rem;">
+                            ⭐⭐⭐⭐⭐ "223 Media transformed my business completely!"
+                        </p>
+                        <p style="color: var(--text-color); opacity: 0.8; max-width: 600px; margin: 0 auto;">
+                            Join hundreds of entrepreneurs who've experienced exponential growth with our content ecosystem approach
+                        </p>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 
-    <!-- Page 5: Start Your Ecosystem -->
-    <div id="start" class="page">
+    <!-- Page 5: Contact -->
+    <div id="contact" class="page">
         <div class="container">
             <section class="hero">
                 <div class="hero-content fade-in">
-                    <h1>Choose Your Content Ecosystem</h1>
-                    <p class="subtitle">Select your package and start growing immediately - no calls, no delays, just results</p>
-                </div>
-            </section>
-
-            <!-- Direct Purchase Options -->
-            <section class="pricing fade-in">
-                <div class="pricing-card glass-card">
-                    <h3>Growth Package</h3>
-                    <div class="price">$497<span class="price-period">/month</span></div>
-                    <ul class="features-list">
-                        <li>4 podcast episodes per month</li>
-                        <li>Professional editing & mixing</li>
-                        <li>Basic website maintenance</li>
-                        <li>Episode-to-blog conversion</li>
-                        <li>Basic SEO optimization</li>
-                        <li>Social media assets</li>
-                        <li>Monthly analytics report</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/9B6cN6gmid4cf1xahngUM08" target="_blank" class="btn">Start Growing Now</a>
-                </div>
-
-                <div class="pricing-card glass-card featured">
-                    <div class="popular-badge">MOST POPULAR</div>
-                    <h3>Scale Package</h3>
-                    <div class="price">$997<span class="price-period">/month</span></div>
-                    <ul class="features-list">
-                        <li>8 podcast episodes per month</li>
-                        <li>Advanced editing & mixing</li>
-                        <li>Advanced website features</li>
-                        <li>Complete content repurposing</li>
-                        <li>Advanced SEO strategy</li>
-                        <li>Lead magnet integration</li>
-                        <li>YouTube optimization</li>
-                        <li>Bi-weekly strategy calls</li>
-                        <li>Priority support</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/bJe8wQ0nk1lu8D91KRgUM07" target="_blank" class="btn">Scale Your Growth Now</a>
-                </div>
-
-                <div class="pricing-card glass-card">
-                    <h3>Enterprise-Lite</h3>
-                    <div class="price">$1,497<span class="price-period">/month</span></div>
-                    <ul class="features-list">
-                        <li>12 podcast episodes per month</li>
-                        <li>Enterprise-level production</li>
-                        <li>Enterprise website features</li>
-                        <li>Multi-platform distribution</li>
-                        <li>Custom integrations</li>
-                        <li>Advanced analytics dashboard</li>
-                        <li>Weekly strategy sessions</li>
-                        <li>Dedicated account manager</li>
-                        <li>Custom automation</li>
-                    </ul>
-                    <a href="https://buy.stripe.com/9B6eVe3zw8NW2eLfBHgUM06" target="_blank" class="btn">Dominate Your Market Now</a>
-                </div>
-            </section>
-
-            <!-- Individual Services -->
-            <section class="fade-in" style="margin-top: 4rem;">
-                <h2 style="text-align: center; margin-bottom: 3rem;">Individual Services</h2>
-                <div class="features">
-                    <div class="feature-card glass-card">
-                        <h3>Single Episode Production</h3>
-                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$110<span class="price-period">/episode</span></div>
-                        <p>Test our quality with a single episode. Perfect for trying our service before committing to a monthly package.</p>
-                        <a href="https://buy.stripe.com/aFa3cwfiefckf1x3SZgUM05" target="_blank" class="btn">Order Episode Now</a>
-                    </div>
-
-                    <div class="feature-card glass-card">
-                        <h3>Enterprise Website</h3>
-                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$7,997<span class="price-period">/project</span></div>
-                        <p>Custom enterprise-level website built to scale with your business and integrate with your content strategy.</p>
-                        <a href="https://buy.stripe.com/6oUdRagmi6FO4mTexDgUM04" target="_blank" class="btn">Build Website Now</a>
-                    </div>
-
-                    <div class="feature-card glass-card">
-                        <h3>Website Management</h3>
-                        <div class="price" style="font-size: 2rem; margin: 1rem 0;">$297<span class="price-period">/month</span></div>
-                        <p>Ongoing website maintenance and optimization. Keep your site running smoothly while you focus on growth.</p>
-                        <a href="https://buy.stripe.com/00w6oI5HE2py06DdtzgUM02" target="_blank" class="btn">Start Management Now</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Trust. Try. Pay. Process -->
-            <section class="fade-in">
-                <div class="glass-card" style="max-width: 800px; margin: 4rem auto; text-align: center;">
-                    <h2 style="margin-bottom: 2rem;">Trust. Try. Pay. Grow.</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem;">
-                        <div>
-                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
-                                <div style="width: 30px; height: 30px; background: white; clip-path: polygon(50% 0%, 0% 100%, 100% 100%);"></div>
-                            </div>
-                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Choose Your Package</h3>
-                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">Select the ecosystem package that fits your business needs and pay securely with Stripe</p>
-                        </div>
-                        <div>
-                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
-                                <div style="width: 30px; height: 30px; background: white; border-radius: 50%;"></div>
-                            </div>
-                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Instant Onboarding</h3>
-                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">Get immediate access to our client portal and automated onboarding sequence</p>
-                        </div>
-                        <div>
-                            <div style="width: 80px; height: 80px; border-radius: 50%; background: var(--primary-color); margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(247, 112, 0, 0.4);">
-                                <div style="width: 30px; height: 30px; background: white; clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);"></div>
-                            </div>
-                            <h3 style="color: var(--text-color); margin-bottom: 1rem;">Start Growing</h3>
-                            <p style="color: var(--text-color); font-size: 1.1rem; line-height: 1.6;">We immediately begin building your content ecosystem for maximum impact</p>
-                        </div>
-                    </div>
+                    <h1>Let's Build Your Ecosystem</h1>
+                    <p class="subtitle">Ready to transform your scattered content into a powerful growth engine? Let's talk about your project.</p>
                 </div>
             </section>
 
             <!-- Contact Form Section -->
-            <section class="cta-section fade-in">
-                <h2>Get Started Today</h2>
-                <p style="font-size: 1.2rem; margin-bottom: 2rem;">
-                    Choose your package and begin transforming your content strategy immediately.
-                </p>
-                <div style="margin: 2rem 0;">
-                    <p style="color: var(--text-color); font-size: 1.1rem; opacity: 0.9;">Secured by Stripe. Cancel anytime.</p>
-                </div>
-                
-                <!-- Contact Form -->
-                <div class="glass-card" style="max-width: 600px; margin: 3rem auto 0; text-align: left;">
-                    <h3 style="text-align: center; margin-bottom: 2rem; color: var(--text-color);">Have Questions? Let's Talk</h3>
-                    <form id="contactForm" class="contact-form">
+            <section class="fade-in">
+                <div class="glass-card" style="max-width: 700px; margin: 0 auto;">
+                    <form id="contactForm" class="contact-form" action="https://formspree.io/f/xovlljgl" method="POST">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
                             <input type="text" id="name" name="name" required>
@@ -1637,11 +1456,16 @@
                         </div>
                         
                         <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
                             <label for="interest">I'm Interested In:</label>
                             <select id="interest" name="interest">
                                 <option value="">Select a service...</option>
                                 <option value="growth-package">Growth Package ($497/month)</option>
-                                <option value="scale-package">Scale Package ($997/month)</option>
+                                <option value="scale-package">Scale Package ($997/month) - MOST POPULAR</option>
                                 <option value="enterprise-package">Enterprise-Lite Package ($1,497/month)</option>
                                 <option value="single-episode">Single Episode Production ($110)</option>
                                 <option value="website-development">Enterprise Website ($7,997)</option>
@@ -1651,265 +1475,134 @@
                         </div>
                         
                         <div class="form-group">
+                            <label for="timeline">When Would You Like to Start?</label>
+                            <select id="timeline" name="timeline">
+                                <option value="">Select timeline...</option>
+                                <option value="immediately">Immediately</option>
+                                <option value="this-week">This Week</option>
+                                <option value="this-month">This Month</option>
+                                <option value="next-month">Next Month</option>
+                                <option value="just-exploring">Just Exploring</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
                             <label for="message">Tell Us About Your Project *</label>
-                            <textarea id="message" name="message" rows="4" placeholder="Describe your current content situation and what you'd like to achieve..." required></textarea>
+                            <textarea id="message" name="message" rows="5" placeholder="What's your current content situation? What are your goals? How can we help transform your business?" required></textarea>
                         </div>
                         
                         <div style="text-align: center; margin-top: 2rem;">
                             <button type="submit" class="btn" style="width: 100%;">Send Message</button>
+                            <p style="color: var(--text-color); opacity: 0.7; font-size: 0.9rem; margin-top: 1rem;">
+                                We'll respond within 24 hours
+                            </p>
                         </div>
                     </form>
+                </div>
+            </section>
+
+            <!-- Contact Info -->
+            <section class="fade-in" style="margin-top: 4rem;">
+                <div style="text-align: center;">
+                    <h2 style="margin-bottom: 2rem;">Other Ways to Connect</h2>
+                    <div style="display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
+                        <div>
+                            <h3 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 0.5rem;">📧 Email</h3>
+                            <p>2twenty3media@gmail.com</p>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 0.5rem;">📱 Instagram</h3>
+                            <p><a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" style="color: var(--text-color); text-decoration: none;">@twotwentythreemedia</a></p>
+                        </div>
+                        <div>
+                            <h3 style="color: var(--primary-color); font-size: 1.2rem; margin-bottom: 0.5rem;">🌐 Website</h3>
+                            <p>2twenty3media.com</p>
+                        </div>
+                    </div>
                 </div>
             </section>
         </div>
     </div>
 
-    <!-- Instagram Reels Section - Bottom of Site -->
-    <section class="instagram-reels-section" style="background: var(--glass-bg); backdrop-filter: blur(20px); padding: 4rem 0; margin-top: 4rem;">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 style="margin-bottom: 1rem;">See Our Work in Action</h2>
-                <p style="font-size: 1.2rem; color: var(--text-color); opacity: 0.9; margin-bottom: 2rem;">
-                    Follow our journey and client success stories on Instagram
-                </p>
-                <a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" class="btn" style="margin-bottom: 2rem;">
-                    📱 Follow @twotwentythreemedia
-                </a>
-            </div>
-            
-            <!-- Instagram Reels Scroll -->
-            <div class="reels-container" style="overflow: hidden; width: 100%; position: relative;">
-                <div class="reels-scroll" style="display: flex; gap: 2rem; animation: scrollReels 40s linear infinite; width: fit-content;">
-                    
-                    <!-- Reel 1 - Client Feedback -->
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true"
-                                style="border-radius: 15px;">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <!-- Reel 2 - Behind the Scenes -->
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_2/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true"
-                                style="border-radius: 15px;">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <!-- Reel 3 - Service Demo -->
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_3/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true"
-                                style="border-radius: 15px;">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <!-- Reel 4 - Tips & Insights -->
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_4/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true"
-                                style="border-radius: 15px;">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <!-- Duplicate first few reels for seamless loop -->
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true"
-                                style="border-radius: 15px;">
-                            </iframe>
-                        </div>
-                    </div>
-
-                    <div class="reel-item" style="min-width: 300px; flex-shrink: 0;">
-                        <div class="reel-embed" style="position: relative; border-radius: 15px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);">
-                            <iframe 
-                                src="https://www.instagram.com/reel/PLACEHOLDER_REEL_ID_2/embed" 
-                                width="300" 
-                                height="533" 
-                                frameborder="0" 
-                                scrolling="no" 
-                                allowtransparency="true"
-                                style="border-radius: 15px;">
-                            </iframe>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Page 6: Onboarding -->
-    <div id="onboarding" class="page">
+    <!-- Page 6: Start Your Ecosystem -->
+    <div id="start" class="page">
         <div class="container">
             <section class="hero">
                 <div class="hero-content fade-in">
-                    <h1>Welcome to Your Content Ecosystem! 🎉</h1>
-                    <p class="subtitle">Thank you for choosing 223 Media! Your payment has been processed successfully.</p>
-                    <p style="font-size: 1.2rem; margin-bottom: 2rem; color: var(--text-color); opacity: 0.8;">
-                        Please complete the onboarding form below so we can create your custom content ecosystem.
-                    </p>
+                    <h1>Choose Your Content Ecosystem</h1>
+                    <p class="subtitle">Select your package and start growing immediately - no calls, no delays, just results</p>
                 </div>
             </section>
 
-            <!-- Onboarding Form -->
-            <section class="fade-in">
-                <div class="glass-card" style="max-width: 900px; margin: 0 auto 2rem;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Client Onboarding Form</h2>
-                    
-                    <!-- JotForms Integration -->
-                    <div id="jotform-container" style="margin-bottom: 2rem;">
-                        <!-- Replace with your actual JotForms embed code -->
-                        <script type="text/javascript" src="https://form.jotform.com/jsform/YOUR_FORM_ID"></script>
-                        
-                        <!-- Setup Instructions (Remove after setup) -->
-                        <div style="padding: 2rem; background: rgba(120, 108, 126, 0.1); border-radius: 15px; border: 1px solid rgba(120, 108, 126, 0.3);">
-                            <h3 style="color: var(--primary-color); margin-bottom: 1rem;">🔧 Setup Instructions:</h3>
-                            <ol style="color: var(--text-color); line-height: 1.6; padding-left: 1.5rem;">
-                                <li>Create your onboarding form in JotForms with fields for:
-                                    <ul style="margin: 0.5rem 0; padding-left: 1.5rem;">
-                                        <li>Client contact information</li>
-                                        <li>Business details and goals</li>
-                                        <li>Current content channels</li>
-                                        <li>Podcast topic and format preferences</li>
-                                        <li>Website requirements</li>
-                                        <li>Brand guidelines and preferences</li>
-                                    </ul>
-                                </li>
-                                <li>Enable Stripe integration in JotForms</li>
-                                <li>Set up Zapier: JotForms → Motion project creation</li>
-                                <li>Replace "YOUR_FORM_ID" with your actual form ID</li>
-                                <li>Test the complete workflow</li>
-                            </ol>
+            <!-- Direct Purchase Options -->
+            <section class="pricing fade-in">
+                <div class="pricing-card glass-card">
+                    <div class="pricing-card-content">
+                        <div class="pricing-card-header">
+                            <h3>Growth Package</h3>
+                            <div class="price">$497<span class="price-period">/month</span></div>
                         </div>
+                        <ul class="features-list">
+                            <li>4 podcast episodes per month</li>
+                            <li>Professional editing & mixing</li>
+                            <li>Basic website maintenance</li>
+                            <li>Episode-to-blog conversion</li>
+                            <li>Basic SEO optimization</li>
+                            <li>Social media assets</li>
+                            <li>Monthly analytics report</li>
+                        </ul>
                     </div>
-
-                    <div style="text-align: center; margin-top: 2rem;">
-                        <p style="color: var(--text-color); opacity: 0.7; font-size: 0.9rem;">
-                            This form will automatically create your project in our system and assign your dedicated team.
-                        </p>
-                    </div>
+                    <a href="https://buy.stripe.com/9B6cN6gmid4cf1xahngUM08" target="_blank" class="btn">Start Growing Now</a>
                 </div>
-            </section>
 
-            <!-- What Happens Next -->
-            <section class="fade-in">
-                <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">What Happens Next?</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">1</span>
-                            </div>
-                            <div>
-                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Project Creation</h4>
-                                <p style="color: var(--text-color); opacity: 0.8;">Your project is automatically created in our Motion system with 5 assessment tasks assigned to our team.</p>
-                            </div>
+                <div class="pricing-card glass-card featured">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="pricing-card-content">
+                        <div class="pricing-card-header">
+                            <h3>Scale Package</h3>
+                            <div class="price">$997<span class="price-period">/month</span></div>
                         </div>
-                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">2</span>
-                            </div>
-                            <div>
-                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Team Assignment</h4>
-                                <p style="color: var(--text-color); opacity: 0.8;">Your dedicated content ecosystem team is assigned and immediately notified to begin work.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">3</span>
-                            </div>
-                            <div>
-                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Initial Contact</h4>
-                                <p style="color: var(--text-color); opacity: 0.8;">You'll receive a welcome email within 24 hours with your project timeline and next steps.</p>
-                            </div>
-                        </div>
-                        <div style="display: flex; align-items: flex-start; gap: 1rem;">
-                            <div style="width: 50px; height: 50px; background: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                                <span style="color: white; font-weight: bold; font-size: 1.2rem;">4</span>
-                            </div>
-                            <div>
-                                <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Content Production</h4>
-                                <p style="color: var(--text-color); opacity: 0.8;">Your content ecosystem begins production according to your chosen package within 48 hours.</p>
-                            </div>
-                        </div>
+                        <ul class="features-list">
+                            <li>8 podcast episodes per month</li>
+                            <li>Advanced editing & mixing</li>
+                            <li>Advanced website features</li>
+                            <li>Complete content repurposing</li>
+                            <li>Advanced SEO strategy</li>
+                            <li>Lead magnet integration</li>
+                            <li>YouTube optimization</li>
+                            <li>Bi-weekly strategy calls</li>
+                            <li>Priority support</li>
+                        </ul>
                     </div>
+                    <a href="https://buy.stripe.com/bJe8wQ0nk1lu8D91KRgUM07" target="_blank" class="btn">Scale Your Growth Now</a>
                 </div>
-            </section>
 
-            <!-- 5 Auto Tasks Info -->
-            <section class="fade-in" style="margin-top: 3rem;">
-                <div class="glass-card" style="max-width: 900px; margin: 0 auto;">
-                    <h2 style="text-align: center; margin-bottom: 2rem;">Your 5 Auto Tasks in Progress</h2>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
-                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 1: Client Discovery & Content Audit</h4>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 2 days</p>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Review your goals, current content, and create ecosystem strategy</p>
+                <div class="pricing-card glass-card">
+                    <div class="pricing-card-content">
+                        <div class="pricing-card-header">
+                            <h3>Enterprise-Lite</h3>
+                            <div class="price">$1,497<span class="price-period">/month</span></div>
                         </div>
-                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
-                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 2: Website Setup & Configuration</h4>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 3 days</p>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Set up your custom website with branding and initial pages</p>
-                        </div>
-                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
-                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 3: Podcast Production Planning</h4>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 2 days</p>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Create podcast format, episode structure, and production schedule</p>
-                        </div>
-                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
-                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 4: Content Calendar Creation</h4>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 3 days</p>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Build 90-day content calendar with all 15+ content pieces per episode</p>
-                        </div>
-                        <div style="padding: 1.5rem; border-left: 4px solid var(--primary-color); background: rgba(247, 112, 0, 0.1);">
-                            <h4 style="color: var(--text-color); margin-bottom: 0.5rem;">Task 5: System Integration & Testing</h4>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Timeline: 2 days</p>
-                            <p style="color: var(--text-color); opacity: 0.8; font-size: 0.9rem;">Connect all tools and test workflow before first episode</p>
-                        </div>
+                        <ul class="features-list">
+                            <li>12 podcast episodes per month</li>
+                            <li>Enterprise-level production</li>
+                            <li>Enterprise website features</li>
+                            <li>Multi-platform distribution</li>
+                            <li>Custom integrations</li>
+                            <li>Advanced analytics dashboard</li>
+                            <li>Weekly strategy sessions</li>
+                            <li>Dedicated account manager</li>
+                            <li>Custom automation</li>
+                        </ul>
                     </div>
+                    <a href="https://buy.stripe.com/9B6eVe3zw8NW2eLfBHgUM06" target="_blank" class="btn">Dominate Your Market Now</a>
                 </div>
             </section>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer style="background: rgba(32, 12, 42, 0.95); padding: 3rem 0 2rem; margin-top: 4rem; border-top: 1px solid var(--glass-border);">
+    <footer style="background: rgba(32, 12, 42, 0.95); padding: 3rem 0 2rem; border-top: 1px solid var(--glass-border);">
         <div class="container">
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 2rem;">
                 <div>
@@ -1934,19 +1627,19 @@
                     <ul style="list-style: none; color: var(--text-color);">
                         <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('about')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">About Us</a></li>
                         <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('portfolio')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Portfolio</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('start')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Get Started</a></li>
-                        <li style="margin-bottom: 0.5rem;"><a href="#" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Contact</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="#" onclick="showPage('contact')" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Contact</a></li>
+                        <li style="margin-bottom: 0.5rem;"><a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" style="color: var(--text-color); text-decoration: none; opacity: 0.8;">Instagram</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 style="margin-bottom: 1rem;">Connect</h4>
                     <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">📧 2twenty3media@gmail.com</p>
                     <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">📱 <a href="https://www.instagram.com/twotwentythreemedia/" target="_blank" style="color: var(--text-color); text-decoration: none;">@twotwentythreemedia</a></p>
-                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">💼 Contact form above</p>
+                    <p style="color: var(--text-color); margin-bottom: 0.5rem; opacity: 0.8;">🌐 2twenty3media.com</p>
                 </div>
             </div>
             <div style="border-top: 1px solid var(--glass-border); padding-top: 2rem; text-align: center; color: var(--text-color); opacity: 0.7;">
-                <p>&copy; 2025 223 Media. All rights reserved. | <a href="#privacy" style="color: var(--text-color); text-decoration: none;">Privacy Policy</a> | <a href="#terms" style="color: var(--text-color); text-decoration: none;">Terms of Service</a></p>
+                <p>&copy; 2025 223 Media. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -1970,17 +1663,17 @@
             });
             
             // Find and activate current nav link
-            const activeLink = document.querySelector(`[onclick="showPage('${pageId}')"]`);
-            if (activeLink && activeLink.classList.contains('nav-link')) {
-                activeLink.classList.add('active');
-            }
+            const activeLinks = document.querySelectorAll(`[onclick="showPage('${pageId}')"]`);
+            activeLinks.forEach(link => {
+                if (link.classList.contains('nav-link')) {
+                    link.classList.add('active');
+                }
+            });
             
-            // Show/hide onboarding nav
-            const onboardingNav = document.getElementById('onboarding-nav');
-            if (pageId === 'onboarding') {
-                onboardingNav.style.display = 'block';
-            } else if (pageId !== 'onboarding') {
-                onboardingNav.style.display = 'none';
+            // Close mobile menu if open
+            const navLinksEl = document.getElementById('navLinks');
+            if (navLinksEl) {
+                navLinksEl.classList.remove('show');
             }
             
             // Scroll to top
@@ -1990,27 +1683,6 @@
             setTimeout(() => {
                 triggerAnimations();
             }, 100);
-        }
-
-        // Check for onboarding redirect
-        function checkOnboardingRedirect() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const sessionId = urlParams.get('session_id');
-            const onboard = urlParams.get('onboard');
-            
-            if (sessionId || onboard === 'true') {
-                // Show onboarding page
-                showPage('onboarding');
-                
-                // Track conversion
-                if (typeof gtag !== 'undefined') {
-                    gtag('event', 'purchase', {
-                        'transaction_id': sessionId,
-                        'value': 1,
-                        'currency': 'USD'
-                    });
-                }
-            }
         }
 
         // Portfolio Filtering
@@ -2056,8 +1728,28 @@
 
         // Mobile Menu
         function toggleMobileMenu() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('show');
+        }
+
+        // Toggle sound for testimonial video
+        function toggleTestimonialSound() {
+            const video = document.getElementById('testimonialVideo');
+            const soundIcon = document.getElementById('soundIcon');
+            const soundText = document.getElementById('soundText');
+            const button = document.getElementById('muteToggle');
+            
+            if (video.muted) {
+                video.muted = false;
+                soundIcon.textContent = '🔊';
+                soundText.textContent = 'Mute';
+                button.style.background = 'rgba(241, 112, 0, 0.8)';
+            } else {
+                video.muted = true;
+                soundIcon.textContent = '🔇';
+                soundText.textContent = 'Click to Unmute';
+                button.style.background = 'rgba(0,0,0,0.7)';
+            }
         }
 
         // Header Scroll Effect
@@ -2077,7 +1769,6 @@
 
         // Initialize everything when DOM loads
         document.addEventListener('DOMContentLoaded', function() {
-            checkOnboardingRedirect();
             triggerAnimations();
             initPortfolioFilter();
             initHeaderScroll();
@@ -2085,35 +1776,14 @@
             // Add scroll listener for animations
             window.addEventListener('scroll', triggerAnimations);
             
-            // Add resize listener for mobile
-            window.addEventListener('resize', () => {
-                if (window.innerWidth > 768) {
-                    document.querySelector('.nav-links').style.display = 'flex';
+            // Add pulse animation after page loads (only on about page)
+            setTimeout(function() {
+                const muteButton = document.getElementById('muteToggle');
+                if (muteButton) {
+                    muteButton.style.animation = 'pulse 2s ease-in-out 3';
                 }
-            });
+            }, 3000);
         });
-
-        // Analytics tracking (replace with your tracking code)
-        function trackEvent(action, category, label) {
-            if (typeof gtag !== 'undefined') {
-                gtag('event', action, {
-                    'event_category': category,
-                    'event_label': label
-                });
-            }
-        }
-
-        // Track page views
-        function trackPageView(page) {
-            trackEvent('page_view', 'navigation', page);
-        }
-
-        // Enhanced page navigation with tracking
-        const originalShowPage = showPage;
-        showPage = function(pageId) {
-            originalShowPage(pageId);
-            trackPageView(pageId);
-        };
     </script>
 </body>
 </html>
