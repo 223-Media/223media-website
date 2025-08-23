@@ -1,0 +1,1347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - 223 Media</title>
+    <meta name="description" content="223 Media Admin Dashboard - Manage clients, projects, and system operations.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="223 Media Admin Dashboard">
+    <meta property="og:description" content="Comprehensive admin interface for managing the 223 Media client portal system.">
+    <meta property="og:image" content="/assets/images/223-media-logo-800x800.png">
+    <meta property="og:url" content="https://2twenty3media.com/admin">
+    
+    <style>
+        /* ================================================================ */
+        /* 223 MEDIA ADMIN DASHBOARD STYLES */
+        /* Enhanced Glass Morphism Design with Admin Features */
+        /* ================================================================ */
+        
+        :root {
+            --primary-color: #f17000;
+            --secondary-color: #200c2a;
+            --accent-color: #786c7e;
+            --text-color: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --success-color: #44ff44;
+            --warning-color: #ff4444;
+            --info-color: #4da6ff;
+            --admin-color: #9d4edd;
+            --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, var(--accent-color) 30%, var(--admin-color) 70%, var(--primary-color) 100%);
+            min-height: 100vh;
+            color: var(--text-color);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Enhanced Background Animation for Admin */
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.08;
+            animation: adminFloat 25s infinite ease-in-out;
+        }
+        
+        .admin-circle {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--admin-color), transparent);
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+        
+        .admin-diamond {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, var(--primary-color), transparent);
+            transform: rotate(45deg);
+            top: 70%;
+            right: 10%;
+            animation-delay: -10s;
+        }
+        
+        .admin-hexagon {
+            width: 150px;
+            height: 130px;
+            background: var(--admin-color);
+            position: relative;
+            top: 50%;
+            left: 80%;
+            animation-delay: -20s;
+        }
+        
+        .admin-hexagon:before,
+        .admin-hexagon:after {
+            content: "";
+            position: absolute;
+            width: 0;
+            border-left: 75px solid transparent;
+            border-right: 75px solid transparent;
+        }
+        
+        .admin-hexagon:before {
+            bottom: 100%;
+            border-bottom: 37.5px solid var(--admin-color);
+        }
+        
+        .admin-hexagon:after {
+            top: 100%;
+            border-top: 37.5px solid var(--admin-color);
+        }
+        
+        @keyframes adminFloat {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(80px, -60px) rotate(72deg); }
+            40% { transform: translate(-50px, 40px) rotate(144deg); }
+            60% { transform: translate(60px, 80px) rotate(216deg); }
+            80% { transform: translate(-40px, -30px) rotate(288deg); }
+        }
+        
+        /* Admin Header */
+        .admin-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(157, 78, 221, 0.15);
+            backdrop-filter: blur(25px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow);
+        }
+        
+        .admin-logo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--text-color);
+        }
+        
+        .admin-badge {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--admin-color), var(--primary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+        
+        .admin-badge:hover {
+            transform: scale(1.1) rotate(360deg);
+        }
+        
+        .admin-badge::after {
+            content: '👑';
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            font-size: 0.8rem;
+        }
+        
+        .admin-nav {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+        
+        .admin-nav-link {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            background: transparent;
+            border: 1px solid transparent;
+            font-weight: 500;
+        }
+        
+        .admin-nav-link:hover, .admin-nav-link.active {
+            background: var(--glass-bg);
+            border-color: var(--admin-color);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(157, 78, 221, 0.3);
+        }
+        
+        .admin-user-info {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.5rem 1rem;
+            background: var(--glass-bg);
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .admin-avatar {
+            width: 35px;
+            height: 35px;
+            background: linear-gradient(135deg, var(--admin-color), var(--primary-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        
+        .logout-btn {
+            background: linear-gradient(135deg, var(--warning-color), #ff6666);
+            border: none;
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .logout-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        /* Sidebar Navigation */
+        .admin-sidebar {
+            position: fixed;
+            left: 0;
+            top: 90px;
+            width: 280px;
+            height: calc(100vh - 90px);
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border-right: 1px solid var(--glass-border);
+            padding: 2rem 0;
+            z-index: 100;
+            overflow-y: auto;
+        }
+        
+        .sidebar-section {
+            margin-bottom: 2rem;
+        }
+        
+        .sidebar-title {
+            padding: 0 2rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+        
+        .sidebar-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 2rem;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border-left: 3px solid transparent;
+        }
+        
+        .sidebar-link:hover, .sidebar-link.active {
+            background: var(--glass-bg);
+            border-left-color: var(--admin-color);
+            backdrop-filter: blur(10px);
+        }
+        
+        .sidebar-icon {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+        }
+        
+        /* Main Content Area */
+        .admin-main {
+            margin-left: 280px;
+            margin-top: 90px;
+            padding: 2rem;
+            min-height: calc(100vh - 90px);
+        }
+        
+        /* Glass Cards Enhanced for Admin */
+        .admin-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+        
+        .admin-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+        }
+        
+        .admin-card-header {
+            display: flex;
+            justify-content: between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .admin-card-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .admin-card-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--admin-color), var(--primary-color));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+        }
+        
+        /* Authentication Section */
+        .auth-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 2000;
+        }
+        
+        .auth-card {
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: var(--shadow);
+        }
+        
+        .auth-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--admin-color), var(--primary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .auth-subtitle {
+            color: var(--accent-color);
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Dashboard Grid */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .metric-card {
+            text-align: center;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--admin-color), var(--primary-color));
+        }
+        
+        .metric-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        .metric-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--admin-color);
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .metric-label {
+            color: var(--accent-color);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+        
+        .metric-change {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .metric-change.positive { color: var(--success-color); }
+        .metric-change.negative { color: var(--warning-color); }
+        
+        /* Data Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .data-table th {
+            background: rgba(157, 78, 221, 0.2);
+            font-weight: 600;
+            color: var(--admin-color);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+        
+        .data-table tr:hover {
+            background: var(--glass-bg);
+        }
+        
+        /* Status Badges */
+        .status-badge {
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .status-active { background: rgba(68, 255, 68, 0.2); color: var(--success-color); }
+        .status-pending { background: rgba(255, 165, 0, 0.2); color: #ffa500; }
+        .status-completed { background: rgba(77, 166, 255, 0.2); color: var(--info-color); }
+        .status-revision { background: rgba(241, 112, 0, 0.2); color: var(--primary-color); }
+        .status-inactive { background: rgba(255, 68, 68, 0.2); color: var(--warning-color); }
+        
+        /* Action Buttons */
+        .action-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0 0.25rem;
+        }
+        
+        .btn-primary { background: var(--admin-color); color: white; }
+        .btn-success { background: var(--success-color); color: black; }
+        .btn-warning { background: var(--primary-color); color: white; }
+        .btn-danger { background: var(--warning-color); color: white; }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Form Controls */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+        
+        .form-input, .form-select, .form-textarea {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            background: var(--glass-bg);
+            color: var(--text-color);
+            font-size: 1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus, .form-select:focus, .form-textarea:focus {
+            outline: none;
+            border-color: var(--admin-color);
+            box-shadow: 0 0 20px rgba(157, 78, 221, 0.3);
+        }
+        
+        /* Quick Actions */
+        .quick-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .quick-action-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .quick-action-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+            background: rgba(157, 78, 221, 0.2);
+        }
+        
+        /* Integration Status */
+        .integration-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .integration-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .integration-name {
+            font-weight: 600;
+        }
+        
+        .integration-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--warning-color);
+        }
+        
+        .integration-indicator.connected {
+            background: var(--success-color);
+        }
+        
+        /* Alerts */
+        .alert {
+            padding: 1rem 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            backdrop-filter: blur(10px);
+        }
+        
+        .alert-success {
+            background: rgba(68, 255, 68, 0.2);
+            border: 1px solid var(--success-color);
+            color: var(--success-color);
+        }
+        
+        .alert-error {
+            background: rgba(255, 68, 68, 0.2);
+            border: 1px solid var(--warning-color);
+            color: var(--warning-color);
+        }
+        
+        .alert-info {
+            background: rgba(157, 78, 221, 0.2);
+            border: 1px solid var(--admin-color);
+            color: var(--admin-color);
+        }
+        
+        /* Loading States */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid var(--glass-border);
+            border-radius: 50%;
+            border-top-color: var(--admin-color);
+            animation: spin 1s ease-in-out infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        /* Hidden State */
+        .hidden {
+            display: none !important;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .admin-sidebar {
+                transform: translateX(-100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .admin-sidebar.open {
+                transform: translateX(0);
+            }
+            
+            .admin-main {
+                margin-left: 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                background: none;
+                border: none;
+                color: var(--text-color);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .admin-header {
+                padding: 1rem;
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .admin-main {
+                padding: 1rem;
+                margin-top: 120px;
+            }
+            
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-actions {
+                flex-direction: column;
+            }
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Background Shapes for Admin -->
+    <div class="background-shapes">
+        <div class="shape admin-circle"></div>
+        <div class="shape admin-diamond"></div>
+        <div class="shape admin-hexagon"></div>
+    </div>
+
+    <!-- Admin Header -->
+    <header class="admin-header">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <button class="mobile-menu-btn" onclick="toggleSidebar()">☰</button>
+            <a href="/" class="admin-logo">
+                <div class="admin-badge">223</div>
+                <span>Admin Dashboard</span>
+            </a>
+        </div>
+        
+        <nav class="admin-nav" id="adminNav">
+            <div class="admin-user-info" id="adminUserInfo" style="display: none;">
+                <div class="admin-avatar" id="adminAvatar">A</div>
+                <span id="adminUsername">Admin</span>
+            </div>
+            <button class="logout-btn" onclick="logout()" id="logoutBtn" style="display: none;">Logout</button>
+        </nav>
+    </header>
+
+    <!-- Admin Sidebar -->
+    <aside class="admin-sidebar" id="adminSidebar">
+        <div class="sidebar-section">
+            <div class="sidebar-title">Overview</div>
+            <a href="#dashboard" class="sidebar-link active" data-section="dashboard">
+                <span class="sidebar-icon">📊</span>
+                <span>Dashboard</span>
+            </a>
+            <a href="#analytics" class="sidebar-link" data-section="analytics">
+                <span class="sidebar-icon">📈</span>
+                <span>Analytics</span>
+            </a>
+        </div>
+        
+        <div class="sidebar-section">
+            <div class="sidebar-title">Management</div>
+            <a href="#clients" class="sidebar-link" data-section="clients">
+                <span class="sidebar-icon">👥</span>
+                <span>Clients</span>
+            </a>
+            <a href="#projects" class="sidebar-link" data-section="projects">
+                <span class="sidebar-icon">🎙️</span>
+                <span>Projects</span>
+            </a>
+            <a href="#episodes" class="sidebar-link" data-section="episodes">
+                <span class="sidebar-icon">🎵</span>
+                <span>Episodes</span>
+            </a>
+            <a href="#files" class="sidebar-link" data-section="files">
+                <span class="sidebar-icon">📁</span>
+                <span>Files</span>
+            </a>
+        </div>
+        
+        <div class="sidebar-section">
+            <div class="sidebar-title">System</div>
+            <a href="#integrations" class="sidebar-link" data-section="integrations">
+                <span class="sidebar-icon">🔗</span>
+                <span>Integrations</span>
+            </a>
+            <a href="#billing" class="sidebar-link" data-section="billing">
+                <span class="sidebar-icon">💳</span>
+                <span>Billing</span>
+            </a>
+            <a href="#settings" class="sidebar-link" data-section="settings">
+                <span class="sidebar-icon">⚙️</span>
+                <span>Settings</span>
+            </a>
+        </div>
+        
+        <div class="sidebar-section">
+            <div class="sidebar-title">Tools</div>
+            <a href="#backup" class="sidebar-link" data-section="backup">
+                <span class="sidebar-icon">💾</span>
+                <span>Backup</span>
+            </a>
+            <a href="#logs" class="sidebar-link" data-section="logs">
+                <span class="sidebar-icon">📝</span>
+                <span>Logs</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+        <!-- Authentication Section -->
+        <section id="authSection" class="auth-section">
+            <div class="auth-card">
+                <h1 class="auth-title">Admin Access</h1>
+                <p class="auth-subtitle">Secure admin portal for 223 Media operations</p>
+                
+                <div id="alertContainer"></div>
+                
+                <form id="adminLoginForm">
+                    <div class="form-group">
+                        <label for="adminEmail" class="form-label">Admin Email</label>
+                        <input type="email" id="adminEmail" class="form-input" placeholder="Enter admin email" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="adminPassword" class="form-label">Password</label>
+                        <input type="password" id="adminPassword" class="form-input" placeholder="Enter admin password" required>
+                    </div>
+                    
+                    <button type="submit" class="btn-primary" id="adminLoginBtn">
+                        <span id="adminLoginText">Admin Sign In</span>
+                        <span id="adminLoginLoader" class="loading hidden"></span>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Dashboard Content -->
+        <section id="dashboardContent" class="hidden">
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <a href="#" class="quick-action-btn" onclick="showSection('clients')">
+                    <span>👥</span>
+                    <span>Add Client</span>
+                </a>
+                <a href="#" class="quick-action-btn" onclick="showSection('projects')">
+                    <span>🎙️</span>
+                    <span>New Project</span>
+                </a>
+                <a href="#" class="quick-action-btn" onclick="showSection('episodes')">
+                    <span>🎵</span>
+                    <span>Create Episode</span>
+                </a>
+                <a href="#" class="quick-action-btn" onclick="runBackup()">
+                    <span>💾</span>
+                    <span>Backup System</span>
+                </a>
+            </div>
+
+            <!-- System Overview -->
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <div class="admin-card-title">
+                        <div class="admin-card-icon">🎯</div>
+                        System Overview
+                    </div>
+                </div>
+                
+                <div class="dashboard-grid">
+                    <div class="admin-card metric-card">
+                        <div class="metric-icon">👥</div>
+                        <span class="metric-number" id="totalClients">0</span>
+                        <div class="metric-label">Total Clients</div>
+                        <div class="metric-change positive" id="clientsChange">+12% this month</div>
+                    </div>
+                    
+                    <div class="admin-card metric-card">
+                        <div class="metric-icon">🎙️</div>
+                        <span class="metric-number" id="activeProjects">0</span>
+                        <div class="metric-label">Active Projects</div>
+                        <div class="metric-change positive" id="projectsChange">+8% this week</div>
+                    </div>
+                    
+                    <div class="admin-card metric-card">
+                        <div class="metric-icon">🎵</div>
+                        <span class="metric-number" id="episodesThisMonth">0</span>
+                        <div class="metric-label">Episodes This Month</div>
+                        <div class="metric-change positive" id="episodesChange">+25% vs last month</div>
+                    </div>
+                    
+                    <div class="admin-card metric-card">
+                        <div class="metric-icon">💰</div>
+                        <span class="metric-number" id="monthlyRevenue">$0</span>
+                        <div class="metric-label">Monthly Revenue</div>
+                        <div class="metric-change positive" id="revenueChange">+18% vs last month</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Integration Status -->
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <div class="admin-card-title">
+                        <div class="admin-card-icon">🔗</div>
+                        Integration Status
+                    </div>
+                </div>
+                
+                <div class="integration-status">
+                    <div class="integration-item">
+                        <span class="integration-name">Airtable</span>
+                        <div class="integration-indicator" id="airtableStatus"></div>
+                    </div>
+                    <div class="integration-item">
+                        <span class="integration-name">Stripe</span>
+                        <div class="integration-indicator" id="stripeStatus"></div>
+                    </div>
+                    <div class="integration-item">
+                        <span class="integration-name">HubSpot</span>
+                        <div class="integration-indicator" id="hubspotStatus"></div>
+                    </div>
+                    <div class="integration-item">
+                        <span class="integration-name">Brevo</span>
+                        <div class="integration-indicator" id="brevoStatus"></div>
+                    </div>
+                    <div class="integration-item">
+                        <span class="integration-name">Motion</span>
+                        <div class="integration-indicator" id="motionStatus"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="admin-card">
+                <div class="admin-card-header">
+                    <div class="admin-card-title">
+                        <div class="admin-card-icon">📊</div>
+                        Recent Activity
+                    </div>
+                </div>
+                
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Client</th>
+                            <th>Action</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="recentActivityTable">
+                        <!-- Activity data will be loaded here -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // ================================================================
+        // 223 MEDIA ADMIN DASHBOARD JAVASCRIPT
+        // ================================================================
+        
+        // Global State
+        let currentAdmin = null;
+        let adminToken = null;
+        let currentSection = 'dashboard';
+        
+        // DOM Elements
+        const authSection = document.getElementById('authSection');
+        const dashboardContent = document.getElementById('dashboardContent');
+        const adminLoginForm = document.getElementById('adminLoginForm');
+        const alertContainer = document.getElementById('alertContainer');
+        const sidebarLinks = document.querySelectorAll('.sidebar-link');
+        const adminSidebar = document.getElementById('adminSidebar');
+        
+        // ================================================================
+        // INITIALIZATION
+        // ================================================================
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            checkAdminAuth();
+            setupEventListeners();
+            loadSystemStatus();
+        });
+        
+        // ================================================================
+        // AUTHENTICATION
+        // ================================================================
+        
+        function checkAdminAuth() {
+            const token = localStorage.getItem('223media_admin_token');
+            const admin = localStorage.getItem('223media_admin_user');
+            
+            if (token && admin) {
+                adminToken = token;
+                currentAdmin = JSON.parse(admin);
+                showDashboard();
+            } else {
+                showAuth();
+            }
+        }
+        
+        async function adminLogin(email, password) {
+            try {
+                const response = await fetch('/api/admin/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    adminToken = data.token;
+                    currentAdmin = data.admin;
+                    
+                    localStorage.setItem('223media_admin_token', adminToken);
+                    localStorage.setItem('223media_admin_user', JSON.stringify(currentAdmin));
+                    
+                    showAlert('Admin login successful!', 'success');
+                    setTimeout(() => showDashboard(), 1000);
+                } else {
+                    showAlert(data.error || 'Admin login failed.', 'error');
+                }
+            } catch (error) {
+                console.error('Admin login error:', error);
+                showAlert('Connection error. Please try again.', 'error');
+            }
+        }
+        
+        function logout() {
+            localStorage.removeItem('223media_admin_token');
+            localStorage.removeItem('223media_admin_user');
+            adminToken = null;
+            currentAdmin = null;
+            showAuth();
+        }
+        
+        // ================================================================
+        // UI MANAGEMENT
+        // ================================================================
+        
+        function showAuth() {
+            authSection.classList.remove('hidden');
+            dashboardContent.classList.add('hidden');
+            document.getElementById('adminUserInfo').style.display = 'none';
+            document.getElementById('logoutBtn').style.display = 'none';
+        }
+        
+        function showDashboard() {
+            authSection.classList.add('hidden');
+            dashboardContent.classList.remove('hidden');
+            document.getElementById('adminUserInfo').style.display = 'flex';
+            document.getElementById('logoutBtn').style.display = 'block';
+            
+            // Update admin info
+            if (currentAdmin) {
+                document.getElementById('adminUsername').textContent = currentAdmin.name || 'Admin';
+                document.getElementById('adminAvatar').textContent = 
+                    (currentAdmin.name || 'Admin').charAt(0).toUpperCase();
+            }
+            
+            loadDashboardData();
+        }
+        
+        function showAlert(message, type = 'info') {
+            const alert = document.createElement('div');
+            alert.className = `alert alert-${type}`;
+            alert.innerHTML = `
+                <span>${getAlertIcon(type)}</span>
+                <span>${message}</span>
+            `;
+            
+            alertContainer.innerHTML = '';
+            alertContainer.appendChild(alert);
+            
+            setTimeout(() => {
+                if (alertContainer.contains(alert)) {
+                    alertContainer.removeChild(alert);
+                }
+            }, 5000);
+        }
+        
+        function getAlertIcon(type) {
+            switch (type) {
+                case 'success': return '✅';
+                case 'error': return '❌';
+                case 'warning': return '⚠️';
+                default: return 'ℹ️';
+            }
+        }
+        
+        function toggleSidebar() {
+            adminSidebar.classList.toggle('open');
+        }
+        
+        function showSection(section) {
+            // Update active sidebar link
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.dataset.section === section) {
+                    link.classList.add('active');
+                }
+            });
+            
+            currentSection = section;
+            console.log(`Switched to section: ${section}`);
+            
+            // Hide sidebar on mobile after selection
+            if (window.innerWidth <= 1024) {
+                adminSidebar.classList.remove('open');
+            }
+        }
+        
+        // ================================================================
+        // DASHBOARD DATA
+        // ================================================================
+        
+        async function loadDashboardData() {
+            if (!adminToken) return;
+            
+            try {
+                // Load system metrics
+                const metricsResponse = await adminApiRequest('/api/admin/metrics');
+                if (metricsResponse) {
+                    updateDashboardMetrics(metricsResponse);
+                }
+                
+                // Load recent activity
+                const activityResponse = await adminApiRequest('/api/admin/activity');
+                if (activityResponse) {
+                    updateRecentActivity(activityResponse.activities || []);
+                }
+                
+            } catch (error) {
+                console.error('Dashboard load error:', error);
+                showAlert('Error loading dashboard data', 'error');
+            }
+        }
+        
+        async function loadSystemStatus() {
+            try {
+                const response = await fetch('/api/status');
+                const status = await response.json();
+                
+                updateIntegrationStatus(status.integrations || {});
+            } catch (error) {
+                console.error('System status error:', error);
+            }
+        }
+        
+        function updateDashboardMetrics(metrics) {
+            document.getElementById('totalClients').textContent = metrics.totalClients || 0;
+            document.getElementById('activeProjects').textContent = metrics.activeProjects || 0;
+            document.getElementById('episodesThisMonth').textContent = metrics.episodesThisMonth || 0;
+            document.getElementById('monthlyRevenue').textContent = 
+                `$${(metrics.monthlyRevenue || 0).toLocaleString()}`;
+        }
+        
+        function updateIntegrationStatus(integrations) {
+            const statusElements = {
+                airtable: document.getElementById('airtableStatus'),
+                stripe: document.getElementById('stripeStatus'),
+                hubspot: document.getElementById('hubspotStatus'),
+                brevo: document.getElementById('brevoStatus'),
+                motion: document.getElementById('motionStatus')
+            };
+            
+            Object.keys(statusElements).forEach(service => {
+                const element = statusElements[service];
+                if (element) {
+                    if (integrations[service] === 'configured') {
+                        element.classList.add('connected');
+                    } else {
+                        element.classList.remove('connected');
+                    }
+                }
+            });
+        }
+        
+        function updateRecentActivity(activities) {
+            const tableBody = document.getElementById('recentActivityTable');
+            
+            if (activities.length === 0) {
+                tableBody.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: var(--accent-color);">
+                            No recent activity
+                        </td>
+                    </tr>
+                `;
+                return;
+            }
+            
+            tableBody.innerHTML = activities.map(activity => `
+                <tr>
+                    <td>${formatDateTime(activity.timestamp)}</td>
+                    <td>${activity.clientName || 'System'}</td>
+                    <td>${activity.action}</td>
+                    <td>
+                        <span class="status-badge status-${activity.status}">
+                            ${activity.status}
+                        </span>
+                    </td>
+                    <td>
+                        <button class="action-btn btn-primary" onclick="viewDetails('${activity.id}')">
+                            View
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+        }
+        
+        // ================================================================
+        // ADMIN ACTIONS
+        // ================================================================
+        
+        async function runBackup() {
+            try {
+                showAlert('Starting system backup...', 'info');
+                
+                const response = await adminApiRequest('/api/admin/backup', {
+                    method: 'POST'
+                });
+                
+                if (response && response.success) {
+                    showAlert('Backup completed successfully!', 'success');
+                } else {
+                    showAlert('Backup failed. Check logs for details.', 'error');
+                }
+            } catch (error) {
+                console.error('Backup error:', error);
+                showAlert('Backup failed due to system error.', 'error');
+            }
+        }
+        
+        function viewDetails(activityId) {
+            console.log('View details for activity:', activityId);
+            showAlert('Activity details coming soon...', 'info');
+        }
+        
+        // ================================================================
+        // EVENT LISTENERS
+        // ================================================================
+        
+        function setupEventListeners() {
+            // Admin login form
+            adminLoginForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('adminEmail').value;
+                const password = document.getElementById('adminPassword').value;
+                const loginBtn = document.getElementById('adminLoginBtn');
+                const loginText = document.getElementById('adminLoginText');
+                const loginLoader = document.getElementById('adminLoginLoader');
+                
+                // Show loading state
+                loginBtn.disabled = true;
+                loginText.classList.add('hidden');
+                loginLoader.classList.remove('hidden');
+                
+                try {
+                    await adminLogin(email, password);
+                } finally {
+                    // Reset button state
+                    loginBtn.disabled = false;
+                    loginText.classList.remove('hidden');
+                    loginLoader.classList.add('hidden');
+                }
+            });
+            
+            // Sidebar navigation
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const section = link.dataset.section;
+                    showSection(section);
+                });
+            });
+            
+            // Mobile menu toggle
+            window.addEventListener('resize', () => {
+                if (window.innerWidth > 1024) {
+                    adminSidebar.classList.remove('open');
+                }
+            });
+        }
+        
+        // ================================================================
+        // UTILITY FUNCTIONS
+        // ================================================================
+        
+        async function adminApiRequest(url, options = {}) {
+            try {
+                const response = await fetch(url, {
+                    ...options,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${adminToken}`,
+                        ...options.headers
+                    }
+                });
+                
+                if (response.status === 401) {
+                    logout();
+                    return null;
+                }
+                
+                return await response.json();
+            } catch (error) {
+                console.error('Admin API request error:', error);
+                throw error;
+            }
+        }
+        
+        function formatDateTime(dateString) {
+            if (!dateString) return 'N/A';
+            const date = new Date(dateString);
+            return date.toLocaleString('en-US', {
+                month: 'short',
+                day: 'numeric',
+                hour: '2-digit',
+                minute: '2-digit'
+            });
+        }
+        
+        // ================================================================
+        // DEMO DATA (remove when backend is connected)
+        // ================================================================
+        
+        if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            console.log('🧪 Admin demo mode active');
+            
+            // Mock data for development testing
+            setTimeout(() => {
+                if (currentAdmin) {
+                    updateDashboardMetrics({
+                        totalClients: 15,
+                        activeProjects: 8,
+                        episodesThisMonth: 32,
+                        monthlyRevenue: 12940
+                    });
+                    
+                    updateRecentActivity([
+                        {
+                            id: '1',
+                            timestamp: new Date().toISOString(),
+                            clientName: 'Tech Startup Co',
+                            action: 'Episode Uploaded',
+                            status: 'completed'
+                        },
+                        {
+                            id: '2',
+                            timestamp: new Date(Date.now() - 3600000).toISOString(),
+                            clientName: 'Marketing Agency',
+                            action: 'Payment Received',
+                            status: 'active'
+                        }
+                    ]);
+                }
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
