@@ -1,294 +1,706 @@
-# ========================================
-# 223 MEDIA CLIENT PORTAL CONFIGURATION
-# Environment Variables Template
-# ========================================
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Portal - 223 Media</title>
+    <meta name="description" content="223 Media Client Portal - Access your projects, episodes, and content ecosystem dashboard">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/assets/images/favicon.svg">
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png">
+    
+    <style>
+        :root {
+            --primary-color: #f17000;
+            --secondary-color: #200c2a;
+            --accent-color: #786c7e;
+            --text-color: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.2);
+            --success-color: #44ff44;
+            --warning-color: #ff4444;
+            --info-color: #4a9eff;
+        }
 
-# ========================================
-# APPLICATION SETTINGS
-# ========================================
-NODE_ENV=development
-PORT=3000
-APP_NAME=223Media Client Portal
-APP_VERSION=1.0.0
-APP_URL=https://2twenty3media.com
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-# ========================================
-# SECURITY & AUTHENTICATION
-# ========================================
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, var(--secondary-color) 0%, #1a0d2e 50%, var(--secondary-color) 100%);
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
 
-# JWT Secret - Generate with: node -e "console.log(require('crypto').randomBytes(64).toString('hex'))"
-JWT_SECRET=your_jwt_secret_key_here_minimum_32_characters_required
+        /* Floating Background Elements */
+        .floating-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
 
-# Admin Credentials
-ADMIN_EMAIL=2twenty3media@gmail.com
-ADMIN_PASSWORD=your_secure_admin_password
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(241, 112, 0, 0.1), rgba(120, 108, 126, 0.05));
+            animation: float 20s infinite linear;
+        }
 
-# Session Secret
-SESSION_SECRET=your_session_secret_key_here
+        .shape:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+        .shape:nth-child(2) { width: 60px; height: 60px; top: 60%; left: 80%; animation-delay: 5s; }
+        .shape:nth-child(3) { width: 40px; height: 40px; top: 80%; left: 20%; animation-delay: 10s; }
+        .shape:nth-child(4) { width: 100px; height: 100px; top: 10%; left: 70%; animation-delay: 15s; }
 
-# Encryption Key
-ENCRYPTION_KEY=your_encryption_key_32_chars_here
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) rotate(120deg); }
+            66% { transform: translateY(20px) rotate(240deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
 
-# ========================================
-# AIRTABLE INTEGRATION
-# ========================================
+        /* Header */
+        .header {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
 
-# Get from: https://airtable.com/create/tokens
-AIRTABLE_API_KEY=your_airtable_api_key
-AIRTABLE_BASE_ID=your_airtable_base_id
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-# Airtable Table Names
-AIRTABLE_CLIENTS_TABLE=Clients
-AIRTABLE_PROJECTS_TABLE=Projects
-AIRTABLE_EPISODES_TABLE=Episodes
-AIRTABLE_PACKAGES_TABLE=Packages
-AIRTABLE_TEAM_TABLE=Team Members
-AIRTABLE_WORKFLOWS_TABLE=Workflows
-AIRTABLE_COMMUNICATIONS_TABLE=Communications
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-# ========================================
-# STRIPE PAYMENT INTEGRATION
-# ========================================
+        .logo {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary-color), #ff8533);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: white;
+            box-shadow: 0 4px 20px rgba(241, 112, 0, 0.3);
+            transition: all 0.3s ease;
+        }
 
-# Get from: https://dashboard.stripe.com/apikeys
-STRIPE_PUBLISHABLE_KEY=pk_test_your_stripe_publishable_key
-STRIPE_SECRET_KEY=sk_test_your_stripe_secret_key
+        .logo:hover {
+            transform: rotate(360deg) scale(1.1);
+        }
 
-# Webhook Configuration
-STRIPE_WEBHOOK_SECRET=whsec_your_webhook_secret
+        .brand-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
 
-# Product IDs (create in Stripe Dashboard)
-STRIPE_GROWTH_PRICE_ID=price_growth_package_497
-STRIPE_SCALE_PRICE_ID=price_scale_package_997
-STRIPE_ENTERPRISE_PRICE_ID=price_enterprise_lite_1497
-STRIPE_WEBSITE_PRICE_ID=price_website_management_297
-STRIPE_EPISODE_PRICE_ID=price_single_episode_110
+        .user-section {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
 
-# ========================================
-# HUBSPOT CRM INTEGRATION
-# ========================================
+        .user-info {
+            text-align: right;
+        }
 
-# Get from: https://app.hubspot.com/private-apps/
-HUBSPOT_ACCESS_TOKEN=your_hubspot_access_token
-HUBSPOT_PORTAL_ID=your_hubspot_portal_id
+        .user-name {
+            font-weight: 600;
+            color: var(--text-color);
+        }
 
-# HubSpot Settings
-HUBSPOT_DEAL_PIPELINE_ID=default
-HUBSPOT_CONTACT_OWNER=223media_team
-HUBSPOT_COMPANY_OWNER=223media_team
+        .user-package {
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
 
-# ========================================
-# BREVO EMAIL MARKETING
-# ========================================
+        .back-btn {
+            padding: 0.75rem 1.5rem;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            color: var(--text-color);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
 
-# Get from: https://app.brevo.com/settings/keys/api
-BREVO_API_KEY=your_brevo_api_key
+        .back-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(241, 112, 0, 0.3);
+        }
 
-# Email Configuration
-BREVO_FROM_EMAIL=2twenty3media@gmail.com
-BREVO_FROM_NAME=223 Media Team
-BREVO_REPLY_TO=2twenty3media@gmail.com
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            min-height: calc(100vh - 100px);
+        }
 
-# Email List IDs (create in Brevo)
-BREVO_CLIENTS_LIST_ID=1
-BREVO_PROSPECTS_LIST_ID=2
-BREVO_NEWSLETTER_LIST_ID=3
+        /* Welcome Section */
+        .welcome-section {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
 
-# Email Template IDs (create in Brevo)
-BREVO_WELCOME_TEMPLATE_ID=1
-BREVO_EPISODE_READY_TEMPLATE_ID=2
-BREVO_FEEDBACK_REQUEST_TEMPLATE_ID=3
-BREVO_INVOICE_TEMPLATE_ID=4
+        .welcome-title {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary-color), #ff8533);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
 
-# ========================================
-# MOTION PROJECT MANAGEMENT
-# ========================================
+        .welcome-subtitle {
+            font-size: 1.1rem;
+            color: var(--accent-color);
+            margin-bottom: 1.5rem;
+        }
 
-# Get from: https://www.usemotion.com/settings/api
-MOTION_API_KEY=your_motion_api_key
+        /* Stats Cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
 
-# Motion Configuration
-MOTION_WORKSPACE_ID=your_motion_workspace_id
-MOTION_DEFAULT_ASSIGNEE=223media_team
-MOTION_PROJECT_PREFIX=223M
+        .stat-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
 
-# ========================================
-# FILE UPLOAD SETTINGS
-# ========================================
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary-color);
+        }
 
-# Upload Configuration
-MAX_FILE_SIZE=50MB
-ALLOWED_FILE_TYPES=mp3,wav,mp4,mov,pdf,docx,txt,jpg,png
-UPLOAD_PATH=./uploads
-TEMP_PATH=./temp
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
 
-# Storage Settings
-STORAGE_TYPE=local
-MAX_STORAGE_SIZE=1GB
+        .stat-label {
+            color: var(--accent-color);
+            font-size: 0.95rem;
+        }
 
-# ========================================
-# DATABASE & CACHING
-# ========================================
+        /* Quick Actions */
+        .quick-actions {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
 
-# Redis Configuration (optional - for caching)
-REDIS_URL=redis://localhost:6379
-REDIS_PASSWORD=your_redis_password
-REDIS_DB=0
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-# Database URL (if using external database)
-DATABASE_URL=your_database_connection_string
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
 
-# ========================================
-# LOGGING & MONITORING
-# ========================================
+        .action-btn {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+            text-align: center;
+            cursor: pointer;
+        }
 
-# Log Configuration
-LOG_LEVEL=info
-LOG_FILE=./logs/app.log
-LOG_MAX_SIZE=10MB
-LOG_MAX_FILES=5
+        .action-btn:hover {
+            background: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(241, 112, 0, 0.3);
+        }
 
-# Error Tracking
-SENTRY_DSN=your_sentry_dsn_for_error_tracking
+        .action-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
 
-# Performance Monitoring
-NEW_RELIC_LICENSE_KEY=your_new_relic_license_key
-NEW_RELIC_APP_NAME=223Media Client Portal
+        .action-title {
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
 
-# ========================================
-# RATE LIMITING & SECURITY
-# ========================================
+        .action-desc {
+            font-size: 0.85rem;
+            color: var(--accent-color);
+        }
 
-# Rate Limiting
-RATE_LIMIT_WINDOW=15
-RATE_LIMIT_MAX_REQUESTS=100
-RATE_LIMIT_STRICT_MODE=false
+        /* Recent Activity */
+        .recent-activity {
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
 
-# CORS Settings
-CORS_ORIGIN=https://2twenty3media.com,https://www.2twenty3media.com
-CORS_CREDENTIALS=true
+        .activity-list {
+            list-style: none;
+        }
 
-# Security Headers
-SECURITY_HSTS=true
-SECURITY_NOSNIFF=true
-SECURITY_FRAME_GUARD=deny
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
 
-# ========================================
-# WEBHOOK ENDPOINTS
-# ========================================
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
 
-# Stripe Webhooks
-STRIPE_WEBHOOK_URL=https://2twenty3media.com/api/webhooks/stripe
+        .activity-content {
+            flex: 1;
+        }
 
-# Zapier Integration
-ZAPIER_WEBHOOK_URL=https://hooks.zapier.com/hooks/catch/your_zapier_webhook
+        .activity-title {
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
 
-# Internal Webhooks
-INTERNAL_WEBHOOK_SECRET=your_internal_webhook_secret
+        .activity-time {
+            color: var(--accent-color);
+            font-size: 0.85rem;
+        }
 
-# ========================================
-# BACKUP & MAINTENANCE
-# ========================================
+        .activity-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
 
-# Backup Configuration
-BACKUP_ENABLED=true
-BACKUP_SCHEDULE=0 2 * * *
-BACKUP_RETENTION_DAYS=30
-BACKUP_STORAGE_PATH=./backups
+        .status-completed {
+            background: rgba(68, 255, 68, 0.2);
+            color: var(--success-color);
+        }
 
-# Maintenance Mode
-MAINTENANCE_MODE=false
-MAINTENANCE_MESSAGE=System maintenance in progress
+        .status-in-progress {
+            background: rgba(74, 158, 255, 0.2);
+            color: var(--info-color);
+        }
 
-# ========================================
-# DEVELOPMENT SETTINGS
-# ========================================
+        .status-pending {
+            background: rgba(255, 68, 68, 0.2);
+            color: var(--warning-color);
+        }
 
-# Development Flags
-DEBUG_MODE=false
-MOCK_EXTERNAL_APIS=false
-SKIP_AUTH_IN_DEV=false
-ENABLE_CONSOLE_LOGS=true
+        /* Loading States */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary-color);
+            animation: spin 1s ease-in-out infinite;
+        }
 
-# Test Configuration
-TEST_DATABASE_URL=sqlite::memory:
-TEST_STRIPE_KEY=sk_test_your_test_stripe_key
-TEST_WEBHOOK_SECRET=test_webhook_secret
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
 
-# ========================================
-# PRODUCTION SETTINGS
-# ========================================
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .header {
+                padding: 1rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .main-content {
+                padding: 1rem;
+            }
+            
+            .welcome-title {
+                font-size: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .actions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
-# SSL Configuration
-SSL_ENABLED=true
-SSL_CERT_PATH=./ssl/cert.pem
-SSL_KEY_PATH=./ssl/key.pem
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            color: var(--text-color);
+            transform: translateX(400px);
+            transition: all 0.3s ease;
+            z-index: 1001;
+        }
 
-# Production Optimization
-COMPRESS_RESPONSES=true
-CACHE_STATIC_FILES=true
-TRUST_PROXY=true
+        .notification.show {
+            transform: translateX(0);
+        }
 
-# Health Checks
-HEALTH_CHECK_ENABLED=true
-HEALTH_CHECK_INTERVAL=30000
+        .notification.success {
+            border-left: 4px solid var(--success-color);
+        }
 
-# ========================================
-# FEATURE FLAGS
-# ========================================
+        .notification.error {
+            border-left: 4px solid var(--warning-color);
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
 
-# Core Features
-ENABLE_CLIENT_PORTAL=true
-ENABLE_ADMIN_DASHBOARD=true
-ENABLE_FILE_UPLOADS=true
-ENABLE_EMAIL_NOTIFICATIONS=true
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-section">
+                <div class="logo">223</div>
+                <div class="brand-text">Client Portal</div>
+            </div>
+            <div class="user-section">
+                <div class="user-info">
+                    <div class="user-name" id="clientName">Loading...</div>
+                    <div class="user-package" id="clientPackage">Fetching package info...</div>
+                </div>
+                <a href="/" class="back-btn">← Back to Website</a>
+            </div>
+        </div>
+    </header>
 
-# Integration Features
-ENABLE_STRIPE_INTEGRATION=true
-ENABLE_AIRTABLE_INTEGRATION=true
-ENABLE_HUBSPOT_INTEGRATION=true
-ENABLE_BREVO_INTEGRATION=true
-ENABLE_MOTION_INTEGRATION=true
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Welcome Section -->
+        <section class="welcome-section">
+            <h1 class="welcome-title">Welcome Back!</h1>
+            <p class="welcome-subtitle">Your content ecosystem dashboard</p>
+        </section>
 
-# Advanced Features
-ENABLE_ANALYTICS=true
-ENABLE_BACKUP_SYSTEM=true
-ENABLE_WEBHOOK_PROCESSING=true
-ENABLE_RATE_LIMITING=true
+        <!-- Stats Overview -->
+        <section class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalEpisodes">0</div>
+                <div class="stat-label">Episodes Produced</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="contentPieces">0</div>
+                <div class="stat-label">Content Pieces Created</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="activeProjects">0</div>
+                <div class="stat-label">Active Projects</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="daysActive">0</div>
+                <div class="stat-label">Days in Ecosystem</div>
+            </div>
+        </section>
 
-# ========================================
-# CONTACT & SUPPORT
-# ========================================
+        <!-- Quick Actions -->
+        <section class="quick-actions">
+            <h2 class="section-title">🎯 Quick Actions</h2>
+            <div class="actions-grid">
+                <div class="action-btn" onclick="showComingSoon('Upload Files')">
+                    <div class="action-icon">📁</div>
+                    <div class="action-title">Upload Files</div>
+                    <div class="action-desc">Submit content for your next episode</div>
+                </div>
+                <div class="action-btn" onclick="showComingSoon('View Projects')">
+                    <div class="action-icon">📊</div>
+                    <div class="action-title">View Projects</div>
+                    <div class="action-desc">Track progress and timelines</div>
+                </div>
+                <div class="action-btn" onclick="showComingSoon('Download Assets')">
+                    <div class="action-icon">⬇️</div>
+                    <div class="action-title">Download Assets</div>
+                    <div class="action-desc">Get your completed content</div>
+                </div>
+                <div class="action-btn" onclick="showComingSoon('Schedule Call')">
+                    <div class="action-icon">📞</div>
+                    <div class="action-title">Schedule Call</div>
+                    <div class="action-desc">Book time with our team</div>
+                </div>
+                <div class="action-btn" onclick="showComingSoon('View Reports')">
+                    <div class="action-icon">📈</div>
+                    <div class="action-title">View Reports</div>
+                    <div class="action-desc">Analytics and performance</div>
+                </div>
+                <div class="action-btn" onclick="showComingSoon('Request Support')">
+                    <div class="action-icon">💬</div>
+                    <div class="action-title">Request Support</div>
+                    <div class="action-desc">Get help from our team</div>
+                </div>
+            </div>
+        </section>
 
-# Company Information
-COMPANY_NAME=223 Media
-COMPANY_EMAIL=2twenty3media@gmail.com
-COMPANY_PHONE=your_phone_number
-COMPANY_ADDRESS=your_business_address
+        <!-- Recent Activity -->
+        <section class="recent-activity">
+            <h2 class="section-title">🕒 Recent Activity</h2>
+            <ul class="activity-list" id="activityList">
+                <!-- Dynamic content will be loaded here -->
+            </ul>
+        </section>
+    </main>
 
-# Support Configuration
-SUPPORT_EMAIL=2twenty3media@gmail.com
-SUPPORT_HOURS=Mon-Fri 9AM-5PM EST
-EMERGENCY_CONTACT=your_emergency_contact
+    <!-- Notification -->
+    <div id="notification" class="notification">
+        <span id="notificationMessage"></span>
+    </div>
 
-# ========================================
-# SETUP INSTRUCTIONS
-# ========================================
+    <script>
+        // Client Portal JavaScript
+        class ClientPortal {
+            constructor() {
+                this.clientData = null;
+                this.init();
+            }
 
-# 1. Copy this file to .env: cp .env.example .env
-# 2. Update all values with your actual API keys and settings
-# 3. Generate secure secrets using: node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"
-# 4. Test your configuration: npm run setup
-# 5. Start the server: npm start
+            async init() {
+                await this.loadClientData();
+                this.updateUI();
+                this.setupEventListeners();
+            }
 
-# ========================================
-# SECURITY NOTES
-# ========================================
+            async loadClientData() {
+                try {
+                    // Simulate API call - replace with actual API endpoint
+                    await this.delay(1500);
+                    
+                    // Mock client data - replace with real API response
+                    this.clientData = {
+                        name: "Sample Client",
+                        package: "Growth Package ($497/month)",
+                        stats: {
+                            episodes: 12,
+                            contentPieces: 180,
+                            activeProjects: 3,
+                            daysActive: 89
+                        },
+                        recentActivity: [
+                            {
+                                icon: "🎙️",
+                                title: "Episode 012 - 'Building Your Brand' completed",
+                                time: "2 hours ago",
+                                status: "completed"
+                            },
+                            {
+                                icon: "📝",
+                                title: "Blog post draft created from Episode 011",
+                                time: "1 day ago",
+                                status: "completed"
+                            },
+                            {
+                                icon: "📱",
+                                title: "Social media content package ready",
+                                time: "2 days ago",
+                                status: "in-progress"
+                            },
+                            {
+                                icon: "🎬",
+                                title: "Video clips being processed",
+                                time: "3 days ago",
+                                status: "in-progress"
+                            },
+                            {
+                                icon: "📧",
+                                title: "Email newsletter template waiting approval",
+                                time: "5 days ago",
+                                status: "pending"
+                            }
+                        ]
+                    };
+                } catch (error) {
+                    console.error('Error loading client data:', error);
+                    this.showNotification('Error loading data', 'error');
+                }
+            }
 
-# IMPORTANT:
-# - Never commit the actual .env file to version control
-# - Use strong, unique passwords and API keys
-# - Rotate secrets regularly in production
-# - Enable 2FA on all external service accounts
-# - Monitor API usage and set up alerts
-# - Use environment-specific configurations
+            updateUI() {
+                if (!this.clientData) return;
+
+                // Update client info
+                document.getElementById('clientName').textContent = this.clientData.name;
+                document.getElementById('clientPackage').textContent = this.clientData.package;
+
+                // Update stats
+                this.animateCounter('totalEpisodes', this.clientData.stats.episodes);
+                this.animateCounter('contentPieces', this.clientData.stats.contentPieces);
+                this.animateCounter('activeProjects', this.clientData.stats.activeProjects);
+                this.animateCounter('daysActive', this.clientData.stats.daysActive);
+
+                // Update activity list
+                this.updateActivityList();
+            }
+
+            animateCounter(elementId, target) {
+                const element = document.getElementById(elementId);
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        current = target;
+                        clearInterval(timer);
+                    }
+                    element.textContent = Math.floor(current);
+                }, 40);
+            }
+
+            updateActivityList() {
+                const activityList = document.getElementById('activityList');
+                activityList.innerHTML = '';
+
+                this.clientData.recentActivity.forEach(activity => {
+                    const listItem = document.createElement('li');
+                    listItem.className = 'activity-item';
+                    listItem.innerHTML = `
+                        <div class="activity-icon">${activity.icon}</div>
+                        <div class="activity-content">
+                            <div class="activity-title">${activity.title}</div>
+                            <div class="activity-time">${activity.time}</div>
+                        </div>
+                        <div class="activity-status status-${activity.status}">
+                            ${activity.status.charAt(0).toUpperCase() + activity.status.slice(1)}
+                        </div>
+                    `;
+                    activityList.appendChild(listItem);
+                });
+            }
+
+            setupEventListeners() {
+                // Add any event listeners here
+                console.log('Portal initialized successfully');
+            }
+
+            showNotification(message, type = 'success') {
+                const notification = document.getElementById('notification');
+                const messageElement = document.getElementById('notificationMessage');
+                
+                messageElement.textContent = message;
+                notification.className = `notification ${type} show`;
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            }
+
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+
+        // Global functions
+        function showComingSoon(feature) {
+            const portal = window.clientPortal;
+            if (portal) {
+                portal.showNotification(`${feature} feature coming soon!`, 'success');
+            }
+        }
+
+        // Initialize portal when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            window.clientPortal = new ClientPortal();
+        });
+
+        // Console greeting
+        console.log(`
+🎙️ 223 Media Client Portal
+================================
+Welcome to your content ecosystem!
+
+🔧 Portal Status: Loaded
+🎯 Environment: ${window.location.hostname}
+📱 User Agent: ${navigator.userAgent.split(' ')[0]}
+
+For support, contact: 2twenty3media@gmail.com
+        `);
+    </script>
+</body>
+</html>
